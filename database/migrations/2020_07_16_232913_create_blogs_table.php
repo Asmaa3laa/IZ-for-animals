@@ -13,7 +13,7 @@ class CreateBlogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('blogs', function (Blueprint $table) {
+        Schema::create('blogs', function (Blueprint $table) { //Pleas Add Delete Status 
             $table->id();
             $table->string('title');
             $table->longText('content');
@@ -21,7 +21,7 @@ class CreateBlogsTable extends Migration
             $table->boolean('is_verified')->default(0);
             $table->boolean('for_doctors')->default(0);
             $table->unsignedBigInteger ('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); 
             
             $table->timestamps();
         });
