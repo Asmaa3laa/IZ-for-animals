@@ -23,3 +23,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('login-role', function () {
     return view('auth.role');
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
