@@ -1,4 +1,4 @@
-@extends('layouts.navfooter')
+@extends('layouts.nav-footer')
 
 @section('content')
         <!-- Fonts -->

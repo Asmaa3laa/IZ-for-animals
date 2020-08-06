@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddNullableUsersTable extends Migration
+class RenameStateIdUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +14,10 @@ class AddNullableUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('phone')->nullable()->change();
-            $table->string('address')->nullable()->change();
-            $table->string('location')->nullable()->change();
-            $table->string('image')->nullable()->change();
-            $table->string('card')->nullable()->change();
-            $table->softDeletes();
+            $table->renameColumn('government_id', 'state_id');
+            $table->dropForeign(['city_id']);
+            $table->dropColumn('city_id');
+
 
         });
     }
