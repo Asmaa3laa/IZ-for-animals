@@ -16,6 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::group(['middleware' => ['auth','admin']], function () {
+Route::get('admin/home', 'HomeController@adminHome')->name('admin.home');
+Route::get('users/doctor','UserController@doctorUsers');
+Route::get('users/clinic','UserController@clinicUsers');
+Route::get('users/pending','UserController@pendingUsers');
+Route::get('users/verify/{id}','UserController@verifyUser');
+
+    
+});
 
 Auth::routes();
 
@@ -27,3 +36,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('blog','BlogController');
+// Route::get('clinic-login', function () {
+//     return view('auth.clinicRegister');
+// });
+Route::resource('user', 'UserController');
+Route::resource('clinic', 'ClinicController');
+Route::get('/get-state-list/{country_id}','CountryStateController@getStateList');

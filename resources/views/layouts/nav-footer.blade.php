@@ -1,6 +1,4 @@
-    @extends('layouts.app')
-    {{-- @section('content') --}}
-        
+@extends('layouts.app')
     <div class="wrap">
 			<div class="container">
 				<div class="col-md-6 d-flex justify-content-md-end">
@@ -11,10 +9,10 @@
 			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
 			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
 			    		</p>
-					</div>
-				</div>
-			</div>
-		</div>
+					  </div>
+				  </div>
+			  </div>
+		  </div>
 		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
 	    	<a class="navbar-brand" href="index.html"><span class="flaticon-pawprint-1 mr-2"></span>IZ For Animals</a>
@@ -39,24 +37,31 @@
             <!-- Authentication Links -->
             @guest
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('تسجيل دخول') }}</a>
                 </li>
                 @if (Route::has('register'))
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('login-role') }}">{{ __('Register') }}</a>
+                        <a class="nav-link" href="{{ url('login-role') }}">{{ __('حساب جديد') }}</a>
                     </li>
                 @endif
             @else
+
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="{{route('user.show',Auth::id())}}">
+                        <i class="fa fa-user"></i>
+                              {{ __('الملف الشخصى') }}
+                          </a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                            <i class="fa fa-sign-out"></i>
+
+                            {{ __('تسجيل الخروج') }}
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -64,9 +69,18 @@
                         </form>
                     </div>
                 </li>
+                <li class="nav-item">
+                  <div>
+                      @if(Auth::user()->image)
+                      <img  style=" vertical-align: middle; width: 80px;height: 80px;border-radius: 50%; margin-top: 9px" src="{{asset('storage/'.Auth::user()->image)}}"> 
+                      @else
+                      <img  style=" vertical-align: middle; width: 80px;height: 80px;border-radius: 50%; margin-top: 9px" src="/images/doctor avatar.jpg" alt="avatar"> 
+                      @endif
+                  </div>
+              </li>
             @endguest
         </ul>
-        {{-- </div> --}}
+        </div>
         
 	    </div>
 	  </nav>
@@ -137,4 +151,4 @@
         </div>
     </footer>
     <!--Footer section end--> 
-    {{-- @endsection --}}
+  
