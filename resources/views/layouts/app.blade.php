@@ -1,5 +1,5 @@
 <!doctype html>
-<html dir="rtl">
+{{-- <html dir="rtl"> --}}
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -25,7 +25,7 @@
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     </head>
     <body>
-    @yield('content')
+    {{-- @yield('content') --}}
     
   <script src="{{asset('js/jquery.min.js')}}"></script>
   <script src="{{asset('js/jquery-migrate-3.0.1.min.js')}}"></script>

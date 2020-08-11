@@ -17,18 +17,19 @@
 		</div>
 		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	    	<a class="navbar-brand" href="index.html"><span class="flaticon-pawprint-1 mr-2"></span>LZ For Animals</a>
+	    	<a class="navbar-brand" href="index.html"><span class="flaticon-pawprint-1 mr-2"></span>IZ For Animals</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="fa fa-bars"></span> Menu
 	      </button>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	        	<li class="nav-item active"><a href="index.html" class="nav-link">الرئيسية</a></li>
-	        	<li class="nav-item"><a href="#" class="nav-link">عن LZ for Animals</a></li>
-	        	<li class="nav-item"><a href="#" class="nav-link">خدماتنا</a></li>
-	        	<li class="nav-item"><a href="#" class="nav-link">تشخيص الأمراض</a></li>
-	          <li class="nav-item"><a href="#" class="nav-link">عملائنا</a></li>
-	          <li class="nav-item"><a href="#" class="nav-link">التواصل</a></li>
+	        	<li class="nav-item active"><a href="index.html" class="nav-link">HOME</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">ABOUT</a></li>
+	        	<li class="nav-item"><a href="#" class="nav-link">SERVICES</a></li>
+	        	<li class="nav-item"><a href="#" class="nav-link">DIAGNOSES OF ILLnESSES</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">CLIENTS</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">BLOG</a></li>            
+	          <li class="nav-item"><a href="#" class="nav-link">CONTACT</a></li>
 	        </ul>
         </div>
         
@@ -70,7 +71,7 @@
 	    </div>
 	  </nav>
     <!-- END nav -->
-    <div style="height:800px">
+    <div>
     @yield('content')
     </div>
       <!-- Footer section start -->
