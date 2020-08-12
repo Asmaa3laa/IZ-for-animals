@@ -1,6 +1,6 @@
-@extends('layouts.app')
-
-@section('content')
+{{-- @extends('layouts.app')--}}
+@extends('layouts.nav-footer')
+@section('content')    
 <body style="background-color:rgb(59, 151, 207)">
 
 

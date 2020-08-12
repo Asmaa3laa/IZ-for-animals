@@ -42,3 +42,8 @@ Route::resource('blog','BlogController');
 Route::resource('user', 'UserController');
 Route::resource('clinic', 'ClinicController');
 Route::get('/get-state-list/{country_id}','CountryStateController@getStateList');
+Route::resource('tag','TagController');
+Route::resource('blogtag','BlogTagController')->only('show');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

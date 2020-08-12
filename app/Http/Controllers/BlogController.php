@@ -22,17 +22,15 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs=Blog::where('is_verified','=',1)->paginate(6, ['*'], 'blogs');
+        $blogs=Blog::where('is_verified','=',1)->paginate(9, ['*'], 'blogs');
         $users=[];
         foreach($blogs as $blog)
         {      
             $user = $blog->user()->get();
             array_push($users, $user[0]); 
         }           
-
-        return view('blog.blogs',compact('blogs','users'));
-
-
+        $tags=Tag::all();
+        return view('blog.index',compact('blogs','users','tags'));
     }
 
     /**
@@ -64,7 +62,7 @@ class BlogController extends Controller
             $blog = Blog::create([
             "title" => $request->title,
             'content' => $request->content,
-            "user_id"=>2,
+            "user_id"=>3,
             // "user_id" =>Auth::id(),
             'image' => $image_path,
             ]);

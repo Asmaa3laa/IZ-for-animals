@@ -37,11 +37,11 @@
             <!-- Authentication Links -->
             @guest
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">{{ __('تسجيل دخول') }}</a>
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('login') }}</a>
                 </li>
                 @if (Route::has('register'))
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('login-role') }}">{{ __('حساب جديد') }}</a>
+                        <a class="nav-link" href="{{ url('login-role') }}">{{ __('create acount') }}</a>
                     </li>
                 @endif
             @else
@@ -54,14 +54,14 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" href="{{route('user.show',Auth::id())}}">
                         <i class="fa fa-user"></i>
-                              {{ __('الملف الشخصى') }}
+                              {{ __('profile') }}
                           </a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();">
                             <i class="fa fa-sign-out"></i>
 
-                            {{ __('تسجيل الخروج') }}
+                            {{ __('logout') }}
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

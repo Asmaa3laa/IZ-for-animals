@@ -10,14 +10,14 @@
         </div>
       </div>
     </div>
-  </section>
-  @forelse($blogs as $blog)  
+  </section>  
   <section class="ftco-section bg-light">
     <div class="container">
       <div class="row d-flex">
+  @forelse($blogs as $blog)  
         <div class="col-md-4 ftco-animate">
           <div class="blog-entry">
-            <a href="blog-single.html" class="block-20 rounded" style="background-image: {{ asset('storage/'.$blog->image)}}">
+            <a href="{{ route('blog.show',$blog->id) }}" class="block-20 rounded" ><img src="{{asset ('storage/'.$blog->image)}}"/>
             </a>
             <div class="text p-4">
                 <div class="meta mb-2">
@@ -25,15 +25,16 @@
                 <div><a href="#">{{$blog->user->user_name}}</a></div>
                 <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
               </div>
-              <h3 class="heading"><a href="#">{{$blog->title}}</a></h3>
-              <pre class="content">{{\Illuminate\Support\Str::limit($blog->content,20, $end='...') }}</pre>       
+              <h3 class="heading"><a href="{{ route('blog.show',$blog->id) }}">{{$blog->title}}</a></h3>
+              <p class="content">{{\Illuminate\Support\Str::limit($blog->content,100, $end='...') }}</p>       
             </div>
+            <a href="{{ route('blog.show',$blog->id) }}" class="btn btn-info" style="background-color: #052958;" role="button">Read More</a>   
           </div>
         </div>
-      </div>  
       @empty
       <h3>No Blogs Yet</h3>
   @endforelse
+        </div>
       <div class="row mt-5">
         <div class="col text-center">
           <div class="block-27">
@@ -50,6 +51,15 @@
         </div>
       </div>
     </div>
-  </section>
-
+    {{-- <button>{{ $blogs->links() }}</button> --}}
+     </section>
+    <hr style="height:2px;border-width:0;color:#052958;background-color:#052958;text-align:center">   
+    <section>
+      <h3 style="color:#031a38; text-align:center;margin-top:7px;font-weight:500;">Choose From The Main Titles</h3>
+      <div class="container row mt-5 mb-5">
+        @foreach($tags as $tag)
+      <a href="#"style="margin: auto;color:#031a38;font-size: 20px;">{{$tag->name}}</a>
+        @endforeach
+      </div>
+    </section>
   @endsection

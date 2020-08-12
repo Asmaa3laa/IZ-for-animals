@@ -2,8 +2,8 @@
 @section('content')
 @if($errors->any())
   <div class="alert alert-danger">
-    <h3>please correct your errors</h3>
-  <h4>{{$errors}}</h4>
+    <h3>please correct your errors</h3> 
+  {{-- <h4>{{$errors}}</h4> --}}
   </div>
 @endif
 <div class="container mt-5" >

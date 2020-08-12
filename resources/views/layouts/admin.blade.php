@@ -172,11 +172,11 @@
         </div>
       </li>
       <li class="nav-item dropdown">
-        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+        {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
             {{ Auth::user()->name }} <span class="caret"></span>
-        </a>
+        </a> --}}
 
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+        {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="{{route('user.show',Auth::id())}}">
             <i class="fa fa-user"></i>
                   {{ __('Profile') }}
@@ -192,7 +192,7 @@
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
-        </div>
+        </div> --}}
     </li>
       <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
@@ -209,7 +209,7 @@
   <a href="{{url('/')}}" class="brand-link">
       {{-- <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8"> --}}
-      <span class="brand-text font-weight-light">LZ-For-Animals</span>
+      <span class="brand-text font-weight-light">IZ-For-Animals</span>
     </a>
 
     <!-- Sidebar -->
@@ -220,7 +220,7 @@
           <img src="/images/doctor avatar.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-        <a href="{{route('user.show',Auth::id())}}" class="d-block">{{Auth::user()->name}}</a>
+        {{-- <a href="{{route('user.show',Auth::id())}}" class="d-block">{{Auth::user()->name}}</a> --}}
         </div>
       </div>
 
@@ -795,13 +795,13 @@
     @yield('content')
 
   </div>
-  <footer class="main-footer">
+  {{-- <footer class="main-footer">
     <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 3.0.5
     </div>
-  </footer>
+  </footer> --}}
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
