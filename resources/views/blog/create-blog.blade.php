@@ -27,7 +27,7 @@
         <label class="custom-file-label" for="validatedCustomFile" autofocus>Choose blog image...</label>
     </div>
     @if ($errors->first('image'))
-        <h6 style="color: red;"> invalid image, only jpg,png,jpeg are allowed </h6>
+        <h6 style="color: red;"> invalid image, only jpg,png and jpeg are allowed </h6>
     @endif
     <!-- tags -->
     <div class="form-row align-items-center">

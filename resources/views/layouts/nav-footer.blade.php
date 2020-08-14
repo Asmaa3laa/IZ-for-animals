@@ -21,17 +21,16 @@
 	      </button>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	        	<li class="nav-item active"><a href="index.html" class="nav-link">HOME</a></li>
+          <li class="nav-item active"><a href="#" class="nav-link">HOME</a></li>
           <li class="nav-item"><a href="#" class="nav-link">ABOUT</a></li>
 	        	<li class="nav-item"><a href="#" class="nav-link">SERVICES</a></li>
 	        	<li class="nav-item"><a href="#" class="nav-link">DIAGNOSES OF ILLnESSES</a></li>
             <li class="nav-item"><a href="#" class="nav-link">CLIENTS</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">BLOG</a></li>            
+          <li class="nav-item"><a href="{{route('blog.index')}}" class="nav-link">BLOG</a></li>            
 	          <li class="nav-item"><a href="#" class="nav-link">CONTACT</a></li>
 	        </ul>
         </div>
-        
-        {{-- <div> --}}
+        <div>
           <!-- Right Side Of Navbar -->
           <ul class="navbar-nav ml-auto">
             <!-- Authentication Links -->
@@ -45,12 +44,10 @@
                     </li>
                 @endif
             @else
-
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
-
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" href="{{route('user.show',Auth::id())}}">
                         <i class="fa fa-user"></i>
@@ -93,7 +90,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-lg-3 mb-4 mb-md-0">
-                    <h2 class="footer-heading">Petsitting</h2>
+                    <h2 class="footer-heading">LZ For Animals</h2>
                     <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
                     <ul class="ftco-footer-social p-0">
           <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><span class="fa fa-twitter"></span></a></li>

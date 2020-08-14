@@ -23,21 +23,22 @@
             <div class="meta mb-2">
             <div>{{$blog->created_at}}</div>
             <div><a href="#">{{$blog->user->user_name}}</a></div>
-            <div class="meta-chat"><span class="fa fa-comment"></span> 3</div>
+            {{-- <div class="meta-chat"><span class="fa fa-comment"></span> 3</div> --}}
           </div>
           <h3 class="heading">{{$blog->title}}</h3>
         </div>        
-        <pre>{{$blog->content}}</pre>
-          <div class="tag-widget post-tag-container mb-5 mt-5">
+        <pre style="font-family:Arial, Helvetica, sans-serif ">{{$blog->content}}</pre>
+          {{-- <div class="tag-widget post-tag-container mb-5 mt-5">
             <div class="tagcloud">
-              <a href="#" class="tag-cloud-link">Life</a>
-              <a href="#" class="tag-cloud-link">Sport</a>
-              <a href="#" class="tag-cloud-link">Tech</a>
-              <a href="#" class="tag-cloud-link">Travel</a>
+              @forelse($tags as $tag)
+              <a href="{{route('blogtag.show',$tag->id)}}" class="tag-cloud-link">{{$tag->name}}</a>
+              @empty 
+              <div></div>
+              @endforelse
             </div>
-          </div>
+          </div> --}}
           
-          <div class="about-author d-flex p-4 bg-light">
+          {{-- <div class="about-author d-flex p-4 bg-light">
             <div class="bio mr-5">
               <img src="images/person_1.jpg" alt="Image placeholder" class="img-fluid mb-4">
             </div>
@@ -45,10 +46,10 @@
               <h3>George Washington</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
             </div>
-          </div>
+          </div> --}}
 
 
-          <div class="pt-5 mt-5">
+          {{-- <div class="pt-5 mt-5">
             <h3 class="mb-5">6 Comments</h3>
             <ul class="comment-list">
               <li class="comment">
@@ -134,7 +135,7 @@
 
               </form>
             </div>
-          </div>
+          </div> --}}
 
         </div> <!-- .col-md-8 -->
         <div class="col-lg-4 sidebar pl-lg-5 ftco-animate">
@@ -142,7 +143,7 @@
             <form action="#" class="search-form">
               <div class="form-group">
                 <span class="fa fa-search"></span>
-                <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
+                <input type="text" id ="search" class="form-control" placeholder="Type a keyword and hit enter">
               </div>
             </form>
           </div>
@@ -158,18 +159,19 @@
 
           <div class="sidebar-box ftco-animate">
             <h3>Recent Blogs</h3>
+            @foreach($latest_blogs as $latest_blog)
             <div class="block-21 mb-4 d-flex">
-              <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
+            <a href="{{route('blog.show',$latest_blog)}}"><img class="blog-img mr-4"src="{{asset ('storage/'.$latest_blog->image) }}"/></a>
               <div class="text">
-                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+              <h3 class="heading"><a href="{{route('blog.show',$latest_blog)}}">{{$latest_blog->title}}</a></h3>
                 <div class="meta">
-                  <div><a href="#"><span class="icon-calendar"></span> April 7, 2020</a></div>
-                  <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                  <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                  <div><span class="icon-calendar"></span>{{$latest_blog->created_at}}</div>
+                  <div><span class="icon-person"></span>{{$latest_blog->user->user_name}}</div>
                 </div>
               </div>
             </div>
-            <div class="block-21 mb-4 d-flex">
+            @endforeach
+            {{-- <div class="block-21 mb-4 d-flex">
               <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
               <div class="text">
                 <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
@@ -190,15 +192,17 @@
                   <div><a href="#"><span class="icon-chat"></span> 19</a></div>
                 </div>
               </div>
-            </div>
+            </div> --}}
           </div>
 
           <div class="sidebar-box ftco-animate">
             <h3>Tag Cloud</h3>
             <div class="tagcloud">
-              {{-- @foreach($tags as $tag)  
-            <a href="#" class="tag-cloud-link">{{$tag->name}}</a>
-            @endforeach --}}
+              @forelse($tags as $tag)  
+            <a href="{{route('blogtag.show',$tag->id)}}" class="tag-cloud-link">{{$tag->name}}</a>
+             @empty 
+              <div></div>
+            @endforelse
             </div>
           </div>
         </div>
@@ -210,3 +214,8 @@
 
 
 @endsection
+@push('scripts')
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script src="{{ asset('js/search.js') }}"></script>
+
+@endpush

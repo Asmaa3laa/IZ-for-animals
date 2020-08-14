@@ -47,7 +47,13 @@ class BlogTagController extends Controller
      */
     public function show($id)
     {
-        $blogs = Tag::findOrFail($id)->blog;
+        $tag_blogs = BlogTag::where('tag_id','=',$id)->get();
+        // dd($blogs);
+        // foreach($tag_blogs as $tag_blog)
+        // {
+        //     $blog = $tag_blog->blog()->get();
+        // }
+        return view('tagblogs',compact('tag_blogs'));
     }
 
     /**

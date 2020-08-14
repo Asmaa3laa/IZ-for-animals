@@ -33,8 +33,6 @@ Route::get('login-role', function () {
     return view('auth.role');
 });
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('blog','BlogController');
 // Route::get('clinic-login', function () {
 //     return view('auth.clinicRegister');
@@ -44,6 +42,5 @@ Route::resource('clinic', 'ClinicController');
 Route::get('/get-state-list/{country_id}','CountryStateController@getStateList');
 Route::resource('tag','TagController');
 Route::resource('blogtag','BlogTagController')->only('show');
+Route::post ( '/search','ClinicController@search');
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

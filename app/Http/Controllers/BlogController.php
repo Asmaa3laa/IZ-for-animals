@@ -100,7 +100,9 @@ class BlogController extends Controller
     {
         $blog = Blog::findOrFail($id);
         $tags = Tag::all();
-        return view('blog.single-blog',compact('blog','tags'));
+        $latest_blogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
+        // $tag_blogs = BlogTag::where('tag_id','=',$id)->get();
+        return view('blog.single-blog',compact('blog','tags','latest_blogs'));
         
 
     }
@@ -138,4 +140,5 @@ class BlogController extends Controller
     {
         //
     }
+    
 }

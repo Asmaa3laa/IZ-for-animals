@@ -32,7 +32,7 @@
           </div>
         </div>
       @empty
-      <h3>No Blogs Yet</h3>
+      <h3 class=" mt-5"style="text-align:center;color: #052958;font-weight:bold;">No Blogs Yet</h3>
   @endforelse
         </div>
       <div class="row mt-5">
@@ -56,9 +56,9 @@
     <hr style="height:2px;border-width:0;color:#052958;background-color:#052958;text-align:center">   
     <section>
       <h3 style="color:#031a38; text-align:center;margin-top:7px;font-weight:500;">Choose From The Main Titles</h3>
-      <div class="container row mt-5 mb-5">
+      <div class="mt-5 mb-5 ml-5" style="display:flex; flex-wrap:wrap;justify-content: center; align-content:center;">
         @foreach($tags as $tag)
-      <a href="#"style="margin: auto;color:#031a38;font-size: 20px;">{{$tag->name}}</a>
+      <a href="{{route('blogtag.show',$tag->id)}}"style="flex-grow:1;color:#031a38;font-size: 20px;font-family:Helvetica;">{{$tag->name}}</a>
         @endforeach
       </div>
     </section>
