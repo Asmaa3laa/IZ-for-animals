@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app') --}}
 @extends('layouts.nav-footer')
 @section('content')    
 

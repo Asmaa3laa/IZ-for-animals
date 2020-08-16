@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Route;
 use App\Country;
 use App\State;
-use App\Clinic;
+use App\User;
 
 
 class ClinicController extends Controller
@@ -18,7 +18,9 @@ class ClinicController extends Controller
      */
     public function index()
     {
-        //
+        $clinics = User::where(['role'=>'clinic','is_verified'=>'1'])->paginate(12);
+        // dd($clinics);
+        return view('clinic.index',compact('clinics'));
     }
 
     /**
@@ -91,5 +93,36 @@ class ClinicController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function search()
+    {
+        if($request->ajax()) //this condition will check if this method receive ajax request or not
+        {
+        //     $query = $request->get('query');
+        //     if($query != '')
+        //     {
+        //         $data = DB::table("blogs")->join("profiles","users.id","=","profiles.user_id")
+        //                     ->where(["role"=>$role,"profiles.is_verified"=>$state])
+        //                     ->where("name" ,"like", "%".$query."%")
+        //                     ->orderBy("id","asc")
+        //                     ->select("users.id","name","email","website","image")->paginate(2);
+        //     }
+        //     else
+        //     {
+        //         $data = DB::table("users")->join("profiles","users.id","=","profiles.user_id")
+        //                     ->where(["role"=>$role,"profiles.is_verified"=>$state])
+        //                     ->orderBy("id","asc")
+        //                     ->select("users.id","name","email","website","image")->paginate(2);
+        //     }
+        //     return view('search', compact('data'));
+
+    //     $q = Input::get ( 'q' );
+	// $user = User::where ( 'name', 'LIKE', '%' . $q . '%' )->orWhere ( 'email', 'LIKE', '%' . $q . '%' )->get ();
+	// if (count ( $user ) > 0)
+	// 	return view ( 'welcome' )->withDetails ( $user )->withQuery ( $q );
+	// else
+	// 	return view ( 'welcome' )->withMessage ( 'No Details found. Try to search again !' );
+    // 
+        }
     }
 }

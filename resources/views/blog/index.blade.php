@@ -10,8 +10,8 @@
         </div>
       </div>
     </div>
-  </section>  
-  <section class="ftco-section bg-light">
+  </section>   
+  <section class="ftco-section bg-light"> 
     <div class="container">
       <div class="row d-flex">
   @forelse($blogs as $blog)  
