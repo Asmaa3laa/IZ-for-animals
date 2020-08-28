@@ -7,6 +7,7 @@ use App\Http\Controllers\Route;
 use App\Country;
 use App\State;
 use App\User;
+use App\Blog;
 
 
 class ClinicController extends Controller
@@ -58,7 +59,9 @@ class ClinicController extends Controller
      */
     public function show($id)
     {
-        //
+        $clinic = User::findOrFail($id);
+        $blogs =  Blog::where(['user_id'=>$clinic->id,'is_verified'=>'1'])->get();
+        return view('clinic.profile',compact('clinic','blogs'));
     }
 
     /**
@@ -122,6 +125,5 @@ class ClinicController extends Controller
 	// else
 	// 	return view ( 'welcome' )->withMessage ( 'No Details found. Try to search again !' );
     // 
-        }
     }
 }

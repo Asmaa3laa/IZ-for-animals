@@ -22,13 +22,13 @@
           <div class="text p-4">
             <div class="meta mb-2">
             <div>{{$blog->created_at}}</div>
-            <div><a href="#">{{$blog->user}}</a></div>
+            <div><a href="#">{{$blog->user->user_name}}</a></div>
             {{-- <div class="meta-chat"><span class="fa fa-comment"></span> 3</div> --}}
           </div>
           <h3 class="heading">{{$blog->title}}</h3>
         </div>        
         {{-- <pre style="font-family:Arial, Helvetica, sans-serif ">{{strip_tags($blog->content)}}</pre> --}}
-        <p>{{strip_tags($blog->content)}}</p>
+        <pre class="content">{{strip_tags($blog->content)}}</pre>
 
         {{-- <div class="tag-widget post-tag-container mb-5 mt-5">
             <div class="tagcloud">
