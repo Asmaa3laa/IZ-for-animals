@@ -18,7 +18,6 @@
   @forelse($tag_blogs as $tag_blog)  
         <div class="col-md-4 ftco-animate">
           <div class="blog-entry">
-              
             <a href="{{ route('blog.show',$tag_blog->blog) }}" class="block-20 rounded" ><img src="{{asset ('storage/'.$tag_blog->blog->image)}}"/>
             </a>
             <div class="text p-4">

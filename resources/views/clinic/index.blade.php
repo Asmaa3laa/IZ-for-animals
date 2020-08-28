@@ -13,28 +13,28 @@
   </section>
 
   <section class="ftco-section bg-light">
-    <div style="width:400px;">
+    {{-- <div style="width:400px;">
         <form action="#" class="search-form">
           <div class="form-group">
             <span class="fa fa-search"></span>
-            <input type="text" class="form-control" placeholder="Type a keyword and hit enter" onkeyup="search(this.value)">
+            <input type="text" id ="search" class="form-control" placeholder="Type a keyword and hit enter" onkeyup="search(this.value)"/>
           </div>
         </form>
-      </div>
+      </div> --}}
     <div class="container">
       <div class="row d-flex">
           @foreach($clinics as $clinic)
         <div class="col-md-4 d-flex ftco-animate">
           <div class="blog-entry">
               {{-- align-self-stretch --}}
-            <a href="{{ route('blog.show',$clinic->id) }}" class="block-20 rounded" ><img style="height: 300px;width:300px;" src="{{asset ('storage/'.$clinic->image)}}"/>
+            <a href="{{ route('clinic.show',$clinic->id) }}" class="block-20 rounded" ><img style="height: 300px;width:300px;" src="{{asset ('storage/'.$clinic->image)}}"/>
             </a>
             <div class="text p-4">
                 <div class="meta mb-2">
                 <div><a href="#">{{$clinic->user_name}}</a></div>
                 <p>{{$clinic->address}}</p>
-                {{-- <p>{{$clinic->state}}</p> --}}
-                {{-- <p>{{$clinic->country->name}}</p> --}}
+                <p>{{$clinic->state->name}}</p>
+                <p>{{$clinic->country->name}}</p>
                 <div><span class="fa fa-phone"></span>  {{$clinic->phone}}</div>
               </div>
             <h3 class="heading"><a style="color:blue;"href="{{$clinic->location}}">Clinic Location</a></h3>
@@ -64,5 +64,30 @@
 @push('scripts')
     <script>
         
+        function search(input)
+        {
+            $.ajaxSetup({
+                    headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                });
+                $.ajax
+                ({
+                    url:"/search",
+                    method:"POST",
+                    // type:'GET',
+                    data:{input:input},
+                    dataType: 'json',
+                    success:function(data){
+                        console.log("success");
+                        console.log( data);
+                        
+                    },
+                    error:function (responseJSON){
+                        console.log("error");
+                        console.log(responseJSON.responseText);
+                    }
+                })
+        }
     </script>
 @endpush

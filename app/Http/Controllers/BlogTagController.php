@@ -47,7 +47,7 @@ class BlogTagController extends Controller
      */
     public function show($id)
     {
-        $tag_blogs = BlogTag::where('tag_id','=',$id)->get();
+        $tag_blogs = BlogTag::where('tag_id','=',$id)->get(); 
         // dd($blogs);
         // foreach($tag_blogs as $tag_blog)
         // {

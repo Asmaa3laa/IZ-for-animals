@@ -58,11 +58,11 @@ class BlogController extends Controller
             // dd($request);
             DB::beginTransaction();
                 $image_path = $request->image->store('uploads', 'public');
-                var_dump($image_path);
+                // var_dump($image_path);
             $blog = Blog::create([
             "title" => $request->title,
             'content' => $request->content,
-            "user_id"=>3,
+            "user_id"=>4,
             // "user_id" =>Auth::id(),
             'image' => $image_path,
             ]);
@@ -78,15 +78,16 @@ class BlogController extends Controller
         } 
         catch (\Throwable $th)
         {
-            dd($th);
+            // dd($th);
             // delete blog if an error arises and return server error
             DB::rollBack();
             return abort(500);
         }
+
         // commit changes if every thing goes ok
-        // Db::commit();
+        $latest_blogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
         //redircet
-        return view('blog.single-blog',compact('blog','tags'));
+        return  redirect("blog/".$blog->id)->with('success','Blog has added successfuly');
 
     }
 

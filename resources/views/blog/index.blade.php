@@ -5,12 +5,12 @@
     <div class="container">
       <div class="row no-gutters slider-text align-items-end">
         <div class="col-md-9 ftco-animate pb-5">
-            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog <i class="ion-ios-arrow-forward"></i></span></p>
+            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="#">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog <i class="ion-ios-arrow-forward"></i></span></p>
           <h1 class="mb-0 bread">Blog</h1>
         </div>
       </div>
     </div>
-  </section>   
+  </section>  
   <section class="ftco-section bg-light"> 
     <div class="container">
       <div class="row d-flex">
@@ -26,7 +26,7 @@
                 <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
               </div>
               <h3 class="heading"><a href="{{ route('blog.show',$blog->id) }}">{{$blog->title}}</a></h3>
-              <p class="content">{{\Illuminate\Support\Str::limit($blog->content,100, $end='...') }}</p>       
+              <p class="content">{{\Illuminate\Support\Str::limit(strip_tags(html_entity_decode($blog->content)),100, $end='...') }}</p>       
             </div>
             <a href="{{ route('blog.show',$blog->id) }}" class="btn btn-info" style="background-color: #052958;" role="button">Read More</a>   
           </div>
@@ -35,7 +35,7 @@
       <h3 class=" mt-5"style="text-align:center;color: #052958;font-weight:bold;">No Blogs Yet</h3>
   @endforelse
         </div>
-      <div class="row mt-5">
+      {{-- <div class="row mt-5">
         <div class="col text-center">
           <div class="block-27">
             <ul>
@@ -49,7 +49,7 @@
             </ul>
           </div>
         </div>
-      </div>
+      </div> --}}
     </div>
     {{-- <button>{{ $blogs->links() }}</button> --}}
      </section>

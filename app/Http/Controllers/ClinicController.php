@@ -96,24 +96,23 @@ class ClinicController extends Controller
     }
     public function search()
     {
-        if($request->ajax()) //this condition will check if this method receive ajax request or not
-        {
-        //     $query = $request->get('query');
-        //     if($query != '')
+        // if($request->ajax()) //this condition will check if this method receive ajax request or not
+        // {
+        //     $input = $request->get('input');
+        //     if($input != '')
         //     {
-        //         $data = DB::table("blogs")->join("profiles","users.id","=","profiles.user_id")
-        //                     ->where(["role"=>$role,"profiles.is_verified"=>$state])
-        //                     ->where("name" ,"like", "%".$query."%")
+        //         $data = DB::table("countries")
+        //                     ->where("name" ,"like", "%".$input."%")
         //                     ->orderBy("id","asc")
-        //                     ->select("users.id","name","email","website","image")->paginate(2);
+        //                     ->select("id","name")->get();
         //     }
-        //     else
-        //     {
+        //     // else
+            // {
         //         $data = DB::table("users")->join("profiles","users.id","=","profiles.user_id")
         //                     ->where(["role"=>$role,"profiles.is_verified"=>$state])
         //                     ->orderBy("id","asc")
         //                     ->select("users.id","name","email","website","image")->paginate(2);
-        //     }
+            // }
         //     return view('search', compact('data'));
 
     //     $q = Input::get ( 'q' );

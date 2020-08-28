@@ -182,6 +182,16 @@
 	});
 
 	$('.appointment_time').timepicker();
+	// console.log($('#content'));
+	// $(document).ready(function() {
+	// 	$('#content').summernote();
+	//   });
+	console.log("rrrrrrrrrrrr");
+	
+	$(document).ready(function() {
+		$('#content').summernote();
+	  });
+	
 
 })(jQuery);
 

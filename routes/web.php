@@ -42,5 +42,5 @@ Route::resource('clinic', 'ClinicController');
 Route::get('/get-state-list/{country_id}','CountryStateController@getStateList');
 Route::resource('tag','TagController');
 Route::resource('blogtag','BlogTagController')->only('show');
-Route::post ( '/search','ClinicController@search');
+Route::post ( '/search','ClinicController@search')->name('search');
 Auth::routes();

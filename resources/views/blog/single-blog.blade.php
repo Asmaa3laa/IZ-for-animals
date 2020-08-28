@@ -22,13 +22,15 @@
           <div class="text p-4">
             <div class="meta mb-2">
             <div>{{$blog->created_at}}</div>
-            <div><a href="#">{{$blog->user->user_name}}</a></div>
+            <div><a href="#">{{$blog->user}}</a></div>
             {{-- <div class="meta-chat"><span class="fa fa-comment"></span> 3</div> --}}
           </div>
           <h3 class="heading">{{$blog->title}}</h3>
         </div>        
-        <pre style="font-family:Arial, Helvetica, sans-serif ">{{$blog->content}}</pre>
-          {{-- <div class="tag-widget post-tag-container mb-5 mt-5">
+        {{-- <pre style="font-family:Arial, Helvetica, sans-serif ">{{strip_tags($blog->content)}}</pre> --}}
+        <p>{{strip_tags($blog->content)}}</p>
+
+        {{-- <div class="tag-widget post-tag-container mb-5 mt-5">
             <div class="tagcloud">
               @forelse($tags as $tag)
               <a href="{{route('blogtag.show',$tag->id)}}" class="tag-cloud-link">{{$tag->name}}</a>
@@ -166,7 +168,7 @@
               <h3 class="heading"><a href="{{route('blog.show',$latest_blog)}}">{{$latest_blog->title}}</a></h3>
                 <div class="meta">
                   <div><span class="icon-calendar"></span>{{$latest_blog->created_at}}</div>
-                  <div><span class="icon-person"></span>{{$latest_blog->user->user_name}}</div>
+                  <div><span class="icon-person"></span>{{$latest_blog->user}}</div>
                 </div>
               </div>
             </div>
@@ -214,8 +216,8 @@
 
 
 @endsection
-@push('scripts')
+{{-- @push('scripts')
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	<script src="{{ asset('js/search.js') }}"></script>
 
-@endpush
+@endpush --}}
