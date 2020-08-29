@@ -1,10 +1,11 @@
-@extends('layouts.admin')
+@extends('layouts.nav-footer')
 @section('content')
+
 <section class="container">
 <div class="card card-primary card-outline">
     <div class="card-body box-profile">
       <div class="text-center">
-        <img class="profile-user-img img-fluid img-circle"
+        <img class="vcard bio img-fluid img-circle"
              src="{{asset('storage/'.$user->image)}}"
              alt="User profile picture">
       </div>
@@ -53,42 +54,15 @@
       <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
 
     <p class="text-muted">{{$user->location}}</p>
-
     <hr>
 
       <strong><i class="fas fa-phone-alt mr-1"></i> Phone</strong>
 
     <p class="text-muted">{{$user->phone}}</p>
-
-      {{-- <hr>
-
-      <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
-
-      <p class="text-muted">
-        <span class="tag tag-danger">UI Design</span>
-        <span class="tag tag-success">Coding</span>
-        <span class="tag tag-info">Javascript</span>
-        <span class="tag tag-warning">PHP</span>
-        <span class="tag tag-primary">Node.js</span>
-      </p>
-
-      <hr>
-
-      <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
-
-      <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p> --}}
-      <hr>
       @endif
       
-      <div class="row">
-        <a href="{{url('/users/verify',$user->id)}}" class="offset-4 btn btn-primary"><b>Verify</b></a>
-        <div class="offset-2">
-            {!! Form::open(['route' => ['user.destroy', $user->id] ,'method' => 'delete' ]) !!}
-            {!! Form::submit('Delete',['class'=>'btn btn-danger']) !!}
-            {!! Form::close() !!}
-        </div>
-        {{-- <a href="#" class=" btn btn-danger"><b>Delete</b></a> --}}
-    </div>
+        <a href="{{route('profile.edit',$user->id)}}" class="offset-4 btn btn-primary"><b>Update Profile</b></a>
     </div>
 </section>
 @endsection
+

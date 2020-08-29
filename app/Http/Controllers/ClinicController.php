@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Route;
 use App\Country;
 use App\State;
-use App\Clinic;
+use App\User;
 
 
 class ClinicController extends Controller
@@ -42,7 +42,7 @@ class ClinicController extends Controller
      */
     public function store(Request $request)
     {
-        $clinic= Clinic::create($request->except(['_token','password_confirmation']));
+        $clinic= User::create($request->except(['_token','password_confirmation']));
         // return Route::get('/');
         return view('welcome');
         

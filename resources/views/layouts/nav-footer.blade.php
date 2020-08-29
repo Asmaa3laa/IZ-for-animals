@@ -46,7 +46,7 @@
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="{{route('user.show',Auth::id())}}">
+                      <a class="dropdown-item" href="{{route('profile.show',Auth::id())}}">
                         <i class="fa fa-user"></i>
                               {{ __('الملف الشخصى') }}
                           </a>
