@@ -29,23 +29,16 @@
                       {{ Form::hidden('role','clinic') }}
 
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-user @error('name') is-invalid @enderror" id="exampleInputName" aria-describedby="emailHelp" placeholder="Enter Your Name"  name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                        <input type="text" class="form-control form-control-user @error('name') is-invalid @enderror" id="exampleInputName" aria-describedby="emailHelp" placeholder="Full Name"  name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                         @error('name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
                     </div>
+                    
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-user @error('user_name') is-invalid @enderror" id="exampleInputName" aria-describedby="emailHelp" placeholder="Enter User Name"  name="user_name" value="{{ old('user_name') }}" required autocomplete="user_name" autofocus>
-                        @error('user_name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                      <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..."  name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                      <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email Address"  name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                       @error('email')
                       <span class="invalid-feedback" role="alert">
                           <strong>{{ $message }}</strong>
@@ -76,7 +69,7 @@
                     </div>
                     <div class="form-group">
                         {{-- <label for="card" class="col-md-5 col-form-label text-md-left">{{ __('Card') }}</label> --}}
-                        <small for="card" class="col-md-5">{{ __('upload your ID or Occupation card') }}</small>
+                        <small for="card" class="col-md-5">{{ __('upload your ID or Occupation card image') }}</small>
 
                         {!!Form::file('card', ['class'=>'required'])!!}
                                 @error('card')
@@ -87,6 +80,23 @@
                     </div>
                     <hr>
                     <h5>Clinic Information <h5>
+                      <div class="form-group">
+                        <input type="text" class="form-control form-control-user @error('user_name') is-invalid @enderror" id="exampleInputName" aria-describedby="emailHelp" placeholder="Clinic Name"  name="user_name" value="{{ old('user_name') }}" required autocomplete="user_name" autofocus>
+                        @error('user_name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                      <input id="phone" type="text" class="form-control form-control-user @error('phone') is-invalid @enderror" placeholder="Clinic Phone" name="phone" value="{{ old('phone') }}" required autocomplete="phone">
+                      @error('phone')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                  </div>
+
                         <div class="row">
                     <div class="form-group col-6">
                         <small for="country_id" class="col-md-5">{{ __('Country') }}</small>
@@ -103,7 +113,7 @@
                     <div class="form-group col-6">
                         <small for="state_id" class="col-md-5">{{ __('State') }}</small>
 
-                        <select name="state_id" id="state" class="form-control">
+                        <select name="state_id" id="state" class="form-control" required>
                         </select>
                         @error('state_id')
                             <span class="invalid-feedback" role="alert">
@@ -114,7 +124,7 @@
 
                     </div>
                     <div class="form-group">
-                        <input id="address" type="text" class="form-control form-control-user @error('address') is-invalid @enderror" placeholder="Enter Address Details" name="address" value="{{ old('address') }}" required autocomplete="address">
+                        <input id="address" type="text" class="form-control form-control-user @error('address') is-invalid @enderror" placeholder="Clinic Address Details" name="address" value="{{ old('address') }}" required autocomplete="address">
                         @error('address')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -122,7 +132,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <input id="location" type="text" class="form-control form-control-user @error('location') is-invalid @enderror" placeholder="Enter Google Map Location" name="location" value="{{ old('location') }}" required autocomplete="location">
+                        <input id="location" type="text" class="form-control form-control-user @error('location') is-invalid @enderror" placeholder="Google Map Location" name="location" value="{{ old('location') }}" required autocomplete="location">
                         {{-- {!! Form::select('country_id', null, ['class'=>'form-control', 'required']) !!} --}}
 
                         @error('location')
@@ -131,19 +141,12 @@
                             </span>
                         @enderror
                     </div>
-                    <div class="form-group">
-                        <input id="phone" type="text" class="form-control form-control-user @error('phone') is-invalid @enderror" placeholder="Enter Your Phone" name="phone" value="{{ old('phone') }}" required autocomplete="phone">
-                        @error('phone')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
+                    
                     {!! Form::submit('Register',['class'=>'btn btn-info btn-user btn-block'])  !!}
                     {!! Form::close() !!}
                   <hr>
                   
-                  <div class="text-center">Have an account?
+                  <div class="text-center">You have an account?
                     <a class="btn btn-link" href="{{ route('login') }}"> Login</a>
                   </div>
                 </div>

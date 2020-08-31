@@ -45,7 +45,7 @@ class ClinicController extends Controller
      */
     public function store(Request $request)
     {
-        $clinic= Clinic::create($request->except(['_token','password_confirmation']));
+        $clinic= User::create($request->except(['_token','password_confirmation']));
         // return Route::get('/');
         return view('welcome');
         
