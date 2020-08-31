@@ -1,6 +1,6 @@
 @extends('layouts.app')
-
-@section('content')
+{{-- @extends('layouts.nav-footer') --}}
+@section('appcontent')    
 <body style="background-color:rgb(59, 151, 207)">
 
 
@@ -30,7 +30,7 @@
                       {{ Form::hidden('role','doctor') }}
 
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-user @error('name') is-invalid @enderror" id="exampleInputName" aria-describedby="emailHelp" placeholder="Enter Your Name"  name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                        <input type="text" class="form-control form-control-user @error('name') is-invalid @enderror" id="exampleInputName" aria-describedby="emailHelp" placeholder="Enter Your Full Name"  name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                         @error('name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

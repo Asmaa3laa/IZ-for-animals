@@ -1,3 +1,29 @@
+{{-- <!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>LZ For Animals</title>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+        <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
+        
+        <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/jquery.timepicker.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    </head>
+    <body> --}}
 @extends('layouts.app')
     <div class="wrap">
 			<div class="container">
@@ -15,47 +41,50 @@
 		  </div>
 		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	    	<a class="navbar-brand" href="index.html"><span class="flaticon-pawprint-1 mr-2"></span>LZ For Animals</a>
+	    	<a class="navbar-brand" href="index.html"><span class="flaticon-pawprint-1 mr-2"></span>IZ For Animals</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="fa fa-bars"></span> Menu
 	      </button>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	        	<li class="nav-item active"><a href="index.html" class="nav-link">الرئيسية</a></li>
-	        	<li class="nav-item"><a href="#" class="nav-link">عن LZ for Animals</a></li>
-	        	<li class="nav-item"><a href="#" class="nav-link">خدماتنا</a></li>
-	        	<li class="nav-item"><a href="#" class="nav-link">تشخيص الأمراض</a></li>
-	          <li class="nav-item"><a href="#" class="nav-link">عملائنا</a></li>
-	          <li class="nav-item"><a href="#" class="nav-link">التواصل</a></li>
-	      
+          <li class="nav-item active"><a href="#" class="nav-link">HOME</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">ABOUT</a></li>
+	        	<li class="nav-item"><a href="#" class="nav-link">SERVICES</a></li>
+	        	<li class="nav-item"><a href="#" class="nav-link">DIAGNOSES OF ILLnESSES</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">CLIENTS</a></li>
+          <li class="nav-item"><a href="{{route('blog.index')}}" class="nav-link">BLOG</a></li>            
+	          <li class="nav-item"><a href="#" class="nav-link">CONTACT</a></li>
+	        </ul>
+        </div>
+        <div>
+          <!-- Right Side Of Navbar -->
+          <ul class="navbar-nav ml-auto">
             <!-- Authentication Links -->
             @guest
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">{{ __('تسجيل دخول') }}</a>
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('login') }}</a>
                 </li>
                 @if (Route::has('register'))
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('login-role') }}">{{ __('حساب جديد') }}</a>
+                        <a class="nav-link" href="{{ url('login-role') }}">{{ __('create acount') }}</a>
                     </li>
                 @endif
             @else
-
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
-
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" href="{{route('profile.show',Auth::id())}}">
                         <i class="fa fa-user"></i>
-                              {{ __('الملف الشخصى') }}
+                              {{ __('profile') }}
                           </a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();">
                             <i class="fa fa-sign-out"></i>
 
-                            {{ __('تسجيل الخروج') }}
+                            {{ __('logout') }}
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -79,7 +108,7 @@
 	    </div>
 	  </nav>
     <!-- END nav -->
-    <div style="height:800px">
+    <div>
     @yield('content')
     </div>
       <!-- Footer section start -->
@@ -87,7 +116,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-lg-3 mb-4 mb-md-0">
-                    <h2 class="footer-heading">Petsitting</h2>
+                    <h2 class="footer-heading">LZ For Animals</h2>
                     <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
                     <ul class="ftco-footer-social p-0">
           <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><span class="fa fa-twitter"></span></a></li>
@@ -145,4 +174,23 @@
         </div>
     </footer>
     <!--Footer section end--> 
+    {{-- <script src="{{asset('js/jquery.min.js')}}"></script>
+    <script src="{{asset('js/jquery-migrate-3.0.1.min.js')}}"></script>
+    <script src="{{asset('js/popper.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/jquery.easing.1.3.js')}}"></script>
+    <script src="{{asset('js/jquery.waypoints.min.js')}}"></script>
+    <script src="{{asset('js/jquery.stellar.min.js')}}"></script>
+    <script src="{{asset('js/jquery.animateNumber.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap-datepicker.js')}}"></script>
+    <script src="{{asset('js/jquery.timepicker.min.js')}}"></script>
+    <script src="{{asset('js/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('js/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{asset('js/scrollax.min.js')}}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="{{asset('js/google-map.js')}}"></script>
+    <script src="{{asset('js/main.js')}}"></script>
+          
+        </body>
+  </html> --}}
   
