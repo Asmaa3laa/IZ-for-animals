@@ -17,7 +17,7 @@
       <div class="row">
         <div class="col-lg-8 ftco-animate">
             <p>
-            <img src="{{asset ('storage/'.$blog->image) }}" alt="" class="img-fluid">
+            <img style="height:500px;width:700px" src="{{asset ('storage/'.$blog->image) }}" alt="" class="img-fluid">
           </p>
           <div class="text p-4">
             <div class="meta mb-2">
@@ -28,7 +28,7 @@
           <h3 class="heading">{{$blog->title}}</h3>
         </div>        
         {{-- <pre style="font-family:Arial, Helvetica, sans-serif ">{{strip_tags($blog->content)}}</pre> --}}
-        <pre class="content">{{strip_tags($blog->content)}}</pre>
+        <textarea style="border:none;background-color:rgb(252, 246, 246)"rows="20" cols="88" class="content">{{strip_tags($blog->content)}}</textarea>
 
         {{-- <div class="tag-widget post-tag-container mb-5 mt-5">
             <div class="tagcloud">
@@ -168,7 +168,7 @@
               <h3 class="heading"><a href="{{route('blog.show',$latest_blog)}}">{{$latest_blog->title}}</a></h3>
                 <div class="meta">
                   <div><span class="icon-calendar"></span>{{$latest_blog->created_at}}</div>
-                  <div><span class="icon-person"></span>{{$latest_blog->user}}</div>
+                  <div><span class="icon-person"></span>{{$latest_blog->user->user_name}}</div>
                 </div>
               </div>
             </div>
