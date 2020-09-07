@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+// use Illuminate\Validation\Validator\validateEmailAddress;
 use Illuminate\Http\Request;
 use App\User;
 use App\Country;
@@ -68,9 +69,9 @@ class RegisterController extends Controller
     {
         if($data['role'] == 'doctor'){   
             return Validator::make($data, [
-                'name' => ['required', 'string', 'max:255'],
-                'user_name' => ['required', 'string', 'max:255', 'unique:users'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'name' => ['required', 'string', 'max:100'],
+                'user_name' => ['required', 'string', 'max:50', 'unique:users'],
+                'email' => ['required','string', 'email:rfc,dns', 'unique:users'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
                 'image' => ['required', 'image', 'mimes:jpeg,png,jpg',],
                 'card' => ['required', 'image', 'mimes:jpeg,png,jpg',],
@@ -80,15 +81,15 @@ class RegisterController extends Controller
 
         elseif($data['role'] == 'clinic'){
             return Validator::make($data, [
-                'name' => ['required', 'string', 'max:255'],
-                'user_name' => ['required', 'string', 'max:255', 'unique:users'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'name' => ['required', 'string', 'max:100'],
+                'user_name' => ['required', 'string', 'max:100', 'unique:users'],
+                'email' => ['required','string', 'email:rfc,dns', 'unique:users'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
                 'image' => ['required', 'image', 'mimes:jpeg,png,jpg',],
                 'card' => ['required', 'image', 'mimes:jpeg,png,jpg',],
                 'phone' => ['required','numeric','regex:/(01)[0-2]{1}[0-9]{8}/', 'unique:users'],
-                'address' =>['required', 'string'],
-                'location' =>['required', 'string'],
+                'address' =>['required', 'string','max:250'],
+                'location' =>['required', 'string', 'max:500'],
                 'country_id' => ['required'],
                 'state_id' => ['required'],
             ]); 
