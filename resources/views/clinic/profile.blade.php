@@ -145,7 +145,10 @@
                                       <p class="content">{{\Illuminate\Support\Str::limit(strip_tags(html_entity_decode($blog->content)),100, $end='...') }}</p>       
                                     </div>
                                     <a href="{{ route('blog.show',$blog->id) }}" class="btn btn-info" style="background-color: #052958;" role="button">Read More</a>   
-                                  </div>
+                                    <a href="{{route('blog.edit',$blog)}}" class="btn btn-info" style="background-color: #052958;" role="button">
+                                        <span class="fa fa-pencil-square-o">EDIT</span>
+                                    </a>  
+                                </div>
                                 </div>
                               @empty
                               <h3 class=" mt-5"style="text-align:center;margin:auto;color: #052958;font-weight:bold;">No Blogs Yet</h3>

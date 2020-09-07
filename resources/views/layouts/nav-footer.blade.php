@@ -49,11 +49,11 @@
 	        <ul class="navbar-nav ml-auto">
           <li class="nav-item active"><a href="#" class="nav-link">HOME</a></li>
           <li class="nav-item"><a href="#" class="nav-link">ABOUT</a></li>
-	        	<li class="nav-item"><a href="#" class="nav-link">SERVICES</a></li>
-	        	<li class="nav-item"><a href="#" class="nav-link">DIAGNOSES OF ILLnESSES</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">CLIENTS</a></li>
+	        	{{-- <li class="nav-item"><a href="#" class="nav-link">SERVICES</a></li>
+	        	<li class="nav-item"><a href="#" class="nav-link">DIAGNOSES OF ILLnESSES</a></li> --}}
+            <li class="nav-item"><a href="{{route('clinic.index')}}" class="nav-link">CLINICS</a></li>
           <li class="nav-item"><a href="{{route('blog.index')}}" class="nav-link">BLOG</a></li>            
-	          <li class="nav-item"><a href="#" class="nav-link">CONTACT</a></li>
+	          {{-- <li class="nav-item"><a href="#" class="nav-link">CONTACT</a></li> --}}
 	        </ul>
         </div>
         <div>
@@ -75,7 +75,7 @@
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="{{route('profile.show',Auth::id())}}">
+                      <a class="dropdown-item" href="{{route('user.show',Auth::id())}}">
                         <i class="fa fa-user"></i>
                               {{ __('profile') }}
                           </a>

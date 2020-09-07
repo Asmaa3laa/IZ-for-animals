@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class BlogRequest extends FormRequest
 {
@@ -24,8 +25,13 @@ class BlogRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'title' => 'required|unique:blogs|min:5',
-            // 'content' => 'required:blogs|min:200',
+            // 'title' => 'min:5|required|unique:blogs,id' . $id,
+            'title'=>[
+                'required',
+                Rule::unique('blogs')->ignore($this->route('blog')),
+                'max:50',
+            ],
+            'content' => 'required:blogs|min:200',
             'tags' => 'required:blogs',
             'image' => 'required',
             'image' => 'image|mimes:jpg,jpeg,png',

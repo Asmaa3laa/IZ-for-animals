@@ -24,7 +24,7 @@
       </div>
     <div class="custom-file">
         <input type="file" class="custom-file-input" id="validatedImage" name="image" required>
-        <label class="custom-file-label" for="validatedCustomFile" autofocus>Choose blog image...</label>
+        <label class="custom-file-label" id="image"for="validatedCustomFile" autofocus>Choose blog image...</label>
     </div>
     @if ($errors->first('image'))
         <h6 style="color: red;"> invalid image, only jpg,png and jpeg are allowed </h6>
@@ -42,11 +42,18 @@
     @if($errors->first('tags'))
     <h6 style="color: red;">{{$errors->first('tags') }}</h6>
     @endif
-    <button class="site-btn submit-order-btn">ADD</button>
+    <button class="site-btn btn-success submit-order-btn">ADD</button>
 
 </form>
 </div>
-
-
-
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('input[type="file"]').change(function(e){
+            var fileName = e.target.files[0].name;
+            console.log(e.target.files);
+            $("#image").text(fileName);
+        });
+    });
+</script>
 @endsection

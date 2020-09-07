@@ -13,6 +13,7 @@ use Auth;
 
 
 
+
 class BlogController extends Controller
 {
     /**
@@ -116,7 +117,7 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('blog.edit',['blog'=>Blog::find($id),'tags'=>Tag::all(),'blogtags'=>BlogTag::where('blog_id',"=",$id)->get()]);
     }
 
     /**
@@ -126,11 +127,43 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(FormRequest $request, $id)
+    public function update(BlogRequest $request, $id)
     {
-        //
+        $blog = Blog::find($id);
+        $blog->update($request->all());
+        if($request->hasFile('image'))
+        {
+         $image_path = $request->image->store('uploads', 'public');
+         $blog->image = $image_path;
+         $blog->save();
+        }
+        //     $blog->user_id = 2;
+        //     // "user_id" =>Auth::id(),
+            $tags = $request->tags;
+            foreach($tags as $tag )
+            {
+                DB::table('blog_tag')->where('blog_id', $id)->update(['tag_id' => $tag,'blog_id'=>$blog->id]);
+            }   
+        return  redirect("blog/".$blog->id)->with('success','Blog has added successfuly');        
     }
 
+    public function acceptedBlogs()
+    {
+        $blogs = Blog::where('is_verified','=','1')->paginate(10);
+        return view('admin.blogs.index',compact('blogs'));        
+    }
+    public function pendingBlogs()
+    {
+        $blogs = Blog::where('is_verified','=','0')->paginate(10);
+        return view('admin.blogs.index',compact('blogs'));
+    }
+    public function accept(Request $request)
+    {
+        $blog = Blog::find($request->get('blogId'));
+        $blog->is_verified = 1;
+        $blog->update();
+        return response()->json(['success'=>'Got Simple Ajax Request']);
+    }
     /**
      * Remove the specified resource from storage.
      *
