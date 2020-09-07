@@ -53,7 +53,6 @@
             var fileName = e.target.files[0].name;
             console.log(e.target.files);
             $("#image").text(fileName);
-            // alert('The file "' + fileName +  '" has been selected.');
         });
     });
 </script>

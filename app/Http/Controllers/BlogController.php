@@ -10,7 +10,7 @@ use App\BlogTag;
 use App\Http\Requests\BlogRequest;
 use Illuminate\Support\Facades\DB;
 use Auth;
-// use Symfony\Component\Console\Input\Input;
+
 
 
 
@@ -147,6 +147,23 @@ class BlogController extends Controller
         return  redirect("blog/".$blog->id)->with('success','Blog has added successfuly');        
     }
 
+    public function acceptedBlogs()
+    {
+        $blogs = Blog::where('is_verified','=','1')->paginate(10);
+        return view('admin.blogs.index',compact('blogs'));        
+    }
+    public function pendingBlogs()
+    {
+        $blogs = Blog::where('is_verified','=','0')->paginate(10);
+        return view('admin.blogs.index',compact('blogs'));
+    }
+    public function accept(Request $request)
+    {
+        $blog = Blog::find($request->get('blogId'));
+        $blog->is_verified = 1;
+        $blog->update();
+        return response()->json(['success'=>'Got Simple Ajax Request']);
+    }
     /**
      * Remove the specified resource from storage.
      *
