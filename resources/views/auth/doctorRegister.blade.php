@@ -30,74 +30,93 @@
                   {!! Form::open(['route' => 'register','files' => 'true','enctype'=>'multipart/form-data', 'method'=>'post']) !!}
                         @csrf
                       {{ Form::hidden('role','doctor') }}
+                    {{-- name ----------------------}}
+                    <div class="form-group">
+                        <input type="text" class="form-control form-control-user @error('name') is-invalid @enderror"  placeholder="Enter Your Full Name"  name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                          @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                          @enderror
+                    </div>
+                    {{-- user name ----------------------}}
+                    <div class="form-group">
+                        <input type="text" class="form-control form-control-user @error('user_name') is-invalid @enderror" placeholder="Enter UserName"  name="user_name" value="{{ old('user_name') }}" required autocomplete="user_name" autofocus>
+                          @error('user_name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                          @enderror
+                    </div>
+                    {{-- Email----------------------}}
 
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-user @error('name') is-invalid @enderror" id="exampleInputName" aria-describedby="emailHelp" placeholder="Enter Your Full Name"  name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                        @error('name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control form-control-user @error('user_name') is-invalid @enderror" id="exampleInputName" aria-describedby="emailHelp" placeholder="Enter UserName"  name="user_name" value="{{ old('user_name') }}" required autocomplete="user_name" autofocus>
-                        @error('user_name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                      <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..."  name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                      @error('email')
-                      <span class="invalid-feedback" role="alert">
-                          <strong>{{ $message }}</strong>
-                      </span>
-                    @enderror
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" id="exampleInputPassword" placeholder="Password" name="password" required autocomplete="current-password">
-                        @error('password')
+                      <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" placeholder="Enter Email Address..."  name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                        @error('email')
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $message }}</strong>
                           </span>
-                      @enderror
+                        @enderror
+                    </div>
+                    {{-- Password ----------------------}}
+
+                    <div class="form-group">
+                        <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" placeholder="Password" name="password" required autocomplete="current-password">
+                          @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                          @enderror
                       </div>
+                      {{-- Confirm Password----------------------}}
+
                       <div class="form-group">
-                        <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Confirm Password" name="password_confirmation" required autocomplete="new-password">
+                        <input type="password" class="form-control form-control-user @error('password_confirmation') is-invalid @enderror" placeholder="Confirm Password" name="password_confirmation" required autocomplete="new-password">
+                          @error('password_confirmation')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                          @enderror
                       </div>
+                    {{-- Profile image ----------------------}}
 
-                    <div class="form-group">
-                        <small for="image" class="col-md-5 text-center">{{ __('Upload your Profile Image') }}</small>
-
-                        {!!Form::file('image', ['class'=>'required'])!!}
-                                @error('image')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                    </div>
-                    <div class="form-group">
-                        {{-- <label for="card" class="col-md-5 col-form-label text-md-left">{{ __('Card') }}</label> --}}
-                        <small for="card" class="col-md-5">{{ __('upload your ID or Occupation card') }}</small>
-
-                        {!!Form::file('card', ['class'=>'required'])!!}
-                                @error('card')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                    </div>
-                    {!! Form::submit('Register',['class'=>'btn btn-info btn-user btn-block'])  !!}
                     
-{{--                    
-                    <a href="index.html" class="btn btn-primary btn-user btn-block" style="background-color: rgb(59, 151, 207)">
-                      Register
-                    </a> --}}
+                  <div class="row">
+                    <div class="form-group col-11">
+                      <div class="custom-file">
+                        <input  type="file" class="custom-file-input form-control-user @error('image') is-invalid @enderror" placeholder="Profile Image.."  name="image" required autofocus>
+                        <label id='image' class="custom-file-label" for="image">Upload Profile Image</label>
+                        @error('image')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                        @enderror
+                      </div>
+                    </div>
+                    <div class="col-1">
+                      <span class="text-justify"> <i  class="fa fa-info-circle cardinfo" data-toggle="popover" title="Profile Image" data-content="Upload an image for your profile or for the clinic"></i></span>
+                    </div> 
+                  </div>
+                  {{-- Card image ----------------------}}
+                  <div class="row">
+                    <div class="form-group col-11">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input form-control-user @error('card') is-invalid @enderror" placeholder="Your ID or Occupation card.." name="card" required autofocus>
+                        <label class="custom-file-label" for="card">Upload Your ID image</label>
+                        @error('card')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                        @enderror
+                      </div>
+                    </div>
+                    <div class="col-1">
+                      <span class="text-justify"> <i class="fa fa-info-circle cardinfo" data-toggle="popover" title="Card Image" data-content="Upload an image for your National ID card or Doctors Syndicate card"></i></span>
+                    </div>
+                  </div>
+                    {!! Form::submit('Register',['class'=>'btn btn-info btn-user btn-block'])  !!}
                     {!! Form::close() !!}
-                  {{-- </form> --}}
                   <hr>
-                  
                   <div class="text-center">Have an account?
                     <a class="btn btn-link" href="{{ route('login') }}"> Login</a>
                   </div>
@@ -114,4 +133,19 @@
   </div>
       
 </body>
+<script>
+  $(function () {
+    $('.cardinfo').popover({
+      container: 'body'
+    })
+  })
+
+  $(document).ready(function(){
+      $('input[type="file"]').change(function(e){
+          var fileName = e.target.files[0].name;
+          $(e.target).next().text(fileName);
+
+      });
+  });
+</script>
 @endsection
