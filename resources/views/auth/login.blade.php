@@ -1,9 +1,8 @@
-@extends('layouts.app')
-{{-- @extends('layouts.nav-footer') --}}
-@section('appcontent')
+{{-- @extends('layouts.app') --}}
+@extends('layouts.auth')
+{{-- @include('layouts.head') --}}
+@section('content')
 <body style="background-color:rgb(59, 151, 207)">
-
-
 <div class="container">
 
     <!-- Outer Row -->
@@ -83,3 +82,4 @@
       
 </body>
 @endsection
+{{-- @include('layouts.jsScripts') --}}

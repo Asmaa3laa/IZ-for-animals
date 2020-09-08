@@ -14,9 +14,12 @@
 
 {{-- @extends('layouts.nav-footer')
 @section('content')     --}}
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
-@section('appcontent')
+@section('appcontent') --}}
+@extends('layouts.auth')
+{{-- @include('layouts.head') --}}
+@section('content')
 <body style="background-color:rgb(59, 151, 207)">
 
 

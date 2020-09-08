@@ -1,4 +1,5 @@
-@extends('layouts.nav-footer')
+{{-- @extends('layouts.nav-footer') --}}
+@extends('layouts.index')
 @section('content')
 <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg _2.jpg');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
@@ -27,8 +28,10 @@
           </div>
           <h3 class="heading">{{$blog->title}}</h3>
         </div>        
-        {{-- <pre style="font-family:Arial, Helvetica, sans-serif ">{{strip_tags($blog->content)}}</pre> --}}
-        <textarea style="border:none;background-color:rgb(252, 246, 246)"rows="20" cols="88" class="content">{{strip_tags($blog->content)}}</textarea>
+        <div>
+        {!! html_entity_decode($blog->content) !!}
+        </div>
+        {{-- <textarea style="border:none;background-color:rgb(252, 246, 246)"rows="20" cols="88" class="content">{!! html_entity_decode($blog->content) !!}</textarea> --}}
 
         {{-- <div class="tag-widget post-tag-container mb-5 mt-5">
             <div class="tagcloud">

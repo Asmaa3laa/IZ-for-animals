@@ -16,7 +16,7 @@ use App\Blog;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('index');
 Route::group(['middleware' => ['auth','admin']], function () {
 Route::get('admin/home', 'HomeController@adminHome')->name('admin.home');
 Route::resource('user', 'UserController');

@@ -1,4 +1,5 @@
-@extends('layouts.nav-footer')
+{{-- @extends('layouts.nav-footer') --}}
+@extends('layouts.index')
 @section('content')    
 <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
@@ -15,8 +16,8 @@
     <div class="container">
       <div class="row d-flex">
   @forelse($blogs as $blog)  
-        <div class="col-md-4 ftco-animate">
-          <div class="blog-entry">
+        <div class="col-md-6 col-lg-4 ftco-animate">
+          <div class="blog-entry ">
             <a href="{{ route('blog.show',$blog->id) }}" class="block-20 rounded" ><img src="{{asset ('storage/'.$blog->image)}}"/>
             </a>
             <div class="text p-4">
