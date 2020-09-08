@@ -135,7 +135,7 @@
                         <div class="form-group col-6">
                           <small for="country_id" class="col-md-5">{{ __('Country') }}</small>
                           {{-- <input id="country" type="text" class="form-control form-control-user @error('country') is-invalid @enderror" name="country" value="{{ old('country') }}" required autocomplete="country"> --}}
-                          {!! Form::select('country_id',$countries, null, ['class'=>'form-control','id'=>'country', 'required']) !!}
+                          {!! Form::select('country_id',$countries, null , ['class'=>'form-control','id'=>'country', 'required', 'placeholder' => 'Select..']) !!}
 
                           @error('country_id')
                             <span class="invalid-feedback" role="alert">
