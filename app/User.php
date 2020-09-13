@@ -49,4 +49,18 @@ class User extends Authenticatable
         return $this->belongsTo('App\State');
 
     }
+    public function hasRole($role){
+        // dd($this->role);
+        if($this->role == $role){
+            return True;
+        }
+        return False;
+    }
+    public function hasAnyRoles($roles){
+        dd($this->role);
+        if($this->role->whereIn($roles)){
+            return True;
+        }
+        return False;
+    }
 }

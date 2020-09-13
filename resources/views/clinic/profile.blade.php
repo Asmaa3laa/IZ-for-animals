@@ -124,8 +124,9 @@
                               <div class="col-md-5 d-flex align-items-stretch">
                                   <div class="info-wrap w-100 p-5 img" style="background-image: url(images/img.jpg);">
                         </div> --}}   
-                        
-                        <button onclick="location.href = '{{route('blog.create')}}';" id="myButton" class="btn-block submit-button"style="border-radius: 12px;cursor:pointer ;background-color:#092a58;height:50px;border:none;color: #eaee0a;">Create New Blog</button>                        
+                        @can('create.blogs')
+                        <button onclick="location.href = '{{route('blog.create')}}';" id="myButton" class="btn-block submit-button"style="border-radius: 12px;cursor:pointer ;background-color:#092a58;height:50px;border:none;color: #eaee0a;">Create New Blog</button>               
+                        @endcan         
                         <section class="ftco-section bg-light"> 
                             <div class="container">
                                 <h5  style="margin-bottom:40px;text-align:center;font-weight: bold;color: #eaee0a;">Clinic Blogs <span style="color:rgb(11, 11, 59);font-weight: bold;">{{count($blogs)}}</span></h5>
@@ -146,9 +147,11 @@
                                       <p class="content">{{\Illuminate\Support\Str::limit(strip_tags(html_entity_decode($blog->content)),100, $end='...') }}</p>       
                                     </div>
                                     <a href="{{ route('blog.show',$blog->id) }}" class="btn btn-info" style="background-color: #052958;" role="button">Read More</a>   
+                                    @can('create.blogs')
                                     <a href="{{route('blog.edit',$blog)}}" class="btn btn-info" style="background-color: #052958;" role="button">
                                         <span class="fa fa-pencil-square-o">EDIT</span>
-                                    </a>  
+                                    </a>
+                                    @endcan  
                                 </div>
                                 </div>
                               @empty

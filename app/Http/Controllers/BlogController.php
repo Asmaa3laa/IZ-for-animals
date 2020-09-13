@@ -16,6 +16,11 @@ use Auth;
 
 class BlogController extends Controller
 {
+    public function __construct()
+    {
+    $this->middleware('can:create.blogs', ['only' => ['create', 'store', 'edit', 'delete']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -24,6 +29,7 @@ class BlogController extends Controller
     public function index()
     {
         $blogs=Blog::where('is_verified','=',1)->paginate(9, ['*'], 'blogs');
+        dd( Auth::user()->role);
         $users=[];
         foreach($blogs as $blog)
         {      
