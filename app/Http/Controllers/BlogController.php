@@ -28,16 +28,34 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs=Blog::where('is_verified','=',1)->paginate(9, ['*'], 'blogs');
-        dd( Auth::user()->role);
-        $users=[];
-        foreach($blogs as $blog)
-        {      
-            $user = $blog->user()->get();
-            array_push($users, $user[0]); 
-        }           
-        $tags=Tag::all();
-        return view('blog.index',compact('blogs','users','tags'));
+        if(Auth::user())
+        {
+            // dd( Auth::user()->role);
+            if(Auth::user()->role == 'doctor')
+            {
+                $blogs=Blog::where('is_verified','=',1)->paginate(9, ['*'], 'blogs');
+                $users=[];
+                foreach($blogs as $blog)
+                {      
+                    $user = $blog->user()->get();
+                    array_push($users, $user[0]); 
+                }           
+                $tags=Tag::all();
+                return view('blog.index',compact('blogs','users','tags'));
+            }
+        }
+        else
+        {
+            $blogs=Blog::where(['is_verified'=>1,'for_doctors'=>0])->paginate(9, ['*'], 'blogs');
+            $users=[];
+            foreach($blogs as $blog)
+            {      
+                $user = $blog->user()->get();
+                array_push($users, $user[0]); 
+            }           
+            $tags=Tag::all();
+            return view('blog.index',compact('blogs','users','tags'));   
+        }
     }
 
     /**

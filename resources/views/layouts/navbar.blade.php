@@ -26,7 +26,7 @@
 	        	{{-- <li class="nav-item"><a href="#" class="nav-link">SERVICES</a></li>
 	        	<li class="nav-item"><a href="#" class="nav-link">DIAGNOSES OF ILLnESSES</a></li> --}}
             <li class="nav-item {{(request()->is('clinic')) ? 'active' : '' }}"><a href="{{route('clinic.index')}}" class="nav-link">CLINICS</a></li>
-          <li class="nav-item {{(request()->is('blog')) ? 'active' : '' }}"><a href="{{route('blog.index')}}" class="nav-link">BLOG</a></li>            
+          <li class="nav-item {{(request()->is('blog')) ? 'active' : '' }}"><a href="{{route('blog.index')}}" class="nav-link">BLOGS</a></li>            
 	          {{-- <li class="nav-item"><a href="#" class="nav-link">CONTACT</a></li> --}}
 	        </ul>
         </div>
