@@ -1,24 +1,4 @@
-{{-- @extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <a href="{{ route('register') }}">doctor</a>
-        <a href="{{ route('register') }}">clinic</a>
-
-
-    </div>
-</div>
-@endsection --}}
-
-
-{{-- @extends('layouts.nav-footer')
-@section('content')     --}}
-{{-- @extends('layouts.app')
-
-@section('appcontent') --}}
 @extends('layouts.auth')
-{{-- @include('layouts.head') --}}
 @section('content')
 <body style="background-color:rgb(241, 247, 252)">
 

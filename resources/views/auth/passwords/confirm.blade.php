@@ -1,5 +1,4 @@
-{{-- @extends('layouts.app') --}}
-{{-- @extends('layouts.nav-footer') --}}
+
 @extends('layouts.auth')
 @section('content')
 <div class="container">

@@ -24,9 +24,11 @@ Route::get('users/doctor','UserController@doctorUsers');
 Route::get('users/clinic','UserController@clinicUsers');
 Route::get('users/pending','UserController@pendingUsers');
 Route::get('users/verify/{id}','UserController@verifyUser');
-   
-});
 
+});
+Route::get('map', function () {
+    return view('map');
+});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

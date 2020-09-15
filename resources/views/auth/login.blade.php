@@ -1,9 +1,8 @@
-{{-- @extends('layouts.app') --}}
+
 @extends('layouts.auth')
-{{-- @include('layouts.head') --}}
 @section('content')
-<body style="background-color:rgb(59, 151, 207)">
-<div class="container">
+<body style="background-color:rgb(241, 247, 252)">
+  <div class="container">
 
     <!-- Outer Row -->
     <div class="row justify-content-center">
@@ -65,7 +64,7 @@
                     @endif
                   </div>
                   <div class="text-center">
-                    <a class="btn btn-link" href="{{ url('login-role') }}">Create an Account!</a>
+                    <a class="btn btn-link" href="{{ url('login-role') }}">Create an Account !</a>
                   </div>
                 </form>
                 </div>

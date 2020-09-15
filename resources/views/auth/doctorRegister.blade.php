@@ -1,9 +1,7 @@
-{{-- @extends('layouts.app')
-{{-- @extends('layouts.nav-footer') 
-@section('appcontent')     --}}
+
 @extends('layouts.auth')
 @section('content')
-<body style="background-color:rgb(59, 151, 207)">
+<body style="background-color:rgb(241, 247, 252)">
 
 
 <div class="container">

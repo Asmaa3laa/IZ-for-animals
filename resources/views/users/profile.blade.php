@@ -2,67 +2,67 @@
 @section('content')
 
 <section class="container">
+  
 <div class="card card-primary card-outline">
     <div class="card-body box-profile">
       <div class="text-center">
-        <img class="vcard bio img-fluid img-circle"
-             src="{{asset('storage/'.$user->image)}}"
-             alt="User profile picture">
+        <img class="vcard bio img-fluid rounded-circle" style="width: 200px;height: 200px"
+          src="{{asset('storage/'.$user->image)}}"
+          alt="User profile picture">
       </div>
 
-    <h3 class="profile-username text-center">{{$user->user_name}}</h3>
+      <h3 class="profile-username text-center">{{$user->user_name}}</h3>
 
-    <p class="text-muted text-center">{{$user->role}}</p>
+      <p class="text-muted text-center">{{$user->role}}</p>
+      <div class="row">
+        <div class="col-6 card card-info">
+        <div class="card-body ">
+          <b> <i class="fa fa-user mr-1"></i>DR. Name</b>
+            <h6>{{$user->name}}</h6>
+            <hr>
+          <b><i class="fa fa-envelope mr-1"></i>Email</b>
+          <h6>{{$user->email}}</h6>
+          <hr>
+          <b><i class="fa fa-image mr-1"></i> Card</b> 
+          <div class="ftco-animate">
+            <div class="work mb-4 img align-items-end" style="background-image: url({{asset('storage/'.$user->card)}});">
+              <a href="{{asset('storage/'.$user->card)}}" class="icon image-popup d-flex justify-content-center align-items-center">
+                <span class="fa fa-expand"></span>
+              </a>
+              <div class="desc w-100 px-4">
+                <div class="text w-100 mb-3">
+                  <span>Doctor</span>
+                  <h2>ID Card</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>  
+      </div>
 
-      <ul class="list-group list-group-unbordered mb-3">
-        <li class="list-group-item">
-        <b>Name</b> <a class="float-right">{{$user->name}}</a>
-        </li>
-        <li class="list-group-item">
-          <b>Email</b> <a class="float-right">{{$user->email}}</a>
-        </li>
-        <li class="list-group-item">
-          <b>ID Card</b> 
-          <img class="col-sm-6 float-right" style="height: 300px"
-            src="{{asset('storage/'.$user->card)}}"
-            alt="User profile picture">
-        </li>
-      </ul>
-        
-    </div>
-    <!-- /.card-body -->
-  </div>
-  <!-- /.card -->
-@if ($user->role == 'clinic')
+  @if ($user->role == 'clinic')
     
-
-  <!-- About Me Box -->
-  <div class="card card-info">
-    <div class="card-header ">
-      <h4 class="text-center">Clinic Information</h4>
-    </div>
-    <!-- /.card-header -->
+  <div class="col-6 card card-info">
     <div class="card-body">
-      <strong><i class="fas fa-address-card mr-1"></i> Address</strong>
-
-      <p class="text-muted">
+      <b><i class="fa fa-address-card mr-1"></i> Address</b>
+      <h6>
           {{$user->country->name}}- {{$user->state->name}}- {{$user->address}}
-      </p>
-
+      </h6>
       <hr>
-
-      <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
-
-    <p class="text-muted">{{$user->location}}</p>
-    <hr>
-
-      <strong><i class="fas fa-phone-alt mr-1"></i> Phone</strong>
-
-    <p class="text-muted">{{$user->phone}}</p>
-      @endif
-      
-        <a href="{{route('profile.edit',$user->id)}}" class="offset-4 btn btn-primary"><b>Update Profile</b></a>
+      <b><i class="fa fa-map-marker mr-1"></i> Location</b>
+      <h6>
+        <a href="{{$user->location}}">show map</a>
+      </h6>
+      <hr>
+      <b><i class="fa fa-phone mr-1"></i> Phone</b>
+      <h6>{{$user->phone}}</h6>
+        @endif
     </div>
+  </div>
+</div>
+{{-- <a href="{{route('profile.edit',$user->id)}}" class="offset-5 btn btn-info" style="margin-top: 10px;"><b>Update Profile</b></a> --}}
+
+</div>
 </section>
 @endsection
 
