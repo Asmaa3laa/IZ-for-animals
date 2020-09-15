@@ -33,7 +33,7 @@
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
-    {{-- <ul class="navbar-nav">
+    <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
@@ -43,7 +43,7 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
       </li>
-    </ul> --}}
+    </ul>
 
     <!-- SEARCH FORM -->
     {{-- <form class="form-inline ml-3">
@@ -230,7 +230,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
-          <a href="{{url('admin/home')}}" class="nav-link active">
+          <a href="{{url('admin/home')}}" class="nav-link {{(request()->is('admin/home')) ? 'active' : '' }}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -260,7 +260,7 @@
           </li>
 
           <li class="nav-item has-treeview">
-          <a href="" class="nav-link">
+          <a href="" class="nav-link {{(request()->is('users/doctor')) ? 'active' : '' }}{{(request()->is('users/clinic')) ? 'active' : '' }}{{(request()->is('users/pending')) ? 'active' : '' }}">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Users
@@ -269,19 +269,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{url('users/doctor')}}" class="nav-link">
+                <a href="{{url('users/doctor')}}" class="nav-link {{(request()->is('users/doctor')) ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Doctors</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{url('users/clinic')}}" class="nav-link">
+                <a href="{{url('users/clinic')}}" class="nav-link {{(request()->is('users/clinic')) ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Clinics</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{url('users/pending')}}" class="nav-link">
+                <a href="{{url('users/pending')}}" class="nav-link {{(request()->is('users/pending')) ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pending Users</p>
                 </a>
@@ -289,7 +289,7 @@
             </ul>
           </li>
           <li class="nav-item has-treeview">
-            <a href="" class="nav-link">
+            <a href="" class="nav-link {{(request()->is('blog/pending')) ? 'active' : '' }}{{(request()->is('blog/accepted')) ? 'active' : '' }}">
                 <i class="nav-icon fas fa-users"></i>
                 <p>
                   Blogs
@@ -298,20 +298,20 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="{{url('blog/accepted')}}" class="nav-link">
+                  <a href="{{url('blog/accepted')}}" class="nav-link {{(request()->is('blog/accepted')) ? 'active' : '' }}">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Accepted Blogs</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{url('blog/pending')}}" class="nav-link">
+                  <a href="{{url('blog/pending')}}" class="nav-link {{(request()->is('blog/pending')) ? 'active' : '' }}">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Pending Blogs</p>
                   </a>
                 </li>
               </ul>
             </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
@@ -805,7 +805,7 @@
               <i class="nav-icon far fa-circle text-info"></i>
               <p>Informational</p>
             </a>
-          </li>
+          </li> --}}
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

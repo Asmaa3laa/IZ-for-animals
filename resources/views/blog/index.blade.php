@@ -54,7 +54,7 @@
     </div>
     {{-- <button>{{ $blogs->links() }}</button> --}}
      </section>
-    <hr style="height:2px;border-width:0;color:#052958;background-color:#052958;text-align:center">   
+    <hr style="text-align:center; border:2px #052958 dashed;">   
     <section>
       <h3 style="color:#031a38; text-align:center;margin-top:7px;font-weight:500;">Choose From The Main Titles</h3>
       <div class="mt-5 mb-5 ml-5" style="display:flex; flex-wrap:wrap;justify-content: center; align-content:center;">
