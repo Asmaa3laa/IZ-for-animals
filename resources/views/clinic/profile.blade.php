@@ -1,4 +1,5 @@
-@extends('layouts.nav-footer')
+{{-- @extends('layouts.nav-footer') --}}
+@extends('layouts.index')
 @section('content')
 
 {{-- 

@@ -1,4 +1,5 @@
-@extends('layouts.nav-footer')
+{{-- @extends('layouts.nav-footer') --}}
+@extends('layouts.index')
 @section('content')
 <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
@@ -22,12 +23,13 @@
         </form>
       </div> --}}
     <div class="container">
-      <div class="row d-flex">
+      <div class="row ">
           @foreach($clinics as $clinic)
-        <div class="col-md-4 d-flex ftco-animate">
-          <div class="blog-entry">
+        <div class="col-md-6 col-lg-4  ftco-animate">
+          <div class="blog-entry ">
               {{-- align-self-stretch --}}
-            <a href="{{ route('clinic.show',$clinic->id) }}" class="block-20 rounded" ><img style="height: 300px;width:300px;" src="{{asset ('storage/'.$clinic->image)}}"/>
+            <a href="{{ route('clinic.show',$clinic->id) }}" class="block-20  rounded" ><img class="mx-auto d-block" style="height:100%" 
+               src="{{asset ('storage/'.$clinic->image)}}"/>
             </a>
             <div class="text p-4">
                 <div class="meta mb-2">

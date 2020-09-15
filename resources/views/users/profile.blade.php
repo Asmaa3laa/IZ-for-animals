@@ -1,4 +1,4 @@
-@extends('layouts.nav-footer')
+@extends('layouts.index')
 @section('content')
 
 <section class="container">

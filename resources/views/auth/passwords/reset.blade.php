@@ -1,6 +1,7 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app') --}}
 {{-- @extends('layouts.nav-footer') --}}
-@section('appcontent')
+@extends('layouts.auth')
+@section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

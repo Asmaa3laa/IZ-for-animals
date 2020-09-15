@@ -1,5 +1,5 @@
-@extends('layouts.nav-footer')
-
+{{-- @extends('layouts.nav-footer') --}}
+@extends('layouts.index')
 @section('content')
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -88,19 +88,19 @@
           <section class="ftco-section bg-light ftco-no-pt ftco-intro">
               <div class="container">
                   <div class="row">
-                <div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate">
+                <div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate mb-5">
                   <div class="d-block services active text-center">
                     <div class="icon d-flex align-items-center justify-content-center">
                           <span class="flaticon-blind"></span>
                     </div>
-                    <div class="media-body">
+                    <div class="media-body mx-auto">
                       <h3 class="heading">Dog Walking</h3>
                       <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right.</p>
                       <a href="#" class="btn-custom d-flex align-items-center justify-content-center"><span class="fa fa-chevron-right"></span><i class="sr-only">Read more</i></a>
                     </div>
                   </div>      
                 </div>
-                <div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate">
+                <div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate mb-5">
                   <div class="d-block services text-center">
                     <div class="icon d-flex align-items-center justify-content-center">
                           <span class="flaticon-dog-eating"></span>
@@ -112,7 +112,7 @@
                     </div>
                   </div>    
                 </div>
-                <div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate">
+                <div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate mb-5">
                   <div class="d-block services text-center">
                     <div class="icon d-flex align-items-center justify-content-center">
                           <span class="flaticon-grooming"></span>

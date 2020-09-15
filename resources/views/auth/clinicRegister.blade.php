@@ -1,9 +1,46 @@
-@extends('layouts.app')
-{{-- @extends('layouts.nav-footer') --}}
-@section('appcontent')    
 
-<body style="background-color:rgb(241, 247, 252)">
-  <div class="container">
+@extends('layouts.auth')
+{{-- <head>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+</head> --}}
+{{-- 
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+crossorigin=""></script> --}}
+@section('content')
+<div style="background-color:rgb(241, 247, 252)">
+  
+  {{-- <style>
+    body,
+  html,
+  #map_canvas {
+    height: 100%;
+    margin: 0;
+  }
+
+  #map_canvas .centerMarker {
+    position: absolute;
+    /*url of the marker*/
+    background: url(http://maps.gstatic.com/mapfiles/markers2/marker.png) no-repeat;
+    /*center the marker*/
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    /*fix offset when needed*/
+    margin-left: -10px;
+    margin-top: -34px;
+    /*size of the image*/
+    height: 34px;
+    width: 20px;
+    cursor: pointer;
+  }
+
+  </style> --}}
+
+<div class="container">
 
     <!-- Outer Row -->
     <div class="row justify-content-center">
@@ -180,14 +217,19 @@
                          <div class="modal-body">
                           <h4>This is your current location, it will be saved as clinic location..</h4>
                           <div class="row">
-                           <i class="col-2 fa fa-map-marker prefix fa-3x animated rotateIn mb-4"></i>
-                           <a href="#" style='color: rgb(66, 66, 247)'>current location</a>
-                          <input class="col-9" type="text"  name="location" value="current location" disabled hidden>
-                         </div>
+                            <i class="col-2 fa fa-map-marker prefix fa-3x animated rotateIn mb-4"></i>
+                            {{-- <a href="#" style='color: rgb(66, 66, 247)'>current location</a> --}}
+                            <p id="demo"></p>
+                            <input class="col-9" type="text" id="lat" name="lat" hidden>
+                            <input class="col-9" type="text" id="lon" name="lon" hidden>
+                            
+                          </div>
+                          <div id="mapid" style="height: 300px"></div>
+                          {{-- <div id="map_canvas"></div> --}}
                          </div>
                          <!--Footer-->
                          <div class="modal-footer flex-center">
-                           <a href="https://mdbootstrap.com/pricing/jquery/pro/" class="btn btn-info">Ok</a>
+                           <a href="#" class="btn btn-info">Ok</a>
                            <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">Cancel</a>
                          </div>
                        </div>
@@ -235,7 +277,7 @@
                    {{-- <div class="row"> --}}
                    <div class="form-check">
                     <label class="form-check-label">
-                      <input type="radio" class="form-check-input" name="optradio" data-toggle="modal" data-target="#current">
+                      <input onclick="getLocation()" type="radio" class="form-check-input" name="optradio" data-toggle="modal" data-target="#current">
                         Current Location 
                     </label>
                     </div>
@@ -256,6 +298,8 @@
                 <div class="text-center">You have an account?
                   <a class="btn btn-link" href="{{ route('login') }}"> Login</a>
                 </div>
+                {{-- <div id="mapid" style="height: 300px"></div> --}}
+
               </div>
             </div>
           </div>
@@ -264,7 +308,12 @@
     </div>
   </div>
   </div>
-</body>
+  {{-- <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin="">
+  </script> --}}
+</div>
+
 <script src="{{asset('js/jquery.min.js')}}"></script>
 
 <script src="{{asset('js/countryStates.js')}}"></script>
@@ -282,6 +331,102 @@
         });
     });
 </script>
+
+{{-- <script>
+  var x = document.getElementById("demo");
+  
+  function getLocation() {
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+      } else { 
+          x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+  }
+  
+  function showPosition(position) {
+      x.innerHTML = "Latitude: " + position.coords.latitude + 
+      "<br>Longitude: " + position.coords.longitude;
+      $('#lat').val(position.coords.latitude);
+      $('#lon').val(position.coords.longitude);
+      console.log($('#lat').val());
+      // x.innerHTML = "https://mt0.google.com/vt/lyrs=y,traffic&hl=en&x="+position.coords.latitude +"&y=" +position.coords.longitude +"&s=Ga"
+  }
+  </script> --}}
+  {{-- <script
+    src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyB90FxtYG_ybAYXGkz0ybkmkboE2nEbezI">
+  </script> --}}
+  {{-- <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin="">
+  </script> --}}
+  {{-- <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script> --}}
+
+
+  <script>
+    // function initialize() {
+    var x = document.getElementById("demo");
+  
+    function getLocation() {
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+          console.log('mmmmmmmmm');
+      } else { 
+          x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+    }
+    // $('#current').on('shown.bs.modal', function () {
+    //   initialize_0();
+    // });
+    function showPosition(position) {
+      x.innerHTML = "Latitude: " + position.coords.latitude + 
+      "<br>Longitude: " + position.coords.longitude;
+      $('#lat').val(position.coords.latitude);
+      $('#lon').val(position.coords.longitude);
+      console.log($('#lat').val());
+      
+      var map = L.map('mapid').setView({lon: position.coords.longitude, lat: position.coords.latitude}, 13);
+       // add the OpenStreetMap tiles
+       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+      }).addTo(map);
+
+      // show the scale bar on the lower left corner
+      L.control.scale().addTo(map);
+      L.marker([position.coords.longitude, position.coords.latitude]).addTo(map);
+      // var mymap = L.map('mapid').setView([position.coords.latitude, position.coords.longitude], 13);
+    //   var mapOptions = {
+    //   zoom: 14,
+    //   center: new google.maps.LatLng(52.5498783,  13.425209099999961),
+    //   mapTypeId: google.maps.MapTypeId.ROADMAP
+    // };
+      // map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+    // console.log("ccccccccccc");
+    // google.maps.event.addListener(map,'center_changed', function() {
+    // document.getElementById('lat').value = map.getCenter().lat();
+    // document.getElementById('lon').value = map.getCenter().lng();
+    // console.log($('#lat').val());
+
+    // });
+    // $('<div/>').addClass('centerMarker').appendTo(map.getDiv())
+    // //do something onclick
+    // .click(function() {
+    //   var that = $(this);
+    //   if (!that.data('win')) {
+    //     that.data('win', new google.maps.InfoWindow({
+    //       content: 'this is the center'
+    //     }));
+    //     that.data('win').bindTo('position', map, 'center');
+    //   }
+    //   that.data('win').open(map);
+    // });
+  }
+ 
+// }
+      
+// google.maps.event.addDomListener(window, 'load', initialize);
+
+  </script>
 @endsection
 
 
