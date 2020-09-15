@@ -215,7 +215,7 @@ crossorigin=""></script> --}}
                    
                          <!--Body-->
                          <div class="modal-body">
-                          <h4>This is your current location, it will be saved as clinic location..</h4>
+                          <h4>This location will be saved as clinic location..</h4>
                           <div class="row">
                             <i class="col-2 fa fa-map-marker prefix fa-3x animated rotateIn mb-4"></i>
                             {{-- <a href="#" style='color: rgb(66, 66, 247)'>current location</a> --}}
@@ -321,7 +321,7 @@ crossorigin=""></script> --}}
     function getLocation() {
       if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(showPosition);
-          console.log('mmmmmmmmm');
+
       } else { 
           x.innerHTML = "Geolocation is not supported by this browser.";
       }
