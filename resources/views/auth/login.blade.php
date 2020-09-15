@@ -64,7 +64,7 @@
                     @endif
                   </div>
                   <div class="text-center">
-                    <a class="btn btn-link" href="{{ url('login-role') }}">Create an Account!</a>
+                    <a class="btn btn-link" href="{{ url('login-role') }}">Create an Account !</a>
                   </div>
                 </form>
                 </div>

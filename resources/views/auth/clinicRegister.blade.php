@@ -220,8 +220,7 @@ crossorigin=""></script> --}}
                             <i class="col-2 fa fa-map-marker prefix fa-3x animated rotateIn mb-4"></i>
                             {{-- <a href="#" style='color: rgb(66, 66, 247)'>current location</a> --}}
                             <p id="demo"></p>
-                            <input class="col-9" type="text" id="lat" name="lat" hidden>
-                            <input class="col-9" type="text" id="lon" name="lon" hidden>
+                            {{-- <input class="col-9" type="text" id="lon" name="lon" hidden> --}}
                             
                           </div>
                           <div id="mapid" style="height: 300px"></div>
@@ -229,65 +228,25 @@ crossorigin=""></script> --}}
                          </div>
                          <!--Footer-->
                          <div class="modal-footer flex-center">
-                           <a href="#" class="btn btn-info">Ok</a>
-                           <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">Cancel</a>
+                           <a type="button" class="btn btn-info waves-effect" onclick="$('#current').modal('hide')">OK</a>
                          </div>
                        </div>
                        <!--/.Content-->
                      </div>
                    </div>
-
-                   {{-- Custom Location Model ------------------ --}}
-                   <div class="modal fade" id="custom" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                   aria-hidden="true">
-                   <div class="modal-dialog modal-notify modal-info" role="document">
-                     <!--Content-->
-                     <div class="modal-content text-center">
-                       <!--Header-->
-                       <div class="modal-header d-flex justify-content-center">
-                         <h3 class="heading">Clinic Location</h3>
-                       </div>
-                 
-                       <!--Body-->
-                       <div class="modal-body">
-                          <h4>Enter the city or the region of your clinic location..</h4>
-                          <div class="row">
-                          <i class="col-2 fa fa-map-marker prefix fa-3x animated rotateIn mb-4"></i>
-                          <div class="form-group col-9">
-                            <input id="location" type="text" class="form-control form-control-user @error('location') is-invalid @enderror" placeholder="City or Region .." name="location" value="{{ old('location') }}" required autocomplete="location">
-                            {{-- {!! Form::select('country_id', null, ['class'=>'form-control', 'required']) !!} --}}
-                            @error('location')
-                              <span class="invalid-feedback" role="alert">
-                                  <strong>{{ $message }}</strong>
-                              </span>
-                            @enderror
-                          </div>
-                          </div>                    
-                       </div>
-                 
-                       <!--Footer-->
-                       <div class="modal-footer flex-center">
-                         <a href="https://mdbootstrap.com/pricing/jquery/pro/" class="btn btn-info">Ok</a>
-                         <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">Cancel</a>
-                       </div>
-                     </div>
-                     <!--/.Content-->
-                   </div>
-                 </div>
-                   {{-- <div class="row"> --}}
                    <div class="form-check">
-                    <label class="form-check-label">
-                      <input onclick="getLocation()" type="radio" class="form-check-input" name="optradio" data-toggle="modal" data-target="#current">
-                        Current Location 
-                    </label>
-                    </div>
-                    <div class="form-check">
+                      <input class="col-9" type="text" id="location" name="location" hidden>
                       <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="optradio" data-toggle="modal" data-target="#custom">
-                          Custom Location
-                      </label>
+                        <input type="radio" onclick="getLocation()" name="locationButton" data-toggle="modal" data-target="#current" required>
+                          get Clinic Location
+                          @error('location')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                        @enderror
+                        </label> 
+                      
                     </div>
-                   {{-- </div> --}}
                     
                     {!! Form::submit('Register',['class'=>'btn btn-info btn-user btn-block'])  !!}
                     {!! Form::close() !!}
@@ -298,8 +257,6 @@ crossorigin=""></script> --}}
                 <div class="text-center">You have an account?
                   <a class="btn btn-link" href="{{ route('login') }}"> Login</a>
                 </div>
-                {{-- <div id="mapid" style="height: 300px"></div> --}}
-
               </div>
             </div>
           </div>
@@ -308,10 +265,6 @@ crossorigin=""></script> --}}
     </div>
   </div>
   </div>
-  {{-- <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-   crossorigin="">
-  </script> --}}
 </div>
 
 <script src="{{asset('js/jquery.min.js')}}"></script>
@@ -363,7 +316,6 @@ crossorigin=""></script> --}}
 
 
   <script>
-    // function initialize() {
     var x = document.getElementById("demo");
   
     function getLocation() {
@@ -374,58 +326,32 @@ crossorigin=""></script> --}}
           x.innerHTML = "Geolocation is not supported by this browser.";
       }
     }
-    // $('#current').on('shown.bs.modal', function () {
-    //   initialize_0();
-    // });
+
     function showPosition(position) {
-      x.innerHTML = "Latitude: " + position.coords.latitude + 
-      "<br>Longitude: " + position.coords.longitude;
-      $('#lat').val(position.coords.latitude);
-      $('#lon').val(position.coords.longitude);
-      console.log($('#lat').val());
+      $('#location').val("http://maps.google.com/maps?z=12&t=m&q=loc:"+position.coords.latitude+"+"+position.coords.longitude);
+      console.log($('#location').val());
       
-      var map = L.map('mapid').setView({lon: position.coords.longitude, lat: position.coords.latitude}, 13);
-       // add the OpenStreetMap tiles
-       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      var map = L.map('mapid').setView({lon: position.coords.longitude, lat: position.coords.latitude}, 14);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
       }).addTo(map);
 
       // show the scale bar on the lower left corner
       L.control.scale().addTo(map);
-      L.marker([position.coords.longitude, position.coords.latitude]).addTo(map);
-      // var mymap = L.map('mapid').setView([position.coords.latitude, position.coords.longitude], 13);
-    //   var mapOptions = {
-    //   zoom: 14,
-    //   center: new google.maps.LatLng(52.5498783,  13.425209099999961),
-    //   mapTypeId: google.maps.MapTypeId.ROADMAP
-    // };
-      // map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-    // console.log("ccccccccccc");
-    // google.maps.event.addListener(map,'center_changed', function() {
-    // document.getElementById('lat').value = map.getCenter().lat();
-    // document.getElementById('lon').value = map.getCenter().lng();
-    // console.log($('#lat').val());
-
-    // });
-    // $('<div/>').addClass('centerMarker').appendTo(map.getDiv())
-    // //do something onclick
-    // .click(function() {
-    //   var that = $(this);
-    //   if (!that.data('win')) {
-    //     that.data('win', new google.maps.InfoWindow({
-    //       content: 'this is the center'
-    //     }));
-    //     that.data('win').bindTo('position', map, 'center');
-    //   }
-    //   that.data('win').open(map);
-    // });
-  }
- 
-// }
+      var marker =  L.marker([position.coords.latitude, position.coords.longitude]).addTo(map).bindPopup("<b>current Location</b>").openPopup();
       
-// google.maps.event.addDomListener(window, 'load', initialize);
+      function onMapClick(e) {
+        marker.setLatLng(e.latlng).update();
+        console.log(e.latlng.lat);
+        $('#location').val("http://maps.google.com/maps?z=12&t=m&q=loc:"+e.latlng.lat+"+"+e.latlng.lat);
+        console.log($('#location').val());
+      }
+      map.on('click', onMapClick);
 
+    }     
+  
   </script>
 @endsection
 
