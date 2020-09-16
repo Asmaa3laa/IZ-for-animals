@@ -317,8 +317,9 @@ crossorigin=""></script> --}}
 
   <script>
     var x = document.getElementById("demo");
-  
+    var map = L.map('mapid');
     function getLocation() {
+      
       if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(showPosition);
 
@@ -331,7 +332,7 @@ crossorigin=""></script> --}}
       $('#location').val("http://maps.google.com/maps?z=12&t=m&q=loc:"+position.coords.latitude+"+"+position.coords.longitude);
       console.log($('#location').val());
       
-      var map = L.map('mapid').setView({lon: position.coords.longitude, lat: position.coords.latitude}, 14);
+      map.setView({lon: position.coords.longitude, lat: position.coords.latitude}, 14);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
