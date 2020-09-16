@@ -142,16 +142,16 @@ crossorigin=""></script> --}}
                   </div>
                   <hr> 
                   {{-- Clinic Information -------------------------------------------------- --}}
-                  <a class="btn btn-info btn-block text-white " data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  <a class="btn btn-info btn-block text-white " data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true" aria-controls="collapseExample">
                     Clinic Information
                   </a>
                 
-                  <div class="collapse" id="collapseExample">
+                <div class="collapse {{$errors->all() ? 'show' : ''}}" id="collapseExample">
                     <div class="card card-body">
             
                           {{-- Clinic name----------------------}}
                       <div class="form-group">
-                        <input type="text" class="form-control form-control-user @error('user_name') is-invalid @enderror" id="exampleInputName" aria-describedby="emailHelp" placeholder="Clinic Name"  name="user_name" value="{{ old('user_name') }}" required autocomplete="user_name" autofocus>
+                        <input type="text" class="form-control form-control-user @error('user_name') is-invalid @enderror" placeholder="Clinic Name"  name="user_name" value="{{ old('user_name') }}" required autocomplete="user_name" autofocus>
                         @error('user_name')
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $message }}</strong>
@@ -202,7 +202,7 @@ crossorigin=""></script> --}}
                             </span>
                         @enderror
                       </div>
-                     {{-- Current Location Model ------------------ --}}
+                     {{--  Location Model ------------------ --}}
                      <div class="modal fade" id="current" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                      aria-hidden="true">
                      <div class="modal-dialog modal-notify modal-info" role="document">
