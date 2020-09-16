@@ -32,6 +32,7 @@ return [
     |            "postmark", "log", "array"
     |
     */
+    
 
     'mailers' => [
         'smtp' => [
@@ -84,8 +85,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'test@el-masa.com'),
+        'name' => env('MAIL_FROM_NAME', 'All About Animals'),
     ],
 
     /*
@@ -104,6 +105,14 @@ return [
 
         'paths' => [
             resource_path('views/vendor/mail'),
+        ],
+    ],
+
+    'stream' => [
+        env('MAIL_ENCRYPTION', 'ssl') => [
+            'allow_self_signed' => env('MAIL_Allow_Self_Signed', 'true'),
+            'verify_peer' => env('MAIL_Verify_Peer', 'False'),
+            'verify_peer_name' => env('MAIL_Verify_Peer_Name', 'False'),
         ],
     ],
 

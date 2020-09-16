@@ -15,7 +15,7 @@
 
       <p class="text-muted text-center">{{$user->role}}</p>
       <div class="row">
-        <div class="col-6 card card-info">
+      <div class="{{$user->role == 'clinic' ? 'col-6' : 'offset-2 col-8'}} card card-info">
         <div class="card-body ">
           <b> <i class="fa fa-user mr-1"></i>DR. Name</b>
             <h6>{{$user->name}}</h6>
@@ -51,7 +51,7 @@
       <hr>
       <b><i class="fa fa-map-marker mr-1"></i> Location</b>
       <h6>
-        <a href="{{$user->location}}">show map</a>
+        <a class="btn btn-link" href="{{$user->location}}">show map</a>
       </h6>
       <hr>
       <b><i class="fa fa-phone mr-1"></i> Phone</b>
