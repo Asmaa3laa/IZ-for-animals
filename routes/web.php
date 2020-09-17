@@ -17,20 +17,26 @@ use App\Blog;
 Route::get('/', function () {
     return view('welcome');
 })->name('index');
-Route::group(['middleware' => ['auth','admin','can:manage.users']], function () {
-Route::get('admin/home', 'HomeController@adminHome')->name('admin.home');
-Route::resource('user', 'UserController');
-Route::get('users/doctor','UserController@doctorUsers');
-Route::get('users/clinic','UserController@clinicUsers');
-Route::get('users/pending','UserController@pendingUsers');
-Route::get('users/verify/{id}','UserController@verifyUser');
-
+Route::group(['middleware' => ['auth','admin']], function () {
+    Route::get('admin/home', 'HomeController@adminHome')->name('admin.home');
+    Route::resource('user', 'UserController');
+    Route::get('users/doctor','UserController@doctorUsers');
+    Route::get('users/clinic','UserController@clinicUsers');
+    Route::get('users/pending','UserController@pendingUsers');
+    Route::get('users/verify/{id}','UserController@verifyUser');
+    Route::get('send-mail', function () {
+    return view('admin.sendMail'); 
+        });
 });
+
 Route::get('map', function () {
     return view('map');
 });
 Auth::routes();
-
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('profile', 'ProfileController');
+    
+});
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('login-role', function () {
     return view('auth.role');
@@ -44,7 +50,6 @@ Route::resource('blog','BlogController');
 // Route::get('clinic-login', function () {
 //     return view('auth.clinicRegister');
 // });
-Route::resource('profile', 'ProfileController');
 Route::resource('clinic', 'ClinicController');
 Route::get('/get-state-list/{country_id}','CountryStateController@getStateList');
 Route::resource('tag','TagController');

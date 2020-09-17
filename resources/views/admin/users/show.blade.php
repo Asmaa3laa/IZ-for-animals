@@ -2,84 +2,72 @@
 @section('content')
 <section class="container">
 <div class="card card-primary card-outline">
-    <div class="card-body box-profile">
-      <div class="text-center">
-        <img class="profile-user-img img-fluid img-circle"
-             src="{{asset('storage/'.$user->image)}}"
-             alt="User profile picture">
-      </div>
+  <div class="card-body box-profile">
+    <div class="text-center">
+      @if($user->image)
+      <img class="vcard bio img-fluid rounded-circle" style="width: 200px;height: 200px"
+        src="{{asset('storage/'.$user->image)}}"
+        alt="User profile picture">
+        @else
+        <img  class="vcard bio img-fluid rounded-circle" style="width: 200px;height: 200px"
+         src="/images/doctor avatar.jpg" alt="profile picture"> 
+        @endif
+    </div>
 
     <h3 class="profile-username text-center">{{$user->user_name}}</h3>
 
     <p class="text-muted text-center">{{$user->role}}</p>
-
-      <ul class="list-group list-group-unbordered mb-3">
-        <li class="list-group-item">
-        <b>Name</b> <a class="float-right">{{$user->name}}</a>
-        </li>
-        <li class="list-group-item">
-          <b>Email</b> <a class="float-right">{{$user->email}}</a>
-        </li>
-        <li class="list-group-item">
-          <b>ID Card</b> 
-          <img class="col-sm-6 float-right" style="height: 300px"
-            src="{{asset('storage/'.$user->card)}}"
-            alt="User profile picture">
-        </li>
-      </ul>
-        
+    <div class="row">
+    <div class="{{$user->role == 'clinic' ? 'col-6' : 'offset-2 col-8'}} card card-info">
+      <div class="card-body ">
+        <b> <i class="fa fa-user mr-1"></i>DR. Name</b>
+          <h6>{{$user->name}}</h6>
+          <hr>
+        <b><i class="fa fa-envelope mr-1"></i>Email</b>
+        <h6>{{$user->email}}</h6>
+        <hr>
+        @if($user->card)
+        <b><i class="fa fa-credit-card mr-1"></i> Card</b> 
+        <div class="ftco-animate">
+          <div class="work mb-4 img align-items-end" style="background-image: url({{asset('storage/'.$user->card)}});">
+            <a style="cursor: zoom-in" href="{{asset('storage/'.$user->card)}}" class="icon image-popup d-flex justify-content-center align-items-center">
+              <span class="fa fa-expand"></span>
+            </a>
+            <div class="desc w-100 px-4">
+              <div class="text w-100 mb-3">
+                <span>Doctor</span>
+                <h2>ID Card</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        @endif
+      </div>  
     </div>
-    <!-- /.card-body -->
-  </div>
-  <!-- /.card -->
+
 @if ($user->role == 'clinic')
-    
-
-  <!-- About Me Box -->
-  <div class="card card-info">
-    <div class="card-header ">
-      <h4 class="text-center">Clinic Information</h4>
-    </div>
-    <!-- /.card-header -->
-    <div class="card-body">
-      <strong><i class="fas fa-address-card mr-1"></i> Address</strong>
-
-      <p class="text-muted">
-          {{$user->country->name}}- {{$user->state->name}}- {{$user->address}}
-      </p>
-
-      <hr>
-
-      <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
-
-    <p class="text-muted">{{$user->location}}</p>
-
+  
+<div class="col-6 card card-info">
+  <div class="card-body">
+    <b><i class="fa fa-address-card mr-1"></i> Address</b>
+    <h6>
+        {{$user->country->name}}- {{$user->state->name}}- {{$user->address}}
+    </h6>
     <hr>
-
-      <strong><i class="fas fa-phone-alt mr-1"></i> Phone</strong>
-
-    <p class="text-muted">{{$user->phone}}</p>
-
-      {{-- <hr>
-
-      <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
-
-      <p class="text-muted">
-        <span class="tag tag-danger">UI Design</span>
-        <span class="tag tag-success">Coding</span>
-        <span class="tag tag-info">Javascript</span>
-        <span class="tag tag-warning">PHP</span>
-        <span class="tag tag-primary">Node.js</span>
-      </p>
-
-      <hr>
-
-      <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
-
-      <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p> --}}
-      <hr>
+    <b><i class="fa fa-map-marker mr-1"></i> Location</b>
+    <h6>
+      <a class="btn btn-link" href="{{$user->location}}">show map</a>
+    </h6>
+    <hr>
+    <b><i class="fa fa-phone mr-1"></i> Phone</b>
+    <h6>{{$user->phone}}</h6>
       @endif
-      
+  </div>
+</div>
+</div>
+     <hr>
+      {{-- @endif --}}
+      @if (Auth::id() != $user->id)
       <div class="row">
         <a href="{{url('/users/verify',$user->id)}}" class="offset-4 btn btn-primary"><b>Verify</b></a>
         <div class="offset-2">
@@ -87,8 +75,9 @@
             {!! Form::submit('Delete',['class'=>'btn btn-danger']) !!}
             {!! Form::close() !!}
         </div>
-        {{-- <a href="#" class=" btn btn-danger"><b>Delete</b></a> --}}
-    </div>
+      </div>
+      @endif
+      
     </div>
 </section>
 @endsection

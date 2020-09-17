@@ -249,11 +249,10 @@
 
   <script>
     var x = document.getElementById("demo");
-    var map = L.map('mapid');
     function getLocation() {
       
       if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition);
+          navigator.geolocation.getCurrentPosition(showPosition, errorHandler);
 
       } else { 
           x.innerHTML = "Geolocation is not supported by this browser.";
@@ -264,7 +263,7 @@
       $('#location').val("http://maps.google.com/maps?z=12&t=m&q=loc:"+position.coords.latitude+"+"+position.coords.longitude);
       console.log($('#location').val());
       
-      map.setView({lon: position.coords.longitude, lat: position.coords.latitude}, 14);
+      var map = L.map('mapid').setView({lon: position.coords.longitude, lat: position.coords.latitude}, 14);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
@@ -284,7 +283,26 @@
       map.on('click', onMapClick);
 
     }     
-  
+
+    function errorHandler(error) {
+
+      switch (error.code) {
+          case error.PERMISSION_DENIED:
+              x.innerText = "User Denied Geolocation Permission, please allow location on your browser";
+              break;
+          case error.POSITION_UNAVAILABLE:
+              x.innerText = "POSITION_UNAVAILABLE";
+              break;
+          case error.TIMEOUT:
+              x.innerText = "TIMEOUT";
+              break;
+          case error.UNKOWN_ERROR:
+              x.innerText = "UNKOWN_ERROR";
+              break;
+          default:
+      }
+
+}
   </script>
 @endsection
 

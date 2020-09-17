@@ -42,7 +42,7 @@
             <th>Name</th>
             <th>User Name</th>
             <th>Email</th>
-            @if($users->first()->role == 'clinic')
+            @if($users->first()->role == 'clinic' && $users->first()->is_verified == 1)
             <th>Phone</th>
             <th>Country</th>
             <th>State</th>
@@ -58,12 +58,29 @@
         @endif
           </tr>
           </thead>
+
           <tbody>
               @foreach ($users as $user)
+          {{-- <a href="" onclick="window.open({{asset('storage/'.$user->card)}},'targetWindow', 'toolbar=no, location=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1090px, height=550px, top=25px left=120px'); return false;">click here</a> 
+          <a class="example-image-link" href="{{asset('storage/'.$user->card)}}" data-lightbox="example-1"><img class="example-image" src="images/thumb-1.jpg" alt="Girl looking out people on beach"></a> --}}
+
           <tr>
             {{-- <td><a href="pages/examples/invoice.html">OR9842</a></td> --}}
             <td><img src="{{asset('storage/'.$user->image)}}" style="border-radius: 50%;"/></td>
-            <td><img src="{{asset('storage/'.$user->card)}}"/></td>
+            
+            <td><div class="ftco-animate">
+              <div class="work mb-4 img align-items-end" style="background-image: url({{asset('storage/'.$user->card)}});">
+                <a href="{{asset('storage/'.$user->card)}}" class="icon image-popup d-flex justify-content-center align-items-center">
+                  <span class="fa fa-expand"></span>
+                </a>
+                {{-- <div class="desc w-100 px-4">
+                  <div class="text w-100 mb-3">
+                    <span>Doctor</span>
+                    <h2>ID Card</h2>
+                  </div>
+                </div> --}}
+              </div>
+            </div></td>
             <td>{{$user->name}}</td>
             <td>{{$user->user_name}}</td>
             <td>{{$user->email}}</td>
@@ -90,41 +107,22 @@
         @endif
           </tr>
           @endforeach
-          {{-- <tr>
-            <td><a href="pages/examples/invoice.html">OR1848</a></td>
-            <td>Samsung Smart TV</td>
-            <td><span class="badge badge-warning">Pending</span></td>
-            <td>
-              <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-            </td>
-          </tr>
-          <tr>
-            <td><a href="pages/examples/invoice.html">OR7429</a></td>
-            <td>iPhone 6 Plus</td>
-            <td><span class="badge badge-danger">Delivered</span></td>
-            <td>
-              <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-            </td>
-          </tr>
-          <tr>
-            <td><a href="pages/examples/invoice.html">OR7429</a></td>
-            <td>Samsung Smart TV</td>
-            <td><span class="badge badge-info">Processing</span></td>
-            <td>
-              <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
-            </td>
-          </tr> --}}
           
-          </tbody>  
+          
+          </tbody> 
+           
         </table>
       </div>
       <!-- /.table-responsive -->
     </div>
     <!-- /.card-body -->
-    {{-- <div class="card-footer clearfix">
-      <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Order</a>
-      <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a>
-    </div> --}}
+    <div class="card-footer clearfix">
+      <div class="pagination pagination-sm m-0 float-right">
+    {{ $users->links() }}
+    </div>
+      {{-- <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Order</a> --}}
+      {{-- <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a> --}}
+    </div> 
     <!-- /.card-footer -->
   </div>
  
@@ -133,6 +131,6 @@
     There are no users.
     </div>
   @endif
-  {{ $users->links() }}
-  <!-- /.card -->
+  
+  
 @endsection
