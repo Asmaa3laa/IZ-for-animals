@@ -6,16 +6,21 @@
 <div class="card card-primary card-outline">
     <div class="card-body box-profile">
       <div class="text-center">
+        @if(Auth::user()->image)
         <img class="vcard bio img-fluid rounded-circle" style="width: 200px;height: 200px"
           src="{{asset('storage/'.$user->image)}}"
-          alt="User profile picture">
+          alt="profile picture">
+          @else
+          <img  class="vcard bio img-fluid rounded-circle" style="width: 200px;height: 200px"
+           src="/images/doctor avatar.jpg" alt="profile picture"> 
+          @endif
       </div>
 
       <h3 class="profile-username text-center">{{$user->user_name}}</h3>
 
       <p class="text-muted text-center">{{$user->role}}</p>
       <div class="row">
-        <div class="col-6 card card-info">
+      <div class="{{$user->role == 'clinic' ? 'col-6' : 'offset-2 col-8'}} card card-info">
         <div class="card-body ">
           <b> <i class="fa fa-user mr-1"></i>DR. Name</b>
             <h6>{{$user->name}}</h6>
@@ -23,7 +28,8 @@
           <b><i class="fa fa-envelope mr-1"></i>Email</b>
           <h6>{{$user->email}}</h6>
           <hr>
-          <b><i class="fa fa-image mr-1"></i> Card</b> 
+          @if(Auth::user()->card)
+          <b><i class="fa fa-credit-card mr-1"></i> Card</b> 
           <div class="ftco-animate">
             <div class="work mb-4 img align-items-end" style="background-image: url({{asset('storage/'.$user->card)}});">
               <a href="{{asset('storage/'.$user->card)}}" class="icon image-popup d-flex justify-content-center align-items-center">
@@ -37,6 +43,7 @@
               </div>
             </div>
           </div>
+          @endif
         </div>  
       </div>
 
@@ -51,7 +58,7 @@
       <hr>
       <b><i class="fa fa-map-marker mr-1"></i> Location</b>
       <h6>
-        <a href="{{$user->location}}">show map</a>
+        <a class="btn btn-link" href="{{$user->location}}">show map</a>
       </h6>
       <hr>
       <b><i class="fa fa-phone mr-1"></i> Phone</b>

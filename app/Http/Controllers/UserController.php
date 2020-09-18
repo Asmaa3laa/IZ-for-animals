@@ -45,7 +45,7 @@ class UserController extends Controller
         $users = User::where([
             ['role','!=','admin'],
             ['is_verified',0]
-            ])->paginate(10);
+            ])->paginate(3);
             // dd($users);
         return view('admin.users.index', compact('users'));
     }

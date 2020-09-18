@@ -1,45 +1,7 @@
 
 @extends('layouts.auth')
-{{-- <head>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-    crossorigin="">
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
-</head> --}}
-{{-- 
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-crossorigin=""></script> --}}
 @section('content')
 <div style="background-color:rgb(241, 247, 252)">
-  
-  {{-- <style>
-    body,
-  html,
-  #map_canvas {
-    height: 100%;
-    margin: 0;
-  }
-
-  #map_canvas .centerMarker {
-    position: absolute;
-    /*url of the marker*/
-    background: url(http://maps.gstatic.com/mapfiles/markers2/marker.png) no-repeat;
-    /*center the marker*/
-    top: 50%;
-    left: 50%;
-    z-index: 1;
-    /*fix offset when needed*/
-    margin-left: -10px;
-    margin-top: -34px;
-    /*size of the image*/
-    height: 34px;
-    width: 20px;
-    cursor: pointer;
-  }
-
-  </style> --}}
-
 <div class="container">
 
     <!-- Outer Row -->
@@ -142,16 +104,16 @@ crossorigin=""></script> --}}
                   </div>
                   <hr> 
                   {{-- Clinic Information -------------------------------------------------- --}}
-                  <a class="btn btn-info btn-block text-white " data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  <a class="btn btn-info btn-block text-white " data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true" aria-controls="collapseExample">
                     Clinic Information
                   </a>
                 
-                  <div class="collapse" id="collapseExample">
+                <div class="collapse {{$errors->all() ? 'show' : ''}}" id="collapseExample">
                     <div class="card card-body">
             
                           {{-- Clinic name----------------------}}
                       <div class="form-group">
-                        <input type="text" class="form-control form-control-user @error('user_name') is-invalid @enderror" id="exampleInputName" aria-describedby="emailHelp" placeholder="Clinic Name"  name="user_name" value="{{ old('user_name') }}" required autocomplete="user_name" autofocus>
+                        <input type="text" class="form-control form-control-user @error('user_name') is-invalid @enderror" placeholder="Clinic Name"  name="user_name" value="{{ old('user_name') }}" required autocomplete="user_name" autofocus>
                         @error('user_name')
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $message }}</strong>
@@ -202,7 +164,7 @@ crossorigin=""></script> --}}
                             </span>
                         @enderror
                       </div>
-                     {{-- Current Location Model ------------------ --}}
+                     {{--  Location Model ------------------ --}}
                      <div class="modal fade" id="current" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                      aria-hidden="true">
                      <div class="modal-dialog modal-notify modal-info" role="document">
@@ -215,7 +177,7 @@ crossorigin=""></script> --}}
                    
                          <!--Body-->
                          <div class="modal-body">
-                          <h4>This is your current location, it will be saved as clinic location..</h4>
+                          <h4>This location will be saved as clinic location..</h4>
                           <div class="row">
                             <i class="col-2 fa fa-map-marker prefix fa-3x animated rotateIn mb-4"></i>
                             {{-- <a href="#" style='color: rgb(66, 66, 247)'>current location</a> --}}
@@ -285,43 +247,13 @@ crossorigin=""></script> --}}
     });
 </script>
 
-{{-- <script>
-  var x = document.getElementById("demo");
-  
-  function getLocation() {
-      if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition);
-      } else { 
-          x.innerHTML = "Geolocation is not supported by this browser.";
-      }
-  }
-  
-  function showPosition(position) {
-      x.innerHTML = "Latitude: " + position.coords.latitude + 
-      "<br>Longitude: " + position.coords.longitude;
-      $('#lat').val(position.coords.latitude);
-      $('#lon').val(position.coords.longitude);
-      console.log($('#lat').val());
-      // x.innerHTML = "https://mt0.google.com/vt/lyrs=y,traffic&hl=en&x="+position.coords.latitude +"&y=" +position.coords.longitude +"&s=Ga"
-  }
-  </script> --}}
-  {{-- <script
-    src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyB90FxtYG_ybAYXGkz0ybkmkboE2nEbezI">
-  </script> --}}
-  {{-- <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-  crossorigin="">
-  </script> --}}
-  {{-- <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script> --}}
-
-
   <script>
     var x = document.getElementById("demo");
-  
     function getLocation() {
+      
       if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition);
-          console.log('mmmmmmmmm');
+          navigator.geolocation.getCurrentPosition(showPosition, errorHandler);
+
       } else { 
           x.innerHTML = "Geolocation is not supported by this browser.";
       }
@@ -351,7 +283,26 @@ crossorigin=""></script> --}}
       map.on('click', onMapClick);
 
     }     
-  
+
+    function errorHandler(error) {
+
+      switch (error.code) {
+          case error.PERMISSION_DENIED:
+              x.innerText = "User Denied Geolocation Permission, please allow location on your browser";
+              break;
+          case error.POSITION_UNAVAILABLE:
+              x.innerText = "POSITION_UNAVAILABLE";
+              break;
+          case error.TIMEOUT:
+              x.innerText = "TIMEOUT";
+              break;
+          case error.UNKOWN_ERROR:
+              x.innerText = "UNKOWN_ERROR";
+              break;
+          default:
+      }
+
+}
   </script>
 @endsection
 

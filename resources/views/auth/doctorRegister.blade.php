@@ -1,7 +1,7 @@
 
 @extends('layouts.auth')
 @section('content')
-<body style="background-color:rgb(241, 247, 252)">
+<div style="background-color:rgb(241, 247, 252)">
 
 
 <div class="container">
@@ -130,20 +130,22 @@
 
   </div>
       
-</body>
+</div>
+<script src="{{asset('js/jquery.min.js')}}"></script>
+
 <script>
-  $(function () {
+ $(function () {
     $('.cardinfo').popover({
       container: 'body'
     })
   })
 
   $(document).ready(function(){
-      $('input[type="file"]').change(function(e){
-          var fileName = e.target.files[0].name;
-          $(e.target).next().text(fileName);
+        $('input[type="file"]').change(function(e){
+            var fileName = e.target.files[0].name;
+            $(e.target).next().text(fileName);
+        });
+    });
 
-      });
-  });
 </script>
 @endsection

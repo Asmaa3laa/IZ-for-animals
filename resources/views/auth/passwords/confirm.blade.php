@@ -1,6 +1,7 @@
 
 @extends('layouts.auth')
 @section('content')
+<div style="background-color:rgb(241, 247, 252)">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -45,5 +46,6 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection
