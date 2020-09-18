@@ -56,6 +56,7 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            /* * {box-sizing */
         </style>
 
         {{-- <div class="flex-center position-ref full-height">
@@ -72,19 +73,36 @@
                     @endauth
                 </div>
             @endif
-        </div> --}}
-        <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
-            <div class="overlay"></div>
-            <div class="container">
-              <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-                <div class="col-md-11 ftco-animate text-center">
-                    <h1 class="mb-4">Highest Quality Care For Pets You'll Love </h1>
-                  <p><a href="#" class="btn btn-primary mr-md-4 py-3 px-4">Learn more <span class="ion-ios-arrow-forward"></span></a></p>
+        </div> --}}         
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width:100%;height:400px;">
+            {{-- <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol> --}}
+            <div class="carousel-inner" style="height:100%;width:100%;">
+              <div class="carousel-item active"style="height:100%;width:100%;">
+                <img class="d-block w-100" style="max-width: 100%;max-height: 100%;display: block;" src="{{url('images/image_6.jpg')}}" alt="First slide">
+                <div class="carousel-caption d-none d-md-block">
+                  <h3 style="padding-bottom: 50px;color:rgb(255, 255, 255);font-weight:bold;">All About Animal helping veterinarians to create thier online clinic</h3>
+                </div>
+              </div>
+              <div class="carousel-item" style="height:100%;width:100%;">
+                <img class="d-block w-100" style="max-width: 100%;max-height: 100%;display: block;" src="{{url('images/bg_1.jpg')}}" alt="Second slide">
+                <div class="carousel-caption d-none d-md-block">
+                  <h3 style="padding-bottom: 50px;color:white;font-weight:bold;">All About Animal is your way to take better care of animal health</h3>
                 </div>
               </div>
             </div>
-          </div>
-      
+              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+          </div>      
           <section class="ftco-section bg-light ftco-no-pt ftco-intro">
               <div class="container">
                   <div class="row">
@@ -143,29 +161,29 @@
                               <div class="col-md-6 services-2 w-100 d-flex">
                                   <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-stethoscope"></span></div>
                                   <div class="text pl-3">
-                                      <h4>Care Advices</h4>
-                                      <p>Far far away, behind the word mountains, far from the countries.</p>
+                                      <h4>OUR VISION</h4>
+                                      <p>Discuss topics related to animal health and facilitate access to the nearest veterinary clinic to speed up your animal rescue.</p>
                                   </div>
                               </div>
                               <div class="col-md-6 services-2 w-100 d-flex">
                                   <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-customer-service"></span></div>
                                   <div class="text pl-3">
-                                      <h4>Customer Supports</h4>
-                                      <p>Far far away, behind the word mountains, far from the countries.</p>
+                                      <h4>OUR MISSION</h4>
+                                      <p>Providing assistance to the veterinarian and helping him establish and market his clinic.Helping to maintain the health of your animal from diseases and easy access to the nearest veterinarian.</p>
                                   </div>
                               </div>
                               <div class="col-md-6 services-2 w-100 d-flex">
                                   <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-emergency-call"></span></div>
                                   <div class="text pl-3">
-                                      <h4>Emergency Services</h4>
-                                      <p>Far far away, behind the word mountains, far from the countries.</p>
+                                      <h4>OUR VALUES</h4>
+                                      <p>As we care about animal health in the first place, we are guided by compassion, determination and effectiveness. Based on these values and principles, we will work to provide the necessary care for your animal.</p>
                                   </div>
                               </div>
                               <div class="col-md-6 services-2 w-100 d-flex">
                                   <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-veterinarian"></span></div>
                                   <div class="text pl-3">
-                                      <h4>Veterinary Help</h4>
-                                      <p>Far far away, behind the word mountains, far from the countries.</p>
+                                      <h4>OUR COMMITMENT</h4>
+                                      <p>We are committed to saving the largest number of animals possible by raising issues related to the general health of the animal and also by facilitating communication with the appropriate veterinarian.</p>
                                   </div>
                               </div>
                           </div>
@@ -216,5 +234,4 @@
             </div>
             </div>
         </section>
-    
 @endsection
