@@ -46,7 +46,7 @@ Route::get('blog/accepted','blogController@acceptedBlogs');
 Route::get('blog/pending','blogController@pendingBlogs');
 Route::get('blog/accept/{blogId}','blogController@accept');
 Route::get('blog/deny/{id}','blogController@deny')->name('deny');
-Route::resource('blog','BlogController');
+Route::resource('blog','BlogController');               
 // Route::get('clinic-login', function () {
 //     return view('auth.clinicRegister');
 // });
