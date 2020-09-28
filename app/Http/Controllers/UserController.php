@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-
+use Illuminate\Support\Facades\DB;
 use App\User;
+use Mail;
+use App\Mail\verifyMail;
+use App\Mail\rejectMail;
 class UserController extends Controller
 {
     /**
@@ -51,10 +54,24 @@ class UserController extends Controller
     }
 
     public function verifyUser($id){
-        $user = user::find($id);
-        $user->is_verified = 1;
-        $user->save();
-        return Redirect::to('users/pending');
+        try {
+            DB::beginTransaction();
+            $user = user::find($id);
+            $name = $user->name;        
+       
+            Mail::to($user->email)->send(new verifyMail($name));
+            $user->is_verified = 1;
+            $user->save();
+            Db::commit();
+            return Redirect::to('users/pending')->with('verify','Email has been send and user has been confirmed successfully!');
+
+        } 
+        catch (\Throwable $th) {
+            DB::rollBack();
+            return Redirect::to('users/pending')->with('failed',"Email address may be not accurate, it can't send email!");
+            // return abort(500);        
+        }
+      
     }
 
     /**
@@ -121,10 +138,22 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-        // dd($user);
-        $user->delete();
-        return Redirect::to('users/pending');
+        try {
+            DB::beginTransaction();
+            $user = User::find($id);
+            $name = $user->name;        
+            Mail::to($user->email)->send(new rejectMail($name));
+            $user->delete();
+            Db::commit();
+            return Redirect::to('users/pending')->with('reject',"Reject email has been send and user has been deleted successfully!");
+            } 
+        catch (\Throwable $th) {
+            //throw $th;
+            // dd($th);
+            DB::rollBack();
+            return Redirect::to('users/pending')->with('failed',"Email address may be not accurate, it can't send email!");
 
+        }
+        
     }
 }

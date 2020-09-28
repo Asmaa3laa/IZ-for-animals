@@ -7,11 +7,11 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class verifyMail extends Mailable
+class rejectMail extends Mailable
 {
     use Queueable, SerializesModels;
-
     public $name;
+
     /**
      * Create a new message instance.
      *
@@ -30,7 +30,7 @@ class verifyMail extends Mailable
     public function build()
     {
         return $this->from('test@el-masa.com','All About Animals')
-                    ->subject('Your account has been Confirmed')
-                    ->view('admin.mail.accept');
+        ->subject('Your account has been rejected')
+        ->view('admin.mail.reject');
     }
 }

@@ -198,14 +198,19 @@
                    </div>
                    <div class="form-check">
                       <input class="col-9" type="text" id="location" name="location" hidden>
+                      {{-- @if( $errors->has('location')->first())
+                      @error('location') --}}
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $errors->has('location') ? 'error get location' : '' }}</strong>
+                          </span>
+                        {{-- @enderror --}}
                       <label class="form-check-label">
                         <input type="radio" onclick="getLocation()" name="locationButton" data-toggle="modal" data-target="#current" required>
                           get Clinic Location
-                          @error('location')
-                          <span class="invalid-feedback" role="alert">
-                              <strong>{{ $message }}</strong>
-                          </span>
-                        @enderror
+                          {{-- <strong class="invalid-feedback" role="alert" id="errLocation"> 
+
+                          </strong> --}}
+                          
                         </label> 
                       
                     </div>
@@ -283,7 +288,7 @@
       map.on('click', onMapClick);
 
     }     
-
+// var errLocation = document.getElementById("errLocation");
     function errorHandler(error) {
 
       switch (error.code) {

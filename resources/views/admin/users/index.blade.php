@@ -11,7 +11,23 @@
       </style> 
 @section('content')
 <div class="container">
-
+  @if(session('verify'))
+    <div class="alert alert-success disapled" role="alert">
+      {{Session::get('verify')}}
+    </div>     
+  @endif
+  <div class="container">
+    @if(session('reject'))
+      <div class="alert alert-success" role="alert">
+        {{Session::get('reject')}}
+      </div>     
+    @endif
+  <div class="container">
+    @if(session('failed'))
+      <div class="alert alert-warning" role="alert">
+        {{Session::get('failed')}}
+      </div>     
+    @endif
 <!-- TABLE: LATEST ORDERS -->
 <div class="card">
     <div class="card-header border-transparent">
@@ -67,20 +83,16 @@
           <tr>
             {{-- <td><a href="pages/examples/invoice.html">OR9842</a></td> --}}
             <td><img src="{{asset('storage/'.$user->image)}}" style="border-radius: 50%;"/></td>
-            
-            <td><div class="ftco-animate">
-              <div class="work mb-4 img align-items-end" style="background-image: url({{asset('storage/'.$user->card)}});">
-                <a href="{{asset('storage/'.$user->card)}}" class="icon image-popup d-flex justify-content-center align-items-center">
-                  <span class="fa fa-expand"></span>
-                </a>
-                {{-- <div class="desc w-100 px-4">
-                  <div class="text w-100 mb-3">
-                    <span>Doctor</span>
-                    <h2>ID Card</h2>
-                  </div>
-                </div> --}}
+            <td><img src="{{asset('storage/'.$user->card)}}"/></td>
+            {{-- <td>
+              <div class="ftco-animate">
+                <div class="work mb-4 img align-items-end" style="background-image: url({{asset('storage/'.$user->card)}});">
+                  <a href="{{asset('storage/'.$user->card)}}" class="icon image-popup d-flex justify-content-center align-items-center">
+                    <span class="fa fa-expand"></span>
+                  </a>
+                </div>
               </div>
-            </div></td>
+            </td> --}}
             <td>{{$user->name}}</td>
             <td>{{$user->user_name}}</td>
             <td>{{$user->email}}</td>
@@ -100,7 +112,7 @@
                 <span class="badge badge-warning btn">Verify</span>
             </a></td>
             <td>
-            {!! Form::open(['route' => ['user.destroy', $user->id] ,'method' => 'delete' ]) !!}
+            {!! Form::open(['route' => ['user.destroy', $user->id] ,'method' => 'post' ]) !!}
             {!! Form::submit('Delete',['class'=>'btn btn-danger btn-xs']) !!}
             {!! Form::close() !!}
             </td>
