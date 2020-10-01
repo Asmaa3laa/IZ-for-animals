@@ -62,5 +62,5 @@
     <!-- /.card -->
   </div>
   <!-- /.col -->
-</div>
+  </div>
 @endsection
