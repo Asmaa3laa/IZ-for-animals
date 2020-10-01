@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
             CountrySeeder::class,
             StateSeeder::class,
             UserSeeder::class,
+            TagSeeder::class,
 
             ]
         );
