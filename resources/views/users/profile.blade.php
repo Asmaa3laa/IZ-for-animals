@@ -13,6 +13,7 @@
     </div>     
   @endif
 <div class="card card-primary card-outline">
+  
     <div class="card-body box-profile">
       <div class="text-center">
         @if(Auth::user()->image)
@@ -28,6 +29,16 @@
       <h3 class="profile-username text-center">{{$user->user_name}}</h3>
 
       <p class="text-muted text-center">{{$user->role}}</p>
+      <div class="dropdown" style="text-align: right">
+        <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-gear "></i>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="{{route('profile.edit',$user->id)}}">Update Data</a>
+        <a class="dropdown-item" href="{{route('password.request')}}">Reset Password</a>
+          {{-- <a class="dropdown-item" href="#">Something else here</a> --}}
+        </div>
+      </div>
       <div class="row">
       <div class="{{$user->role == 'clinic' ? 'col-6' : 'offset-2 col-8'}} card card-info">
         <div class="card-body ">
@@ -76,7 +87,7 @@
     </div>
   </div>
 </div>
-<a href="{{route('profile.edit',$user->id)}}" class="offset-5 btn btn-info" style="margin-top: 10px;"><b>Update Profile</b></a>
+{{-- <a href="{{route('profile.edit',$user->id)}}" class="offset-5 btn btn-info" style="margin-top: 10px;"><b>Update Profile</b></a> --}}
 
 </div>
 </section>
