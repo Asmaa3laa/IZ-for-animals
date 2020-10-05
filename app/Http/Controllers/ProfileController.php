@@ -92,24 +92,11 @@ class ProfileController extends Controller
         //     'state_id' => ['required'],
         // ]);
         $user = User::find($id);
-        if($request->hasFile('image')){
-            $image = $request['image'];
-            $image_path = $request['image']->store('uploads', 'public');
-    
-        }
-        if($request->hasFile('card')){
-            $card = $request['card'];
-            $card_path = $request['card']->store('uploads', 'public');
-        }
-        
-        try {
             if ($user->role == 'doctor') {
                 $user->update([
                     'name' => $request->name,
                     'email' => $request->email,
                     'user_name' => $request->user_name,
-                    'image' => $image_path,
-                    'card'=> $card_path,
                     
                 ]);
             } else{
@@ -117,21 +104,31 @@ class ProfileController extends Controller
                     'name' => $request->name,
                     'email' => $request->email,
                     'user_name' => $request->user_name,
-                    'image' => $request->$image_path,
-                    'card'=> $card_path,
                     'phone' => $request->phone,
                     'country_id' => $request->country_id,
                     'state_id' => $request->state_id,
                     'address' => $request->address,
                 ]);
             }
-                
+            if($request->hasFile('image')){
+                $image = $request['image'];
+                $image_path = $request['image']->store('uploads', 'public');
+                $user->image = $image_path;
+                $user->save();
+            }
+            if($request->hasFile('card')){
+                $card = $request['card'];
+                $card_path = $request['card']->store('uploads', 'public');
+                $user->card = $card_path;
+                $user->save();
+            }
+             
             return redirect('profile/'.$id)->with('update','Your profile has been updated successfully..');        
-        } 
-        catch (\Throwable $th) {
-            // dd($th);
-            return redirect('profile/'.$id)->with('failed',"Your profile hasn't been updated..");        
-        }
+        // } 
+        // catch (\Throwable $th) {
+        //     // dd($th);
+        //     return redirect('profile/'.$id)->with('failed',"Your profile hasn't been updated..");        
+        // }
         
     }
 

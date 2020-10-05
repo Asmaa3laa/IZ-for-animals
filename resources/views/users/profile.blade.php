@@ -34,7 +34,7 @@
           <i class="fa fa-gear "></i>
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="{{route('profile.edit',$user->id)}}">Update Data</a>
+        <a class="dropdown-item" href="{{route('profile.edit',$user->id)}}">Update Profile</a>
         <a class="dropdown-item" href="{{route('password.request')}}">Reset Password</a>
           {{-- <a class="dropdown-item" href="#">Something else here</a> --}}
         </div>

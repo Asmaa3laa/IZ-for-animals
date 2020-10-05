@@ -117,7 +117,7 @@
                 </div>
             </div>
             @endif
-            {{-- <div class="form-group row">
+             <div class="form-group row">
                 <div class="custom-file">
                     <input type="file" class="custom-file-input form-control-user @error('image') is-invalid @enderror" placeholder="Profile Image.."  name="image" value="{{($user->image)}}" autofocus>
                     <label class="custom-file-label" for="image">Change Profile Image</label>
@@ -138,7 +138,7 @@
                       </span>
                     @enderror
                   </div>
-            </div> --}}
+            </div> 
             
         </div>
         <!-- /.card-body -->
@@ -154,12 +154,6 @@
 
 <script src="{{asset('js/countryStates.js')}}"></script>
 <script>
-    $(function () {
-      $('.cardinfo').popover({
-        container: 'body'
-      })
-    })
-  
     $(document).ready(function(){
           $('input[type="file"]').change(function(e){
               var fileName = e.target.files[0].name;

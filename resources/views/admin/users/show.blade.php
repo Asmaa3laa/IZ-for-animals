@@ -2,7 +2,30 @@
 @section('content')
 <section class="container">
 <div class="card card-primary card-outline">
+  @if(session('update'))
+    <div class="alert alert-success disapled" role="alert">
+      <p>{{Session::get('update')}} <a class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+    </div>     
+  @endif
+  @if(session('failed'))
+    <div class="alert alert-danger disapled" role="alert">
+      <p>{{Session::get('failed')}} <a class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+    </div>     
+  @endif
   <div class="card-body box-profile">
+
+    @if(Auth::id() == $user->id)
+    <div class="dropdown" style="text-align: right">
+      <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fa fa-cog"></i>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="{{route('user.edit',$user->id)}}">Update Profile</a>
+      <a class="dropdown-item" href="{{route('password.request')}}">Reset Password</a>
+        {{-- <a class="dropdown-item" href="#">Something else here</a> --}}
+      </div>
+    </div>
+    @endif
     <div class="text-center">
       @if($user->image)
       <img class="vcard bio img-fluid rounded-circle" style="width: 200px;height: 200px"
@@ -17,6 +40,7 @@
     <h3 class="profile-username text-center">{{$user->user_name}}</h3>
 
     <p class="text-muted text-center">{{$user->role}}</p>
+    
     <div class="row">
     <div class="{{$user->role == 'clinic' ? 'col-6' : 'offset-2 col-8'}} card card-info">
       <div class="card-body ">

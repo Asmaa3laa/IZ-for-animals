@@ -116,7 +116,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('admin.users.show', compact('user'));
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -128,7 +128,21 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'user_name' => $request->user_name,            
+        ]);
+        if($request->hasFile('image')){
+            $image = $request['image'];
+            $image_path = $request['image']->store('uploads', 'public');
+            $user->image = $image_path;
+            $user->save();
+        }
+        return redirect('user/'.$id)->with('update','Your profile has been updated successfully..');        
+
     }
 
     /**
