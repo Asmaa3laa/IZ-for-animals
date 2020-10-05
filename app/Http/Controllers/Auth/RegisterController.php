@@ -139,4 +139,18 @@ class RegisterController extends Controller
         }
         
     }
+
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function registered(Request $request, $user)
+    {
+        //
+        $request->session()->flash('alert-success', 'Registration successful, Your account will be confirmed..');
+
+    }
 }

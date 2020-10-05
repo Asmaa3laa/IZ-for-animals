@@ -13,19 +13,19 @@
 <div class="container">
   @if(session('verify'))
     <div class="alert alert-success disapled" role="alert">
-      {{Session::get('verify')}}
+      <p>{{Session::get('verify')}} <a class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
     </div>     
   @endif
   <div class="container">
     @if(session('reject'))
       <div class="alert alert-success" role="alert">
-        {{Session::get('reject')}}
+        <p>{{Session::get('reject')}} <a class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
       </div>     
     @endif
   <div class="container">
     @if(session('failed'))
       <div class="alert alert-warning" role="alert">
-        {{Session::get('failed')}}
+        <p>{{Session::get('failed')}} <a class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
       </div>     
     @endif
 <!-- TABLE: LATEST ORDERS -->
@@ -112,7 +112,7 @@
                 <span class="badge badge-warning btn">Verify</span>
             </a></td>
             <td>
-            {!! Form::open(['route' => ['user.destroy', $user->id] ,'method' => 'post' ]) !!}
+            {!! Form::open(['route' => ['user.destroy', $user->id] ,'method' => 'delete' ]) !!}
             {!! Form::submit('Delete',['class'=>'btn btn-danger btn-xs']) !!}
             {!! Form::close() !!}
             </td>

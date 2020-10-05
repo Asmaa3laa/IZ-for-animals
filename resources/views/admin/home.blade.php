@@ -4,19 +4,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in as Admin!') }}
+            @if(Session::has('status'))
+                <div class="flash-message">
+                    <p class="alert alert-success">{{ Session::get('status') }} <a class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
                 </div>
-            </div>
+                @endif
         </div>
     </div>
 </div>

@@ -15,7 +15,7 @@
             <!-- Nested Row within Card Body -->
             <div class="row">
               <div class="col-lg-6 d-none d-lg-block">
-                <img src="{{asset('images/bg_login.jpg')}}" style="width: 500px; height: 700px;"/>
+                <img src="{{asset('images/clinicRegister.jpg')}}" style="width: 500px; height: 700px;"/>
 
               </div>
               <div class="col-lg-6">
@@ -280,7 +280,7 @@
       var marker =  L.marker([position.coords.latitude, position.coords.longitude]).addTo(map).bindPopup("<b>current Location</b>").openPopup();
       
       function onMapClick(e) {
-        marker.setLatLng(e.latlng).update();
+        marker.setLatLng(e.latlng).update().bindPopup("<b>Clinic Location</b>").openPopup();
         console.log(e.latlng.lat);
         $('#location').val("http://maps.google.com/maps?z=12&t=m&q=loc:"+e.latlng.lat+"+"+e.latlng.lat);
         console.log($('#location').val());

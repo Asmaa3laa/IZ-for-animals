@@ -2,7 +2,16 @@
 @section('content')
 
 <section class="container">
-  
+  @if(session('update'))
+    <div class="alert alert-success disapled" role="alert">
+      <p>{{Session::get('update')}} <a class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+    </div>     
+  @endif
+  @if(session('failed'))
+    <div class="alert alert-danger disapled" role="alert">
+      <p>{{Session::get('failed')}} <a class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+    </div>     
+  @endif
 <div class="card card-primary card-outline">
     <div class="card-body box-profile">
       <div class="text-center">
@@ -67,7 +76,7 @@
     </div>
   </div>
 </div>
-{{-- <a href="{{route('profile.edit',$user->id)}}" class="offset-5 btn btn-info" style="margin-top: 10px;"><b>Update Profile</b></a> --}}
+<a href="{{route('profile.edit',$user->id)}}" class="offset-5 btn btn-info" style="margin-top: 10px;"><b>Update Profile</b></a>
 
 </div>
 </section>
