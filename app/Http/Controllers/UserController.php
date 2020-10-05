@@ -63,7 +63,7 @@ class UserController extends Controller
             $user->is_verified = 1;
             $user->save();
             Db::commit();
-            return Redirect::to('users/pending')->with('verify','Email has been send and user has been confirmed successfully!');
+            return Redirect::to('users/pending')->with('verify','Email has been send and user is confirmed successfully!');
 
         } 
         catch (\Throwable $th) {
@@ -115,7 +115,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -127,7 +128,21 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'user_name' => $request->user_name,            
+        ]);
+        if($request->hasFile('image')){
+            $image = $request['image'];
+            $image_path = $request['image']->store('uploads', 'public');
+            $user->image = $image_path;
+            $user->save();
+        }
+        return redirect('user/'.$id)->with('update','Your profile has been updated successfully..');        
+
     }
 
     /**
@@ -145,7 +160,7 @@ class UserController extends Controller
             Mail::to($user->email)->send(new rejectMail($name));
             $user->delete();
             Db::commit();
-            return Redirect::to('users/pending')->with('reject',"Reject email has been send and user has been deleted successfully!");
+            return Redirect::to('users/pending')->with('reject',"Reject email has been send and user is deleted successfully!");
             } 
         catch (\Throwable $th) {
             //throw $th;

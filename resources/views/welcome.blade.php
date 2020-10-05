@@ -1,6 +1,8 @@
 {{-- @extends('layouts.nav-footer') --}}
 @extends('layouts.index')
 @section('content')
+
+ 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
@@ -58,7 +60,16 @@
             }
             /* * {box-sizing */
         </style>
-
+@if(Session::has('alert-success'))
+<div class="flash-message">
+   <p class="alert alert-success">{{ Session::get('alert-success') }} <a class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+</div>
+@endif
+@if(Session::has('status'))
+<div class="flash-message">
+   <p class="alert alert-success">{{ Session::get('status') }} <a class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+</div>
+@endif
         {{-- <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
