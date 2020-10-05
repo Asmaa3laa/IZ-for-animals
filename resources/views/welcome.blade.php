@@ -121,7 +121,7 @@
                 <div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate mb-5"style="margin-top:100px;">
                   <div class="d-block services text-center">
                     <div class="icon d-flex align-items-center justify-content-center">
-                          <span class="flaticon-stethoscope"></span>
+                          <span class="flaticon-navigation"></span>
                     </div>
                     <div class="media-body">
                       <h3 class="heading">Nearest Clinics</h3>
@@ -166,21 +166,21 @@
                                   </div>
                               </div>
                               <div class="col-md-6 services-2 w-100 d-flex">
-                                  <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-glass"></span></div>
+                                  <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-mission-1"></span></div>
                                   <div class="text pl-3">
                                       <h4>OUR MISSION</h4>
                                       <p>Providing assistance to the veterinarian and helping him establish and market his clinic.Helping to maintain the health of your animal from diseases and easy access to the nearest veterinarian.</p>
                                   </div>
                               </div>
                               <div class="col-md-6 services-2 w-100 d-flex">
-                                  <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-stethoscope"></span></div>
+                                  <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-value"></span></div>
                                   <div class="text pl-3">
                                       <h4>OUR VALUES</h4>
                                       <p>As we care about animal health in the first place, we are guided by compassion, determination and effectiveness. Based on these values and principles, we will work to provide the necessary care for your animal.</p>
                                   </div>
                               </div>
                               <div class="col-md-6 services-2 w-100 d-flex">
-                                  <div class="icon d-flex align-items-center justify-content-center"><i class="fa fa-handshake"></i></div>
+                                  <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-handshake"></span></div>
                                   <div class="text pl-3">
                                       <h4>OUR COMMITMENTS</h4>
                                       <p>We are committed to saving the largest number of animals possible by raising issues related to the general health of the animal and also by facilitating communication with the appropriate veterinarian.</p>
