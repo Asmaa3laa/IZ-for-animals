@@ -28,11 +28,11 @@ class BlogController extends Controller
      */
     public function index()
     {
-        if(Auth::user())
+        if(Auth::check() && Auth::user()->role == 'doctor')
         {
             // dd( Auth::user()->role);
-            if(Auth::user()->role == 'doctor')
-            {
+            // if(Auth::user()->role == 'doctor')
+            // {
                 $blogs=Blog::where('is_verified','=',1)->paginate(9, ['*'], 'blogs');
                 $users=[];
                 foreach($blogs as $blog)
@@ -42,7 +42,7 @@ class BlogController extends Controller
                 }           
                 $tags=Tag::all();
                 return view('blog.index',compact('blogs','users','tags'));
-            }
+            // }
         }
         else
         {

@@ -16,7 +16,7 @@
             <div class="row">
               <div class="col-lg-6 d-none d-lg-block">
                 <img src="{{asset('images/clinicRegister.jpg')}}" style="width: 500px; height: 700px;"/>
-
+              <div id="mapid" style="width: 500px; height: 400px"></div>
               </div>
               <div class="col-lg-6">
                 <div class="p-5">
@@ -165,39 +165,42 @@
                         @enderror
                       </div>
                      {{--  Location Model ------------------ --}}
-                     <div class="modal fade" id="current" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                     {{-- <div class="modal fade" id="current" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                      aria-hidden="true">
-                     <div class="modal-dialog modal-notify modal-info" role="document">
+                     <div class="modal-dialog modal-notify modal-info" role="document"> --}}
                        <!--Content-->
-                       <div class="modal-content text-center">
+                       {{-- <div class="modal-content text-center"> --}}
                          <!--Header-->
-                         <div class="modal-header d-flex justify-content-center">
+                         {{-- <div class="modal-header d-flex justify-content-center">
                            <h3 class="heading">Clinic Location</h3>
                          </div>
-                   
+                    --}}
                          <!--Body-->
-                         <div class="modal-body">
+                         {{-- <div class="modal-body">
                           <h4>This location will be saved as clinic location..</h4>
                           <div class="row">
-                            <i class="col-2 fa fa-map-marker prefix fa-3x animated rotateIn mb-4"></i>
+                            <i class="col-2 fa fa-map-marker prefix fa-3x animated rotateIn mb-4"></i> --}}
                             {{-- <a href="#" style='color: rgb(66, 66, 247)'>current location</a> --}}
-                            <p id="demo"></p>
+                            {{-- <p id="demo"></p> --}}
                             {{-- <input class="col-9" type="text" id="lon" name="lon" hidden> --}}
                             
-                          </div>
-                          <div id="mapid" style="height: 300px"></div>
+                          {{-- </div> --}}
+                          {{-- <div id="mapid" style="height: 300px"></div> --}}
                           {{-- <div id="map_canvas"></div> --}}
-                         </div>
+                         {{-- </div> --}}
                          <!--Footer-->
-                         <div class="modal-footer flex-center">
+                         {{-- <div class="modal-footer flex-center">
                            <a type="button" class="btn btn-info waves-effect" onclick="$('#current').modal('hide')">OK</a>
                          </div>
-                       </div>
+                       </div> --}}
                        <!--/.Content-->
-                     </div>
-                   </div>
+                     {{-- </div>
+                   </div> --}}
+
                    <div class="form-check">
                       <input class="col-9" type="text" id="location" name="location" hidden>
+                      <input class="col-9" type="text" id="location_lat" name="location_lat" hidden>
+                      <input class="col-9" type="text" id="location_lon" name="location_lon" hidden>
                       {{-- @if( $errors->has('location')->first())
                       @error('location') --}}
                           <span class="invalid-feedback" role="alert">
@@ -205,7 +208,7 @@
                           </span>
                         {{-- @enderror --}}
                       <label class="form-check-label">
-                        <input type="radio" onclick="getLocation()" name="locationButton" data-toggle="modal" data-target="#current" required>
+                        <input type="radio" onclick="getLocation()" name="locationButton" required>
                           get Clinic Location
                           {{-- <strong class="invalid-feedback" role="alert" id="errLocation"> 
 
@@ -221,6 +224,7 @@
                   </div>
                 </div>
                 <hr>
+
                 <div class="text-center">You have an account?
                   <a class="btn btn-link" href="{{ route('login') }}"> Login</a>
                 </div>
@@ -253,9 +257,7 @@
 </script>
 
   <script>
-    var x = document.getElementById("demo");
     function getLocation() {
-      
       if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(showPosition, errorHandler);
 
@@ -265,8 +267,10 @@
     }
 
     function showPosition(position) {
+      $('#location_lat').val(position.coords.latitude);
+      $('#location_lon').val(position.coords.longitude);
       $('#location').val("http://maps.google.com/maps?z=12&t=m&q=loc:"+position.coords.latitude+"+"+position.coords.longitude);
-      console.log($('#location').val());
+      console.log($('#location_lat').val());
       
       var map = L.map('mapid').setView({lon: position.coords.longitude, lat: position.coords.latitude}, 14);
 
@@ -282,7 +286,10 @@
       function onMapClick(e) {
         marker.setLatLng(e.latlng).update().bindPopup("<b>Clinic Location</b>").openPopup();
         console.log(e.latlng.lat);
-        $('#location').val("http://maps.google.com/maps?z=12&t=m&q=loc:"+e.latlng.lat+"+"+e.latlng.lat);
+        console.log(e.latlng.lng);
+        $('#location_lat').val(e.latlng.lat);
+        $('#location_lon').val(e.latlng.lng);
+        $('#location').val("http://maps.google.com/maps?z=12&t=m&q=loc:"+e.latlng.lat+"+"+e.latlng.lng);
         console.log($('#location').val());
       }
       map.on('click', onMapClick);
