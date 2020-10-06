@@ -21,6 +21,7 @@
         <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css') }}">
         <link rel="stylesheet" href="{{ asset('css/jquery.timepicker.css') }}">
         <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}">
+        <link rel="stylesheet" href="{{ asset('fonts/flaticon2/font/flaticon.css') }}">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
         {{-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
