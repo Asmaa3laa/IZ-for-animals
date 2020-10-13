@@ -11,7 +11,7 @@ Dear Dr\ {{$name}},
 <p>
     Please, Be sure from your entered data, then register again and be a user to our wedsite and enjoy using it.
 </p>
-<a href="https://aaa.el-masa.com/">All About Animals</a>
 <p>
-Thank you
+    Thank you
 </p>
+<a href="https://aaa.el-masa.com/">All About Animals</a>

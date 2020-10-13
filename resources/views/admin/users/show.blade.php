@@ -1,4 +1,8 @@
 @extends('layouts.admin')
+<head>
+  <link rel="stylesheet" href="{{ asset('css/img_popup.css') }}">
+
+</head>
 @section('content')
 <section class="container">
 <div class="card card-primary card-outline">
@@ -51,19 +55,19 @@
         <h6>{{$user->email}}</h6>
         <hr>
         @if($user->card)
-        <b><i class="fa fa-credit-card mr-1"></i> Card</b> 
-        <div class="ftco-animate">
-          <div class="work mb-4 img align-items-end" style="background-image: url({{asset('storage/'.$user->card)}});">
-            <a style="cursor: zoom-in" href="{{asset('storage/'.$user->card)}}" class="icon image-popup d-flex justify-content-center align-items-center">
-              <span class="fa fa-expand"></span>
-            </a>
-            <div class="desc w-100 px-4">
-              <div class="text w-100 mb-3">
-                <span>Doctor</span>
-                <h2>ID Card</h2>
-              </div>
-            </div>
-          </div>
+        <b><i class="fa fa-credit-card mr-1"></i> Card</b>
+        <img id="myImg" src="{{asset('storage/'.$user->card)}}" style="width:100%;max-width:300px"/>
+
+        <div id="myModal" class="modal">
+
+          <!-- The Close Button -->
+          <span class="close">&times;</span>
+        
+          <!-- Modal Content (The Image) -->
+          <img class="modal-content" id="img01">
+        
+          <!-- Modal Caption (Image Text) -->
+          <div id="caption"></div>
         </div>
         @endif
       </div>  
@@ -104,4 +108,6 @@
       
     </div>
 </section>
+<script src="{{asset('js/img_popup.js')}}"></script>
+
 @endsection

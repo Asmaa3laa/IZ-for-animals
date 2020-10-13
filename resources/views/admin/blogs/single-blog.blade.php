@@ -18,8 +18,11 @@
       <button id="accept" data-id="{{$blog->id}}" class="btn btn-block btn-success" style="justify-content: center;" onclick="accept(this)">
         <span class="fa fa-pencil-square-o">Accept</span>
       </button>
-      <button id="accept" data-id="{{$blog->id}}" class="btn btn-block btn-Danger" onclick="deny(this)">
+      <a href="{{route('blog-deny',$blog->id)}}" class="btn btn-block btn-Danger">
         <span class="fa fa-pencil-square-o">Deny</span>
-      </button>
+      </a>
+      {{-- <button id="accept" data-id="{{$blog->id}}" class="btn btn-block btn-Danger" onclick="deny(this)">
+        <span class="fa fa-pencil-square-o">Deny</span>
+      </button> --}}
     </div>
   </section> <!-- .section -->
