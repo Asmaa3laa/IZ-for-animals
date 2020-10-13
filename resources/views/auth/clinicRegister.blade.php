@@ -217,6 +217,7 @@
                         </label> 
                       
                     </div>
+                    <div id="mapid" style="height: 400px"></div>
                     
                     {!! Form::submit('Register',['class'=>'btn btn-info btn-user btn-block'])  !!}
                     {!! Form::close() !!}
@@ -232,7 +233,7 @@
             </div>
           </div>
         </div>
-      <div id="mapid" style="height: 500px"></div>
+      {{-- <div id="mapid" style="height: 500px"></div> --}}
       </div>
 
     </div>
