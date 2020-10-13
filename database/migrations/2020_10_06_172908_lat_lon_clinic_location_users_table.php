@@ -14,8 +14,8 @@ class LatLonClinicLocationUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedBigInteger ('location_lat')->nullable();
-            $table->unsignedBigInteger ('location_lon')->nullable();
+            $table->double('location_lat')->nullable();
+            $table->double('location_lon')->nullable();
 
         });
     }

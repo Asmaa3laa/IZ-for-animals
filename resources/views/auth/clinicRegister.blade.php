@@ -16,7 +16,7 @@
             <div class="row">
               <div class="col-lg-6 d-none d-lg-block">
                 <img src="{{asset('images/clinicRegister.jpg')}}" style="width: 500px; height: 700px;"/>
-              <div id="mapid" style="width: 500px; height: 400px"></div>
+              {{-- <div id="mapid" style="width: 500px; height: 400px"></div> --}}
               </div>
               <div class="col-lg-6">
                 <div class="p-5">
@@ -232,7 +232,9 @@
             </div>
           </div>
         </div>
+      <div id="mapid" style="height: 500px"></div>
       </div>
+
     </div>
   </div>
   </div>
