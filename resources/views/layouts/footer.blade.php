@@ -3,8 +3,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-lg-3 mb-4 mb-md-0">
-                    <h2 class="footer-heading">LZ For Animals</h2>
-                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                    <h2 class="footer-heading">All About Animals</h2>
+                    <p>All About Animal is your way to take better care of animal health</p>
                     <ul class="ftco-footer-social p-0">
           <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><span class="fa fa-twitter"></span></a></li>
           <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><span class="fa fa-facebook"></span></a></li>
@@ -12,7 +12,7 @@
         </ul>
                 </div>
                 <div class="col-md-6 col-lg-3 mb-4 mb-md-0">
-                    <h2 class="footer-heading">Latest News</h2>
+                    <h2 class="footer-heading">Latest Blogs</h2>
                     <div class="block-21 mb-4 d-flex">
           <a class="img mr-4 rounded" style="background-image: url(images/image_1.jpg);"></a>
           <div class="text">

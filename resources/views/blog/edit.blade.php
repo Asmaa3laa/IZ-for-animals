@@ -12,9 +12,6 @@
      {{ method_field('PATCH') }} 
         {{ csrf_field() }}
   <div class="form-group">
-    @foreach ($blogtags as $blogtag)
-    <h1>{{$blogtag['tag_id']}}</h1>
- @endforeach
         <label for="title">Blog Title</label>
         <input type="text" id ='title' name="title" class="form-control"value="{{old('title', $blog->title)}}" placeholder="Title" aria-label="title" autofocus aria-describedby="basic-addon1">      </div>
         @if ($errors->first('title'))
@@ -41,10 +38,9 @@
       <select style="height:100px;" id="tags" name="tags[]" class="form-control mb-2 js-example-basic-single {{ $errors->first('tag') ? 'is-invalid':''}}" autofocus multiple>
         <option value="" disabled selected>Tags</option>
         @foreach ($tags as $tag) 
-        @foreach ($blogtags as $blogtag)
-          <option value="{{$tag->id}}" {{ old('tag_id', $blogtag['tag_id']) == $tag->id ? 'selected' : '' }}>{{ $tag->name}}</option>
-
-     @endforeach         
+          @foreach ($blogtags as $blogtag)
+            <option value="{{$tag->id}}" {{ old('tag_id', $blogtag['tag_id']) == $tag->id ? 'selected' : '' }}>{{ $tag->name}}</option>
+          @endforeach         
         @endforeach
       </select>
     </div>

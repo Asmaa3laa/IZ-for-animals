@@ -16,11 +16,11 @@
     <div class="card-header border-transparent">
       
         @if($blogs->count() >= '1')
-          @if(($blogs->first()->is_verified) == '1')
+          <!-- @if(($blogs->first()->is_verified) == '1')
           <h3 class="card-title">Accepted Blogs</h3>
           @else 
           <h3 class="card-title">Pending Blogs</h3>
-          @endif
+          @endif -->
           <div id="details"></div>
           <div id="index">
           <div class="card-tools">
@@ -102,17 +102,20 @@ function preview(param)
 // });
 
 function accept(param){
-  var blogId = $(param).attr('data-id');
-  $.ajaxSetup({
-      headers: {
-			  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-			}
-		  });
+  let for_doctor = $("input[type=checkbox]").is(":checked");
+  let blogId = $(param).attr('data-id');
+  let selectedTags = $("option:selected").map(function(){ return this.value }).get();
+  console.log($("option:selected").map(function(){ return this.value }).get());
+      $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+          });   
       $.ajax
       ({
           method: 'GET',
-          url: '/blog/accept/'+blogId,
-          data: {"blogId": blogId},   
+          url: '/blog/accept',
+          data: {'blogId': blogId,'for_doctor': for_doctor, 'selected_tags': selectedTags},   
           success:function(response){
             console.log(response);
             $('#details').hide();

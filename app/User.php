@@ -59,7 +59,7 @@ class User extends Authenticatable
         return False;
     }
     public function hasAnyRoles($roles){
-        dd($this->role);
+        // dd($this->role);
         if($this->role->whereIn($roles)){
             return True;
         }
