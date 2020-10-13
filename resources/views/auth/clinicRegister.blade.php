@@ -14,15 +14,15 @@
 
             <!-- Nested Row within Card Body -->
             <div class="row">
-              <div class="col-lg-6 d-none d-lg-block">
-                <img src="{{asset('images/clinicRegister.jpg')}}" style="width: 500px; height: 700px;"/>
+              <div class="col-lg-5 d-none d-lg-block">
+                <img src="{{asset('images/clinicRegister.jpg')}}" style="width: 440px; height: 700px;"/>
               {{-- <div id="mapid" style="width: 500px; height: 400px"></div> --}}
               </div>
-              <div class="col-lg-6">
+              <div class="col-lg-7">
                 <div class="p-5">
                         
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Welcome</h1>
+                    <h1 class="h2 text-gray-900 mb-4">WELCOME</h1>
                   </div>
                   {!! Form::open(['route' => 'register','files' => 'true','enctype'=>'multipart/form-data', 'method'=>'post']) !!}
                         @csrf
@@ -211,21 +211,17 @@
                         <input type="radio" onclick="getLocation()" name="locationButton" required>
                           get Clinic Location
                           {{-- <strong class="invalid-feedback" role="alert" id="errLocation"> 
-
-                          </strong> --}}
-                          
+                          </strong> --}}                       
                         </label> 
                       
                     </div>
-                    <div id="mapid" style="height: 400px"></div>
+                    <div id="mapid" style="margin: 8px;"></div>
                     
                     {!! Form::submit('Register',['class'=>'btn btn-info btn-user btn-block'])  !!}
                     {!! Form::close() !!}
                     </div>
                   </div>
                 </div>
-                <hr>
-
                 <div class="text-center">You have an account?
                   <a class="btn btn-link" href="{{ route('login') }}"> Login</a>
                 </div>
@@ -233,7 +229,6 @@
             </div>
           </div>
         </div>
-      {{-- <div id="mapid" style="height: 500px"></div> --}}
       </div>
 
     </div>
@@ -274,7 +269,8 @@
       $('#location_lon').val(position.coords.longitude);
       $('#location').val("http://maps.google.com/maps?z=12&t=m&q=loc:"+position.coords.latitude+"+"+position.coords.longitude);
       console.log($('#location_lat').val());
-      
+      $('#mapid').css('height','400px');
+      $('#mapid').css('border','solid 1px gray');
       var map = L.map('mapid').setView({lon: position.coords.longitude, lat: position.coords.latitude}, 14);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
