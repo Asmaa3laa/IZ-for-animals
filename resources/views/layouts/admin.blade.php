@@ -208,9 +208,10 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
   <a href="{{url('/')}}" class="brand-link">
+    <img src="{{ asset("/images/All About Animals' logo photoshop.png") }}" style="width:80px;height:80px;"/>
       {{-- <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8"> --}}
-      <span class="brand-text font-weight-light">IZ-For-Animals</span>
+      <span class="brand-text font-weight-light">All About Animal</span>
     </a>
 
     <!-- Sidebar -->

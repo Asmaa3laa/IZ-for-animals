@@ -255,6 +255,8 @@
 </script>
 
   <script>
+    x= $('#mapid');
+    console.log(x);
     function getLocation() {
       if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(showPosition, errorHandler);

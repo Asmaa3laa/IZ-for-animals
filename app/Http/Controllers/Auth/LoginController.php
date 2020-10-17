@@ -48,7 +48,7 @@ class LoginController extends Controller
 
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
         {
-            if (auth()->user()->role == 'blogs_admin' or 'admin' or 'clinics_admin' or 'doctors_admin') {
+            if (auth()->user()->role == 'blogs_admin' or auth()->user()->role =='admin' or auth()->user()->role =='clinics_admin' or auth()->user()->role =='doctors_admin') {
                 return redirect()->route('admin.home')->with('status', __('You logged in successfully as an admin..'));
             }else{
                 return redirect()->route('home')->with('status', __('You logged in successfully..'));

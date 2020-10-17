@@ -86,19 +86,15 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $validator = Validator::make($request->all(),[
-        //     'name' => ['required', 'string', 'max:100'],
-        //     'user_name' => ['required', 'string', 'max:50', 'unique:users'],
-        //     'email' => ['required','string', 'email:rfc,dns', 'unique:users'],
-        //     'image' => ['required', 'image', 'mimes:jpeg,png,jpg',],
-        //     'card' => ['required', 'image', 'mimes:jpeg,png,jpg',],
-        //     'phone' => ['required','numeric','regex:/(01)[0-2]{1}[0-9]{8}/', 'unique:users'],
-        //     'address' =>['required', 'string','max:250'],
-        //     'country_id' => ['required'],
-        //     'state_id' => ['required'],
-        // ]);
         $user = User::find($id);
             if ($user->role == 'doctor') {
+                $request->validate([
+                    'name' => ['required', 'string', 'max:100'],
+                    'user_name' => ['required', 'string', 'max:50', 'unique:users'],
+                    'email' => ['required','string', 'email:rfc,dns', 'unique:users'],
+                    
+                ]);
+
                 $user->update([
                     'name' => $request->name,
                     'email' => $request->email,
@@ -106,6 +102,19 @@ class ProfileController extends Controller
                     
                 ]);
             } else{
+                $request->validate([
+                    'name' => ['required', 'string', 'max:100'],
+                    'user_name' => ['required', 'string', 'max:50', 'unique:users'],
+                    'email' => ['required','string', 'email:rfc,dns', 'unique:users'],
+                    'phone' => ['required','numeric','regex:/[0-9]{11}/', 'unique:users'],
+                    'address' =>['required', 'string','max:250'],
+                    'location' =>['required', 'string', 'max:500'],
+                    'location_lat' =>['required', 'numeric'],
+                    'location_lon' =>['required', 'numeric'],
+                    'country_id' => ['required'],
+                    'state_id' => ['required'],
+                ]);
+
                 $user->update([
                     'name' => $request->name,
                     'email' => $request->email,
@@ -114,6 +123,9 @@ class ProfileController extends Controller
                     'country_id' => $request->country_id,
                     'state_id' => $request->state_id,
                     'address' => $request->address,
+                    'location' => $request->location,
+                    'location_lat' => $request->location_lat,
+                    'location_lon' => $request->location_lon,
                 ]);
             }
             if($request->hasFile('image')){

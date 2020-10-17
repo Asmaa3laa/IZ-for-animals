@@ -20,8 +20,9 @@ class ClinicController extends Controller
     public function index()
     {
         $clinics = User::where(['role'=>'clinic','is_verified'=>'1'])->paginate(12);
-        // dd($clinics);
-        return view('clinic.index',compact('clinics'));
+        $countries = Country::pluck('name', 'id');
+        $states = State::pluck('name', 'id');
+        return view('clinic.index',compact('clinics','countries','states'));
     }
 
     /**
@@ -123,5 +124,14 @@ class ClinicController extends Controller
       echo json_encode($data);
      }
     
+    }
+
+
+    public function searchByState(Request $request){
+        // dd($request->option);
+        $clinics = User::where(['state_id'=>$request->option, 'is_verified'=>'1'])->get();
+        // dd($clinics);
+        // return $request->option;
+        return view('clinic.search_data',compact('clinics'));
     }
 }

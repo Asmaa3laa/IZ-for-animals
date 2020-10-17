@@ -87,7 +87,7 @@ class RegisterController extends Controller
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
                 'image' => ['required', 'image', 'mimes:jpeg,png,jpg',],
                 'card' => ['required', 'image', 'mimes:jpeg,png,jpg',],
-                'phone' => ['required','numeric', 'unique:users'],
+                'phone' => ['required','numeric','regex:/[0-9]{11}/', 'unique:users'],
                 'address' =>['required', 'string','max:250'],
                 'location' =>['required', 'string', 'max:500'],
                 'location_lat' =>['required', 'numeric'],
