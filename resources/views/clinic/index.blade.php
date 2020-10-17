@@ -1,23 +1,6 @@
-{{-- @extends('layouts.nav-footer') --}}
 @extends('layouts.index')
 @section('content')
-<!-- <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row no-gutters slider-text align-items-end">
-        <div class="col-md-9 ftco-animate pb-5">
-            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Clinics <i class="ion-ios-arrow-forward"></i></span></p>
-          <h1 class="mb-0 bread">Clincs</h1>
-        </div>
-      </div>
-    </div>
-  </section> -->
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width:100%;height:400px;">
-            {{-- <ol class="carousel-indicators">
-              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol> --}}
             <div class="carousel-inner" style="height:100%;width:100%;">
               <div class="carousel-item active"style="height:100%;width:100%;">
                 <img class="d-block w-100" style="max-width: 100%;height: 100%;display: block;" src="{{url('images/main.jpg')}}" alt="First slide">
@@ -43,21 +26,36 @@
   </div>
 
   <section class="ftco-section bg-light">
-    {{-- <div style="width:400px;">
+    <div class="container">
+
+<span class="menuitem"><a href="/" class="btn btn-default"><i class="fa fa-home"></i> Home</a></span>
+<span class="menuitem"><a href="/EG" class="btn btn-default"><i class="fa fa-map-marker"></i> Cities</a></span>
+<span class="menuitem"><a href="/countries" class="btn btn-default"><i class="fa fa-globe"></i> Countries</a></span>
+
         <form action="#" class="search-form">
           <div class="form-group">
-            <span class="fa fa-search"></span>
-            <input type="text" id ="search" class="form-control" placeholder="Type a keyword and hit enter" onkeyup="search(this.value)"/>
+            <span class="fa fa-search btn" id="search"></span>
+            <input type="text" id ="searcharea" class="form-control" placeholder="Type a city or country and hit enter"/>
           </div>
-        </form>
-      </div> --}}
-    <div class="container">
-      <div class="row ">
+        </form> 
+        <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+       <thead>
+        <tr>
+         choose...
+        </tr>
+       </thead>
+       <tbody>
+
+       </tbody>
+      </table>
+     </div>
+      <div class="row mt-5">
           @foreach($clinics as $clinic)
         <div class="col-md-6 col-lg-4  ftco-animate">
-          <div class="blog-entry ">
+          <div class="blog-entry">
               {{-- align-self-stretch --}}
-            <a href="{{ route('clinic.show',$clinic->id) }}" class="block-20  rounded" ><img class="mx-auto d-block" style="height:100%" 
+            <a href="{{ route('clinic.show',$clinic->id) }}" class="block-20  rounded" ><img class="mx-auto d-block mt-3" style="height:100%" 
                src="{{asset ('storage/'.$clinic->image)}}"/>
             </a>
             <div class="text p-4">
@@ -90,35 +88,5 @@
         </div>
       </div> --}}
     </div>
-  </section>
+  {{-- </section> --}}
   @endsection
-@push('scripts')
-    <script>
-        
-        function search(input)
-        {
-            $.ajaxSetup({
-                    headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            }
-                });
-                $.ajax
-                ({
-                    url:"/search",
-                    method:"POST",
-                    // type:'GET',
-                    data:{input:input},
-                    dataType: 'json',
-                    success:function(data){
-                        console.log("success");
-                        console.log( data);
-                        
-                    },
-                    error:function (responseJSON){
-                        console.log("error");
-                        console.log(responseJSON.responseText);
-                    }
-                })
-        }
-    </script>
-@endpush

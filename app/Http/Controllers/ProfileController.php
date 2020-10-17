@@ -11,7 +11,8 @@ use App\User;
 use App\Country;
 use App\State;
 use App\Tag;
-
+use App\Blog;
+use Auth;
 class ProfileController extends Controller
 {
     /**
@@ -57,7 +58,8 @@ class ProfileController extends Controller
         $user = User::find($id);
         $countries = Country::pluck('name', 'id');
         $states = State::where('country_id',$user->country_id)->get();
-        return view('users.profile', compact('user','countries','states','tags'));
+        $blogs = Blog::where('user_id',Auth::id())->paginate(10);
+        return view('users.profile', compact('user','countries','states','tags','blogs'));
     }
 
     /**

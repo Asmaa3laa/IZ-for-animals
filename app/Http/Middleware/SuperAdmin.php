@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class Admin
+class SuperAdmin
 {
     /**
      * Handle an incoming request.
@@ -15,10 +15,10 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        if(auth()->user()->role == 'admin'or'blogs_admin'or'clinics_admin'or'doctors_admin'){
+        if(auth()->user()->role == 'admin'){
             return $next($request);
         }
    
-        return redirect('home')->with('error',"You don't have admin access.");
+        return redirect('admin/home')->with('error',"You don't have admin access.");
     }
 }

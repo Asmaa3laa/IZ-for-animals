@@ -81,7 +81,7 @@
         </div>
       </div> --}}
     </div>
-    {{-- <button>{{ $blogs->links() }}</button> --}}
+    {{ $blogs->links() }}
      </section>
     <hr style="text-align:center; border:2px #052958 dashed;">   
     <section>

@@ -54,7 +54,6 @@ class AdminController extends Controller
         } 
         catch (\Throwable $th)
         {
-            // dd($th);
             // delete user if an error arises and return server error
             DB::rollBack();
             return abort(500);

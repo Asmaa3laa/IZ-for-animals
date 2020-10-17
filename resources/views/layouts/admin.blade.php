@@ -23,9 +23,10 @@
   <!-- Daterange picker -->
   <link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css') }}">
   <!-- summernote -->
-  <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.css') }}">
+  <!-- <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.css') }}"> -->
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  @yield("head")
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -311,12 +312,12 @@
                       <p>Add Admins</p>
                     </a>
                   </li>
-                  <li class="nav-item">
+                  {{-- <li class="nav-item">
                     <a href="{{url('blog/pending')}}" class="nav-link {{(request()->is('blog/pending')) ? 'active' : '' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Blog's Admins</p>
                     </a>
-                  </li>
+                  </li> --}}
                 </ul>
               </li>
         </ul>
@@ -372,7 +373,7 @@
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="{{asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 <!-- Summernote -->
-<script src="{{asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
+<!-- <script src="{{asset('plugins/summernote/summernote-bs4.min.js') }}"></script> -->
 <!-- <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <script src="resources/js/app.js"></script> -->
 <!-- overlayScrollbars -->
@@ -383,5 +384,6 @@
 <script src="{{asset('dist/js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('dist/js/demo.js') }}"></script>
+
 </body>
 </html>

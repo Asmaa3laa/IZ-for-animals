@@ -53,10 +53,17 @@
                         {{ Auth::user()->user_name }} <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdown">
+                      @if(Auth::user()->role != 'admin')
                       <a class="dropdown-item" href="{{route('profile.show',Auth::id())}}">
                         <i class="fa fa-user"></i>
                               {{ __('profile') }}
                           </a>
+                      @else
+                      <a class="dropdown-item" href="{{route('admin.home',Auth::id())}}">
+                        <i class="fa fa-user"></i>
+                              {{ __('admin panel') }}
+                          </a>
+                      @endif
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();">

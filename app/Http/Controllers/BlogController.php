@@ -16,10 +16,10 @@ use Auth;
 
 class BlogController extends Controller
 {
-    // public function __construct()
-    // {
-    // $this->middleware('can:create.blogs', ['only' => ['create', 'store', 'edit', 'delete']]);
-    // }
+    public function __construct()
+    {
+    $this->middleware('can:create.blogs', ['only' => ['create', 'store', 'edit','update','delete']]);
+    }
 
     /**
      * Display a listing of the resource.
@@ -28,7 +28,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        if(Auth::user() && Auth::user()->role == 'doctor')
+        if(Auth::user() && Auth::user()->role == 'doctor'or'clinic')
         { 
             // dd( Auth::user()->role);
             // if(Auth::user()->role == 'doctor')
@@ -218,7 +218,11 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $blog = Blog::find($id); 
+        // dd($blog);
+        // $this->authorize('delete', $blog);
+        $blog->delete();
+        return redirect('profile/'.Auth::id())->with('success','Blog deleted successfully ');
     }
     
 }

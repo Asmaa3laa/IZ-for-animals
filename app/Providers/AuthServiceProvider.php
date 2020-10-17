@@ -23,6 +23,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        
         $this->registerPolicies();
 
         // Gate::define('manage.users',function($user){
@@ -34,14 +35,14 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('create.blogs',function($user){
             return $user->hasRole('clinic');
         });
-        Gate::define('manage_blogs',function($user){
-            return $user->hasAnyRoles(['blogs_admin','admin']);
-        });
-        Gate::define('manage_doctors',function($user){
-            return $user->hasAnyRoles(['doctors_admin','admin']);
-        });
-        Gate::define('manage_clinics',function($user){
-            return $user->hasAnyRoles(['clinics_admin','admin']);
-        });
+        // Gate::define('manage_blogs',function($user){
+        //     return $user->hasAnyRoles(['blogs_admin','admin']);
+        // });
+        // Gate::define('manage_doctors',function($user){
+        //     return $user->hasAnyRoles(['doctors_admin','admin']);
+        // });
+        // Gate::define('manage_clinics',function($user){
+        //     return $user->hasAnyRoles(['clinics_admin','admin']);
+        // });
     }
 }

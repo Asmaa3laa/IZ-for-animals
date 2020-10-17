@@ -19,10 +19,12 @@ use App\BlogTag;
 Route::get('/', function () {
     return view('welcome');
 })->name('index');
-Route::group(['middleware' => ['auth','admin']], function () {
-    Route::get('admin/home', 'HomeController@adminHome')->name('admin.home');
+Route::group(['middleware' => ['auth','superadmin']], function () {
     Route::get('admin/create', 'AdminController@create')->name('admin.create');
     Route::post('admin/store', 'AdminController@store')->name('admin.store');
+});
+Route::group(['middleware' => ['auth','admin']], function () {
+    Route::get('admin/home', 'HomeController@adminHome')->name('admin.home');
     Route::get('admin/blog/create',function(){
         $tags=Tag::all();
         return view('admin.blogs.create',compact('tags'));
@@ -49,7 +51,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('login-role', function () {
     return view('auth.role');
 });
-Auth::routes();
 Route::get('blog/accepted','blogController@acceptedBlogs');
 Route::get('blog/pending','blogController@pendingBlogs');
 Route::get('blog/accept','blogController@accept');
@@ -62,12 +63,10 @@ Route::resource('clinic', 'ClinicController');
 Route::get('/get-state-list/{country_id}','CountryStateController@getStateList');
 Route::resource('tag','TagController');
 Route::resource('blogtag','BlogTagController')->only('show');
-Route::post ('/search','ClinicController@search')->name('search');
+Route::get ('/search','ClinicController@search')->name('search');
 Route::get('item/{item}', function($itemId){
     $blog = Blog::findOrFail($itemId);
     $blog_tags = BlogTag::where('blog_id','=',$itemId)->get();
     $all_tags = Tag::all();
-    // dd($blog);
     return view('admin.blogs.single-blog', compact('blog','blog_tags','all_tags'));
 });
-Auth::routes();
