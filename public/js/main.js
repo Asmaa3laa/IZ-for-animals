@@ -191,32 +191,32 @@
 	  });
 	//   function search(input)
 	//   {
-		$("#search").on("click", function (event){
-			event.preventDefault();	  
-			let input = $('#searcharea').val();
-			console.log(input);
-				$.ajaxSetup({
-				  headers: {
-						  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-						  }
-			  });
-			  $.ajax
-			  ({
-				  url:"/search",
-				  method:"GET",
-				  data:{input:input},
-				  dataType: 'json',
-				  success:function(data){
-					  console.log("success");
-					  console.log( data);                
-					  $('tbody').html(data.table_data);
-				  },
-				  error:function (responseJSON){
-					  console.log("error");
-					  console.log(responseJSON.responseText);
-				  }
-			  })
-	  });
+	// 	$("#search").on("click", function (event){
+	// 		event.preventDefault();	  
+	// 		let input = $('#searcharea').val();
+	// 		console.log(input);
+	// 			$.ajaxSetup({
+	// 			  headers: {
+	// 					  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	// 					  }
+	// 		  });
+	// 		  $.ajax
+	// 		  ({
+	// 			  url:"/search",
+	// 			  method:"GET",
+	// 			  data:{input:input},
+	// 			  dataType: 'json',
+	// 			  success:function(data){
+	// 				  console.log("success");
+	// 				  console.log( data);                
+	// 				  $('tbody').html(data.table_data);
+	// 			  },
+	// 			  error:function (responseJSON){
+	// 				  console.log("error");
+	// 				  console.log(responseJSON.responseText);
+	// 			  }
+	// 		  })
+	//   });
 
 })(jQuery);
 

@@ -34,22 +34,10 @@
 
         <form action="#" class="search-form">
           <div class="form-group">
-            <span class="fa fa-search btn" id="search"></span>
+            <a href="search"><span class="fa fa-search btn" id="search"></span></a>
             <input type="text" id ="searcharea" class="form-control" placeholder="Type a city or country and hit enter"/>
           </div>
         </form> 
-        <div class="table-responsive">
-      <table class="table table-striped table-bordered">
-       <thead>
-        <tr>
-         choose...
-        </tr>
-       </thead>
-       <tbody>
-
-       </tbody>
-      </table>
-     </div>
       <div class="row mt-5">
           @foreach($clinics as $clinic)
         <div class="col-md-6 col-lg-4  ftco-animate">

@@ -119,39 +119,9 @@ class ClinicController extends Controller
                 //
             }
             $total_row = $data->count();
-    //   if($total_row > 0)
-    //   {
-    //    foreach($data as $row)
-    //    {
-    //     $output .= '
-    //     <tr>
-    //     '.$row->name.'
-    //     </tr>
-    //     ';
-    //    }
-    //   }
-    //   else
-    //   {
-    //    $output = '
-    //    <tr>
-    //     <td align="center" colspan="5">No Data Found</td>
-    //    </tr>
-    //    ';
-    //   }
-    //   $data = array(
-    //    'table_data'  => $output,
-    //   );
-
+            dd($data);
       echo json_encode($data);
      }
-    //         return view('search', compact('data'));
-
-    //     $q = Input::get ( 'q' );
-	// if (count ( $data ) > 0)
-		// return view ( 'welcome' )->withDetails ( $user )->withQuery ( $q );
-	// else
-	// 	return view ( 'welcome' )->withMessage ( 'No Details found. Try to search again !' );
     
-    //     }
     }
 }
