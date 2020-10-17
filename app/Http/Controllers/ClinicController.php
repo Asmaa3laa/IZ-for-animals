@@ -97,33 +97,61 @@ class ClinicController extends Controller
     {
         //
     }
-    public function search()
+    public function search(Request $request)
     {
-        // if($request->ajax()) //this condition will check if this method receive ajax request or not
-        // {
-        //     $input = $request->get('input');
-        //     if($input != '')
-        //     {
-        //         $data = DB::table("countries")
-        //                     ->where("name" ,"like", "%".$input."%")
-        //                     ->orderBy("id","asc")
-        //                     ->select("id","name")->get();
-        //     }
-        //     // else
-            // {
-        //         $data = DB::table("users")->join("profiles","users.id","=","profiles.user_id")
-        //                     ->where(["role"=>$role,"profiles.is_verified"=>$state])
-        //                     ->orderBy("id","asc")
-        //                     ->select("users.id","name","email","website","image")->paginate(2);
-            // }
-        //     return view('search', compact('data'));
+        if($request->ajax()) //this condition will check if this method receive ajax request or not
+        {
+            $input = $request->get('input');
+            if($input != '')
+            {
+                $country = DB::table("countries")
+                            ->where("name" ,"like", "%".$input."%")
+                            ->select("id","name")->get();
+                $state = DB::table("states")
+                            ->where("name" ,"like", "%".$input."%")
+                            ->select("id","name")->get();
+                $data = DB::table('users')->where(["role"=>'clinic',"is_verified"=>1,"country_id"=>$country->id])->get();
+                if($data->count() == 0)
+                $data = DB::table('users')->where(["role"=>'clinic',"is_verified"=>1,"state_id"=>$state->id])->get();
+            }
+            else
+            {
+                //
+            }
+            $total_row = $data->count();
+    //   if($total_row > 0)
+    //   {
+    //    foreach($data as $row)
+    //    {
+    //     $output .= '
+    //     <tr>
+    //     '.$row->name.'
+    //     </tr>
+    //     ';
+    //    }
+    //   }
+    //   else
+    //   {
+    //    $output = '
+    //    <tr>
+    //     <td align="center" colspan="5">No Data Found</td>
+    //    </tr>
+    //    ';
+    //   }
+    //   $data = array(
+    //    'table_data'  => $output,
+    //   );
+
+      echo json_encode($data);
+     }
+    //         return view('search', compact('data'));
 
     //     $q = Input::get ( 'q' );
-	// $user = User::where ( 'name', 'LIKE', '%' . $q . '%' )->orWhere ( 'email', 'LIKE', '%' . $q . '%' )->get ();
-	// if (count ( $user ) > 0)
-	// 	return view ( 'welcome' )->withDetails ( $user )->withQuery ( $q );
+	// if (count ( $data ) > 0)
+		// return view ( 'welcome' )->withDetails ( $user )->withQuery ( $q );
 	// else
 	// 	return view ( 'welcome' )->withMessage ( 'No Details found. Try to search again !' );
-    // 
+    
+    //     }
     }
 }

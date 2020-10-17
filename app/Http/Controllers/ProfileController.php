@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\Validator;
 use App\User;
 use App\Country;
 use App\State;
-
+use App\Tag;
+use App\Blog;
+use Auth;
 class ProfileController extends Controller
 {
     /**
@@ -52,10 +54,12 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
+        $tags=Tag::all();
         $user = User::find($id);
         $countries = Country::pluck('name', 'id');
         $states = State::where('country_id',$user->country_id)->get();
-        return view('users.profile', compact('user','countries','states'));
+        $blogs = Blog::where('user_id',Auth::id())->paginate(10);
+        return view('users.profile', compact('user','countries','states','tags','blogs'));
     }
 
     /**

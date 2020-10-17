@@ -16,10 +16,10 @@ use Auth;
 
 class BlogController extends Controller
 {
-    // public function __construct()
-    // {
-    // $this->middleware('can:create.blogs', ['only' => ['create', 'store', 'edit', 'delete']]);
-    // }
+    public function __construct()
+    {
+    $this->middleware('can:create.blogs', ['only' => ['create', 'store', 'edit','update','delete']]);
+    }
 
     /**
      * Display a listing of the resource.
@@ -28,8 +28,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        if(Auth::check() && Auth::user()->role == 'doctor')
-        {
+        if(Auth::user() && Auth::user()->role == 'doctor'or'clinic')
+        { 
             // dd( Auth::user()->role);
             // if(Auth::user()->role == 'doctor')
             // {
@@ -87,8 +87,8 @@ class BlogController extends Controller
             $blog = Blog::create([
             "title" => $request->title,
             'content' => $request->content,
-            "user_id"=>1,
-            // "user_id" =>Auth::id(),
+            // "user_id"=>1,
+            "user_id" =>Auth::id(),
             'image' => $image_path,
             ]);
             $tags = $request->tags;
@@ -97,7 +97,7 @@ class BlogController extends Controller
             $tags = BlogTag::create([
                 "tag_id"=>$tag,
                 "blog_id"=>$blog->id,   
-            ]);
+            ]);            
             }
             Db::commit();
         } 
@@ -112,7 +112,14 @@ class BlogController extends Controller
         // commit changes if every thing goes ok
         $latest_blogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
         //redircet
+         if(Auth::user()->role == 'clinic')
+         {
         return  redirect("blog/".$blog->id)->with('success','Blog has added successfuly');
+         }
+        else
+        {
+        return  redirect("/blog/pending")->with('success','Blog has added successfuly');
+        }
 
     }
 
@@ -183,10 +190,25 @@ class BlogController extends Controller
     }
     public function accept(Request $request)
     {
+        // $blog = Blog::find($_POST['blogId']);
         $blog = Blog::find($request->get('blogId'));
+        $for_doctors = $request->get('for_doctor');
+        if($for_doctors == 'true')
+        {
+            $blog->for_doctors = 1;
+        }
         $blog->is_verified = 1;
         $blog->update();
-        return response()->json(['success'=>'Got Simple Ajax Request']);
+        $tags = $request->get('selected_tags');
+        BlogTag::where('blog_id','=',$blog->id)->delete();
+        foreach($tags as $tag )
+        {
+            $tags = BlogTag::create([
+                "tag_id"=>$tag,
+                "blog_id"=>$blog->id,   
+            ]); 
+        }  
+        return response()->json(['success'=>'Got Simple Ajax Request','for_doctors'=>$for_doctors,'tags'=>$tags]);
     }
     /**
      * Remove the specified resource from storage.
@@ -196,7 +218,11 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $blog = Blog::find($id); 
+        // dd($blog);
+        // $this->authorize('delete', $blog);
+        $blog->delete();
+        return redirect('profile/'.Auth::id())->with('success','Blog deleted successfully ');
     }
 
     public function denyBlog($id)

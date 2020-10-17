@@ -14,7 +14,11 @@
 		  </div>
 		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	    	<a class="navbar-brand" href="index.html">AAA For Animals</a>
+        <div class="panel-body">
+          <img src="{{ asset("/images/All About Animals' logo photoshop.png") }}" style="width:80px;height:80px;"/>
+      </div>
+        <p class="navbar-brand" style="align-content: center;margin-top:30px;">All About Animals</p>
+        
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="fa fa-bars"></span> Menu
 	      </button>
@@ -49,10 +53,17 @@
                         {{ Auth::user()->user_name }} <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdown">
+                      @if(Auth::user()->role != 'admin')
                       <a class="dropdown-item" href="{{route('profile.show',Auth::id())}}">
                         <i class="fa fa-user"></i>
                               {{ __('profile') }}
                           </a>
+                      @else
+                      <a class="dropdown-item" href="{{route('admin.home',Auth::id())}}">
+                        <i class="fa fa-user"></i>
+                              {{ __('admin panel') }}
+                          </a>
+                      @endif
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();">

@@ -28,7 +28,7 @@
                 <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
               </div>
               <h3 class="heading"><a href="{{ route('blog.show',$tag_blog->blog->id) }}">{{$tag_blog->blog->title}}</a></h3>
-              <p class="content">{{\Illuminate\Support\Str::limit($tag_blog->blog->content,100, $end='...') }}</p>       
+              <p class="content">{{\Illuminate\Support\Str::limit(strip_tags(html_entity_decode($tag_blog->blog->content)),100, $end='...') }}</p>       
             </div>
             <a href="{{ route('blog.show',$tag_blog->blog->id) }}" class="btn btn-info" style="background-color: #052958;" role="button">Read More</a>   
           </div>

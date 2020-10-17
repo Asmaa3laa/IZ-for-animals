@@ -1,4 +1,8 @@
-@extends('layouts.index')
+@extends('layouts.admin')
+@section('head')
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+@endsection
 @section('content')
 @if($errors->any())
   <div class="alert alert-danger">
@@ -42,7 +46,7 @@
     @if($errors->first('tags'))
     <h6 style="color: red;">{{$errors->first('tags') }}</h6>
     @endif
-    <button class="site-btn btn-success submit-order-btn">ADD</button>
+    <button class="site-btn btn-success submit-order-btn btn-block mb-5">ADD</button>
 
 </form>
 </div>
@@ -56,4 +60,10 @@
         });
     });
 </script>
+
+<script>
+		$(document).ready(function() {
+			$('.content').summernote();
+		});
+	</script>
 @endsection

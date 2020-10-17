@@ -1,14 +1,16 @@
-@extends('layouts.index')
-@section('content')
+
 @if($errors->any())
   <div class="alert alert-danger">
     <h3>please correct your errors</h3> 
   </div>
 @endif 
-<div class="container">
+<div class="container profile">
     <div class="card card-info">
         <div class="card-header">
           <h3 class="card-title">Update Your Data</h3>
+          <span>
+          <a href="{{route('password.request')}}">Reset Password</a>
+          </span>
         </div>
     <!-- form start -->
     <form class="form-horizontal" method="post" action="{{route('profile.update',$user->id)}}" enctype="multipart/form-data">
@@ -244,4 +246,3 @@
 
 }
   </script>
-@endsection

@@ -23,25 +23,26 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        
         $this->registerPolicies();
 
-        Gate::define('manage.users',function($user){
-            return $user->hasAnyRoles(['admin']);
-        });
-        Gate::define('edit.users',function($user){
-            return $user->hasRole('admin');
-        });
+        // Gate::define('manage.users',function($user){
+        //     return $user->hasAnyRoles(['admin']);
+        // });
+        // Gate::define('edit.users',function($user){
+        //     return $user->hasRole('admin');
+        // });
         Gate::define('create.blogs',function($user){
-            return $user->hasRole(['clinic','admin']);
+            return $user->hasRole('clinic');
         });
-        Gate::define('blogs.admin',function($user){
-            return $user->hasRole('blogs_admin');
-        });
-        Gate::define('doctors_admin',function($user){
-            return $user->hasRole('doctors_admin');
-        });
-        Gate::define('clinics_admin',function($user){
-            return $user->hasRole('clinics_admin');
-        });
+        // Gate::define('manage_blogs',function($user){
+        //     return $user->hasAnyRoles(['blogs_admin','admin']);
+        // });
+        // Gate::define('manage_doctors',function($user){
+        //     return $user->hasAnyRoles(['doctors_admin','admin']);
+        // });
+        // Gate::define('manage_clinics',function($user){
+        //     return $user->hasAnyRoles(['clinics_admin','admin']);
+        // });
     }
 }

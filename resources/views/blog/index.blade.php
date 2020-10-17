@@ -1,7 +1,7 @@
 {{-- @extends('layouts.nav-footer') --}}
 @extends('layouts.index')
 @section('content')    
-<section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
+<!-- <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
       <div class="row no-gutters slider-text align-items-end">
@@ -11,7 +11,36 @@
         </div>
       </div>
     </div>
-  </section>  
+  </section>   -->
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width:100%;height:400px;">
+            {{-- <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol> --}}
+            <div class="carousel-inner" style="height:100%;width:100%;">
+              <div class="carousel-item active"style="height:100%;width:100%;">
+                <img class="d-block w-100" style="max-width: 100%;height: 100%;display: block;" src="{{url('images/main.jpg')}}" alt="First slide">
+                <div class="carousel-caption d-none d-md-block">
+                  <h2 class="centered" style="color:navy;font-weight:bold;background: rgba(255, 255, 255, 0.75);">All About Animal helping veterinarians to create thier online clinic</h2>
+                </div>
+              </div>
+              <div class="carousel-item" style="height:100%;width:100%;">
+                <img class="d-block w-100" style="max-width: 100%;height: 100%;display: block;" src="{{url('images/bg_1.jpg')}}" alt="Second slide">
+                <div class="carousel-caption d-none d-md-block">
+                  <h2 class="centered"style="background: rgba(255, 255, 255, 0.75);color:navy;font-weight:bold;">All About Animal is your way to take better care of animal health</h2>
+                </div>
+              </div>
+            </div>
+              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+          </div>    
   <section class="ftco-section bg-light"> 
     <div class="container">
       <div class="row d-flex">
@@ -52,7 +81,7 @@
         </div>
       </div> --}}
     </div>
-    {{-- <button>{{ $blogs->links() }}</button> --}}
+    {{ $blogs->links() }}
      </section>
     <hr style="text-align:center; border:2px #052958 dashed;">   
     <section>
