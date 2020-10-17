@@ -9,7 +9,7 @@
         <div class="card-header">
           <h3 class="card-title">Update Your Data</h3>
           <span>
-          <a href="{{route('password.request')}}">Reset Password</a>
+          <a class="btn btn-link" style="float: right" href="{{route('password.request')}}"><i class="fa fa-gear"></i>Reset Password</a>
           </span>
         </div>
     <!-- form start -->
@@ -141,6 +141,7 @@
                     @enderror
                   </div>
             </div> 
+            @if ($user->role == 'clinic')
             <div class="form-check">
             <input class="col-9" type="text" id="location" name="location" hidden value="{{$user->location}}">
                 <input class="col-9" type="text" id="location_lat" name="location_lat" hidden value="{{$user->location_lat}}">
@@ -160,7 +161,7 @@
                 
               </div>
               <div id="mapid" style="margin: 8px;"></div>
-              
+              @endif
             
         </div>
         <!-- /.card-body -->

@@ -88,12 +88,10 @@ class ProfileController extends Controller
     {
         $user = User::find($id);
             if ($user->role == 'doctor') {
-                $validator = Validator::make($request->all(),[
+                $request->validate([
                     'name' => ['required', 'string', 'max:100'],
                     'user_name' => ['required', 'string', 'max:50', 'unique:users'],
                     'email' => ['required','string', 'email:rfc,dns', 'unique:users'],
-                    'image' => ['required', 'image', 'mimes:jpeg,png,jpg',],
-                    'card' => ['required', 'image', 'mimes:jpeg,png,jpg',],
                     
                 ]);
 
@@ -104,12 +102,10 @@ class ProfileController extends Controller
                     
                 ]);
             } else{
-                $validator = Validator::make($request->all(),[
+                $request->validate([
                     'name' => ['required', 'string', 'max:100'],
                     'user_name' => ['required', 'string', 'max:50', 'unique:users'],
                     'email' => ['required','string', 'email:rfc,dns', 'unique:users'],
-                    'image' => ['required', 'image', 'mimes:jpeg,png,jpg',],
-                    'card' => ['required', 'image', 'mimes:jpeg,png,jpg',],
                     'phone' => ['required','numeric','regex:/[0-9]{11}/', 'unique:users'],
                     'address' =>['required', 'string','max:250'],
                     'location' =>['required', 'string', 'max:500'],

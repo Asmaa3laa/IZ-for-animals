@@ -30,17 +30,19 @@
       <!-- TAAAAAAAAAAAABS -->
       <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" id="main-tab" data-toggle="tab" href="#main" role="tab" aria-controls="main" aria-selected="true">My Profile</a>
+    <a class="nav-link active h6" style="color: black" id="main-tab" data-toggle="tab" href="#main" role="tab" aria-controls="main" aria-selected="true">Profile</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="update-tab" data-toggle="tab" href="#update" role="tab" aria-controls="update" aria-selected="false">Update Profile</a>
+    <a class="nav-link h6" style="color: black" id="update-tab" data-toggle="tab" href="#update" role="tab" aria-controls="update" aria-selected="false">Update Profile</a>
   </li>
+  @if ($user->role == 'clinic')
   <li class="nav-item">
-    <a class="nav-link" id="blog-tab" data-toggle="tab" href="#blog" role="tab" aria-controls="blog" aria-selected="false">Clinic's Blogs</a>
+    <a class="nav-link h6" style="color: black" id="blog-tab" data-toggle="tab" href="#blog" role="tab" aria-controls="blog" aria-selected="false">Clinic's Blogs</a>
   </li>
+  @endif
 </ul>
 <div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="main" role="tabpanel" aria-labelledby="main-tab">
+  <div class="tab-pane fade {{$errors->all() ? '' : 'show active'}}" id="main" role="tabpanel" aria-labelledby="main-tab">
   <div class="row">
       <div class="{{$user->role == 'clinic' ? 'col-6' : 'offset-2 col-8'}} card card-info">
         <div class="card-body ">
@@ -91,7 +93,7 @@
 </div>
 </div>
   <!-- tab 2 -->
-  <div class="tab-pane fade" id="update" role="tabpanel" aria-labelledby="update-tab">
+  <div class="tab-pane fade {{$errors->all() ? 'show active' : ''}}" id="update" role="tabpanel" aria-labelledby="update-tab">
       @include('users.edit') 
   </div>
   <!-- tab 3 -->

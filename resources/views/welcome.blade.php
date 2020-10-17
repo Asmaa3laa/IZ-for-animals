@@ -89,13 +89,13 @@
               <div class="carousel-item active"style="height:100%;width:100%;">
                 <img class="d-block w-100" style="max-width: 100%;height: 100%;display: block;" src="{{url('images/main.jpg')}}" alt="First slide">
                 <div class="carousel-caption d-none d-md-block">
-                  <h2 class="centered" style="color:navy;font-weight:bold;background: rgba(255, 255, 255, 0.75);">All About Animal helping veterinarians to create thier online clinic</h2>
+                  <p class="centered h2" style="background: rgba(255, 255, 255, 0.5);color:navy;font-weight:bold;">All About Animal helping veterinarians to create thier online clinic</p>
                 </div>
               </div>
               <div class="carousel-item" style="height:100%;width:100%;">
                 <img class="d-block w-100" style="max-width: 100%;height: 100%;display: block;" src="{{url('images/bg_1.jpg')}}" alt="Second slide">
                 <div class="carousel-caption d-none d-md-block">
-                  <h2 class="centered"style="background: rgba(255, 255, 255, 0.75);color:navy;font-weight:bold;">All About Animal is your way to take better care of animal health</h2>
+                  <p class="centered h2"style="background: rgba(255, 255, 255, 0.5);color:navy;font-weight:bold;">All About Animal is your way to take better care of animal health</p>
                 </div>
               </div>
             </div>
