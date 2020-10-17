@@ -40,9 +40,9 @@ Route::group(['middleware' => ['auth','admin']], function () {
         });
 });
 
-Route::get('map', function () {
-    return view('map');
-});
+// Route::get('map', function () {
+//     return view('map');
+// });
 Auth::routes();
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('profile', 'ProfileController');
@@ -71,3 +71,4 @@ Route::get('item/{item}', function($itemId){
     $all_tags = Tag::all();
     return view('admin.blogs.single-blog', compact('blog','blog_tags','all_tags'));
 });
+Route::post('/search-state','ClinicController@searchByState');

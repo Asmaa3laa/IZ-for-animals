@@ -110,7 +110,7 @@ class ProfileController extends Controller
                     'email' => ['required','string', 'email:rfc,dns', 'unique:users'],
                     'image' => ['required', 'image', 'mimes:jpeg,png,jpg',],
                     'card' => ['required', 'image', 'mimes:jpeg,png,jpg',],
-                    'phone' => ['required','numeric','regex:/(01)[0-2]{1}[0-9]{8}/', 'unique:users'],
+                    'phone' => ['required','numeric','regex:/[0-9]{11}/', 'unique:users'],
                     'address' =>['required', 'string','max:250'],
                     'location' =>['required', 'string', 'max:500'],
                     'location_lat' =>['required', 'numeric'],

@@ -11,7 +11,7 @@ $('#country').change(function(){
            url:'/get-state-list/'+countryID,
            success:function(res){               
             if(res){
-                console.log(res);
+                // console.log(res);
                 $("#state").empty();
                 $("#state").append('<option>Select State</option>');
                 $.each(res,function(key,value){
