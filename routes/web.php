@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth','admin']], function () {
     Route::get('users/clinic','UserController@clinicUsers');
     Route::get('users/pending','UserController@pendingUsers');
     Route::get('users/verify/{id}','UserController@verifyUser');
+    Route::get('blog-deny/{id}','BlogController@denyBlog');
     Route::get('send-mail', function () {
     return view('admin.sendMail'); 
         });

@@ -1,14 +1,18 @@
 @extends('layouts.admin')
-<style>
-    img {
+<head>
+  <link rel="stylesheet" href="{{ asset('css/img_popup.css') }}">
+  <style>
+    /* img {
         display: block;
         max-width:230px;
         max-height:95px;
         width: auto;
         height: auto;
         
-      }
-      </style> 
+      } */
+     
+  </style> 
+</head>
 @section('content')
 <div class="container">
   @if(session('verify'))
@@ -82,17 +86,18 @@
 
           <tr>
             {{-- <td><a href="pages/examples/invoice.html">OR9842</a></td> --}}
-            <td><img src="{{asset('storage/'.$user->image)}}" style="border-radius: 50%;"/></td>
-            <td><img src="{{asset('storage/'.$user->card)}}"/></td>
-            {{-- <td>
-              <div class="ftco-animate">
-                <div class="work mb-4 img align-items-end" style="background-image: url({{asset('storage/'.$user->card)}});">
-                  <a href="{{asset('storage/'.$user->card)}}" class="icon image-popup d-flex justify-content-center align-items-center">
-                    <span class="fa fa-expand"></span>
-                  </a>
-                </div>
-              </div>
-            </td> --}}
+            <td><img src="{{asset('storage/'.$user->image)}}" style="border-radius: 50%; width:100%;max-width:200px"/></td>
+            <td><img id="myImg" src="{{asset('storage/'.$user->card)}}" style="width:100%;max-width:300px"/></td>
+            <div id="myModal" class="modal">
+
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+            
+              <img class="modal-content" id="img01">
+            
+              <div id="caption"></div>
+            </div>
+        
             <td>{{$user->name}}</td>
             <td>{{$user->user_name}}</td>
             <td>{{$user->email}}</td>
@@ -143,6 +148,6 @@
     There are no users.
     </div>
   @endif
-  
-  
+<script src="{{asset('js/img_popup.js')}}"></script>
+
 @endsection

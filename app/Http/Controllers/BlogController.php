@@ -224,5 +224,26 @@ class BlogController extends Controller
         $blog->delete();
         return redirect('profile/'.Auth::id())->with('success','Blog deleted successfully ');
     }
+
+    public function denyBlog($id)
+    {
+        try {
+            DB::beginTransaction();
+            $blog = Blog::find($id);
+            $name = $blog->user->name;  
+            $title = $blog->title;      
+            Mail::to($blog->user->email)->send(new blog_denyMail($name, $title));
+            // $blog->is_verified = '0'
+            Db::commit();
+            return Redirect::to('blog/pending')->with('reject',"Reject email has been send and blog isn't confirmed");
+            } 
+        catch (\Throwable $th) {
+            //throw $th;
+            // dd($th);
+            DB::rollBack();
+            return Redirect::to('blog/pending')->with('failed',"Email address may be not accurate, it can't send email!");
+
+        }
+    }
     
 }
