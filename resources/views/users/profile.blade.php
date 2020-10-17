@@ -1,6 +1,5 @@
 @extends('layouts.index')
 @section('content')
-
 <section class="container">
   @if(session('update'))
     <div class="alert alert-success disapled" role="alert">
@@ -92,4 +91,3 @@
 </div>
 </section>
 @endsection
-

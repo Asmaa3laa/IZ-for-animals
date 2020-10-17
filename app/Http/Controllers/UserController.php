@@ -52,6 +52,18 @@ class UserController extends Controller
             // dd($users);
         return view('admin.users.index', compact('users'));
     }
+    
+    public function UpdatingUsers()
+    {
+        $users = User::where([
+            ['role','!=','admin'],
+            ['is_verified',1],
+            ['updated_at','!=',null]
+            ])->paginate(3);
+            // dd($users);
+        return view('admin.users.index', compact('users'));
+    }
+    
 
     public function verifyUser($id){
         try {
