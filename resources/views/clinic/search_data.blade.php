@@ -6,14 +6,15 @@
         </a>
         <div class="text p-4">
             <div class="meta mb-2">
-            <div><a href="#">{{$clinic->user_name}}</a></div>
+            <div><a class="h6" href="{{ route('clinic.show',$clinic->id) }}">{{$clinic->user_name}}</a></div>
             <p>{{$clinic->address}}</p>
             <p>{{$clinic->state->name}}</p>
             <p>{{$clinic->country->name}}</p>
             <div><span class="fa fa-phone"></span>  {{$clinic->phone}}</div>
           </div>
-        <h3 class="heading"><a style="color:blue;"href="{{$clinic->location}}">Clinic Location</a></h3>
+          <a class="btn-link" href="{{$clinic->location}}"><i class="fa fa-map-marker"></i> Location</a></h6>
         </div>
+      </div>
       </div>
     </div>
     @endforeach
