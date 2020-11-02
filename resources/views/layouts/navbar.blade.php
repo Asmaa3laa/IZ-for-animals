@@ -15,7 +15,7 @@
 		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
         <div class="panel-body">
-          <img src="{{ asset("/images/All About Animals' logo photoshop.png") }}" style="width:80px;height:80px;"/>
+          <img src="{{ asset("/images/All About Animals_ logo photoshop.png") }}" style="width:80px;height:80px;"/>
       </div>
         <p class="navbar-brand" style="align-content: center;margin-top:30px;">All About Animals</p>
         
@@ -26,7 +26,7 @@
 	        <ul class="navbar-nav ml-auto">
             
           <li class="nav-item {{(request()->is('/')) ? 'active' : '' }}"><a href="{{route('index')}}" class="nav-link">HOME</a></li>
-          <li class="nav-item {{(request()->is('about')) ? 'active' : '' }}"><a href="#" class="nav-link">ABOUT</a></li>
+          <li class="nav-item {{(request()->is('about')) ? 'active' : '' }}"><a href="{{route('about')}}" class="nav-link">ABOUT</a></li>
 	        	{{-- <li class="nav-item"><a href="#" class="nav-link">SERVICES</a></li>
 	        	<li class="nav-item"><a href="#" class="nav-link">DIAGNOSES OF ILLnESSES</a></li> --}}
             <li class="nav-item {{(request()->is('clinic')) ? 'active' : '' }}"><a href="{{route('clinic.index')}}" class="nav-link">CLINICS</a></li>
@@ -53,7 +53,7 @@
                         {{ Auth::user()->user_name }} <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdown">
-                      @if(Auth::user()->role != 'admin')
+                      @if(Auth::user()->role == 'doctor'or Auth::user()->role =='clinic')
                       <a class="dropdown-item" href="{{route('profile.show',Auth::id())}}">
                         <i class="fa fa-user"></i>
                               {{ __('profile') }}

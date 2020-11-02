@@ -17,11 +17,11 @@
     <div class="card-header border-transparent">
       
         @if($blogs->count() >= '1')
-          <!-- @if(($blogs->first()->is_verified) == '1')
+           {{-- @if(($blogs->first()->is_verified) == '1')
           <h3 class="card-title">Accepted Blogs</h3>
           @else 
           <h3 class="card-title">Pending Blogs</h3>
-          @endif -->
+          @endif  --}}
           <div id="details"></div>
           <div id="index">
           <div class="card-tools">
@@ -88,14 +88,15 @@ function preview(param)
 			  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 			}
 		  });
-      $.ajax
-      ({
-          method: 'GET',
-          url: 'http://localhost:8000/item/' +blogId,
-          data: {'blogId': blogId}    
-      });
+      // $.ajax
+      // ({
+      //     method: 'GET',
+      //     url: 'http://localhost:8000/item/' +blogId,
+      //     data: {'blogId': blogId}    
+      // });
       $("#index").hide();
       $.get('/item/'+blogId, function(response){
+        console.log(response);
     $('#details').html(response);
     });
     

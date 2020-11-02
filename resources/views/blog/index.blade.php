@@ -53,7 +53,7 @@
                 <div class="meta mb-2">
                 <div>{{$blog->created_at}}</div>
                 <div><a href="#">{{$blog->user->user_name}}</a></div>
-                <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
+                {{-- <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div> --}}
               </div>
               <h3 class="heading"><a href="{{ route('blog.show',$blog->id) }}">{{$blog->title}}</a></h3>
               <p class="content">{{\Illuminate\Support\Str::limit(strip_tags(html_entity_decode($blog->content)),100, $end='...') }}</p>       

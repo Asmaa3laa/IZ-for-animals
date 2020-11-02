@@ -24,8 +24,8 @@
             <div class="text p-4">
                 <div class="meta mb-2">
                 <div>{{$tag_blog->blog->created_at}}</div>
-                <div>{{$tag_blog->blog->user->user_name}}</div>
-                <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
+                <a href="{{route('clinic.show',$tag_blog->blog->user)}}"><div class="icon-person" style="color:#052958;">{{$tag_blog->blog->user->user_name}}</div></a>
+                {{-- <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div> --}}
               </div>
               <h3 class="heading"><a href="{{ route('blog.show',$tag_blog->blog->id) }}">{{$tag_blog->blog->title}}</a></h3>
               <p class="content">{{\Illuminate\Support\Str::limit(strip_tags(html_entity_decode($tag_blog->blog->content)),100, $end='...') }}</p>       

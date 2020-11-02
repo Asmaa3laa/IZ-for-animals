@@ -41,9 +41,9 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Home</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
+      {{-- <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
-      </li>
+      </li> --}}
     </ul>
 
     <!-- SEARCH FORM -->
@@ -208,7 +208,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
   <a href="{{url('/')}}" class="brand-link">
-    <img src="{{ asset("/images/All About Animals' logo photoshop.png") }}" style="width:80px;height:80px;"/>
+    <img src="{{ asset("/images/All About Animals_ logo illustrator.png")}}" style="width:80px;height:80px;"/>
       {{-- <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8"> --}}
       <span class="brand-text font-weight-light">All About Animal</span>
@@ -240,7 +240,7 @@
               </p>
             </a>
 
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview {{(request()->is('users/doctor')) ? 'menu-open' : '' }}{{(request()->is('users/clinic')) ? 'menu-open' : '' }}{{(request()->is('users/pending')) ? 'menu-open' : '' }}">
           <a href="" class="nav-link {{(request()->is('users/doctor')) ? 'active' : '' }}{{(request()->is('users/clinic')) ? 'active' : '' }}{{(request()->is('users/pending')) ? 'active' : '' }}">
               <i class="nav-icon fas fa-users"></i>
               <p>
@@ -269,9 +269,9 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview {{(request()->is('blog/pending')) ? 'menu-open' : '' }}{{(request()->is('blog/accepted')) ? 'menu-open' : '' }}{{(request()->is('admin/blog/create')) ? 'menu-open' : '' }}">
             <a href="" class="nav-link {{(request()->is('blog/pending')) ? 'active' : '' }}{{(request()->is('blog/accepted')) ? 'active' : '' }}">
-                <i class="nav-icon fas fa-users"></i>
+                <i class="nav-icon fas fa-book"></i>
                 <p>
                   Blogs
                   <i class="fas fa-angle-left right"></i>
@@ -291,16 +291,16 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{url('/admin/blog/create')}}" class="nav-link {{(request()->is('blog/create')) ? 'active' : '' }}">
+                  <a href="{{url('/admin/blog/create')}}" class="nav-link {{(request()->is('admin/blog/create')) ? 'active' : '' }}">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Create Blog</p>
                   </a>
                 </li>
               </ul>
             </li>
-            <li class="nav-item has-treeview">
+            <li class="nav-item has-treeview {{(request()->is('admin/create')) ? 'menu-open' : '' }}{{(request()->is('admin/')) ? 'menu-open' : '' }}">
               <a href="" class="nav-link {{(request()->is('admin/create')) ? 'active' : '' }}{{(request()->is('admin/')) ? 'active' : '' }}">
-                  <i class="nav-icon fas fa-users"></i>
+                  <i class="nav-icon fas fa-user"></i>
                   <p>
                     Admins
                     <i class="fas fa-angle-left right"></i>
@@ -313,12 +313,35 @@
                       <p>Add Admins</p>
                     </a>
                   </li>
-                  {{-- <li class="nav-item">
-                    <a href="{{url('blog/pending')}}" class="nav-link {{(request()->is('blog/pending')) ? 'active' : '' }}">
+                  <li class="nav-item">
+                    <a href="{{url('admin')}}" class="nav-link {{(request()->is('blog/pending')) ? 'active' : '' }}">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Blog's Admins</p>
+                      <p>Admins List</p>
                     </a>
-                  </li> --}}
+                  </li>
+                </ul>
+            </li>
+            <li class="nav-item has-treeview {{(request()->is('tag/create')) ? 'menu-open' : '' }}{{(request()->is('tag')) ? 'menu-open' : '' }}">
+              <a href="" class="nav-link {{(request()->is('tag/create')) ? 'active' : '' }}{{(request()->is('tag')) ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-tags"></i>
+                  <p>
+                    Tags
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{url('tag/create')}}" class="nav-link {{(request()->is('tag/create')) ? 'active' : '' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Add Tags</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{url('tag')}}" class="nav-link {{(request()->is('tag')) ? 'active' : '' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>List Tags</p>
+                    </a>
+                  </li>
                 </ul>
               </li>
         </ul>

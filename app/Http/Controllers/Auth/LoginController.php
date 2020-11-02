@@ -48,12 +48,18 @@ class LoginController extends Controller
 
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
         {
-            if (auth()->user()->role == 'blogs_admin' or auth()->user()->role =='admin' or auth()->user()->role =='clinics_admin' or auth()->user()->role =='doctors_admin') {
+            // dd(auth()->user()->role);
+            if (auth()->user()->role == "blogs_admin" or auth()->user()->role =='admin' or auth()->user()->role =='clinics_admin' or auth()->user()->role =='doctors_admin') 
+            {
                 return redirect()->route('admin.home')->with('status', __('You logged in successfully as an admin..'));
-            }else{
+            }
+            else
+            {
                 return redirect()->route('home')->with('status', __('You logged in successfully..'));
             }
-        }else{
+        }
+        else
+        {
             return redirect()->route('login')
                 ->with('error','Email address and password are wrong.');
         }

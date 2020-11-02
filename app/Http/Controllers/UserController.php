@@ -52,7 +52,7 @@ class UserController extends Controller
             // dd($users);
         return view('admin.users.index', compact('users'));
     }
-    
+
     public function UpdatingUsers()
     {
         $users = User::where([

@@ -28,16 +28,18 @@
   </div>
 <section class="ftco-section bg-light">
   <div class="container">
+    <form action="{{route('search')}}" method="Get"  class="search-form" style="width:35%; margin-top:80px;">
+          {{ csrf_field() }}
+          <div class="form-group" >
+            <span class="fa fa-search btn submit" id="search"></span>
+            <input type="text" name="searcharea" id ="searcharea" class="form-control" placeholder="Type a clinic name and hit enter"/>
+          </div>
+        </form>  
   <span class="menuitem"><a href="/" class="btn btn-default"><i class="fa fa-home"></i> Home</a></span>
   <span class="menuitem"><a href="/clinic" class="btn btn-default"><i class="fa fa-globe"></i> Clinics</a></span>
   {{-- <span class="menuitem"><a href="/countries" class="btn btn-default"><i class="fa fa-globe"></i> Countries</a></span> --}}
 
-        {{-- <form action="#" class="search-form">
-          <div class="form-group">
-            <a href="search"><span class="fa fa-search btn" id="search"></span></a>
-            <input type="text" id ="searcharea" class="form-control" placeholder="Type a city or country and hit enter"/>
-          </div>
-        </form>  --}}
+       
 
         <div class="row">
           <div class="col-6">

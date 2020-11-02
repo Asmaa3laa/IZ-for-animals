@@ -8,6 +8,7 @@ use App\Country;
 use App\State;
 use App\User;
 use App\Blog;
+use Illuminate\Support\Facades\DB;
 
 
 class ClinicController extends Controller
@@ -100,38 +101,24 @@ class ClinicController extends Controller
     }
     public function search(Request $request)
     {
-        if($request->ajax()) //this condition will check if this method receive ajax request or not
-        {
-            $input = $request->get('input');
+            $input = $request->get('searcharea');
             if($input != '')
             {
-                $country = DB::table("countries")
-                            ->where("name" ,"like", "%".$input."%")
-                            ->select("id","name")->get();
-                $state = DB::table("states")
-                            ->where("name" ,"like", "%".$input."%")
-                            ->select("id","name")->get();
-                $data = DB::table('users')->where(["role"=>'clinic',"is_verified"=>1,"country_id"=>$country->id])->get();
-                if($data->count() == 0)
-                $data = DB::table('users')->where(["role"=>'clinic',"is_verified"=>1,"state_id"=>$state->id])->get();
+                $clinics= User::where("user_name" ,"like", "%".$input."%")->where(["role"=>'clinic',"is_verified"=>1])->get();
+                $countries = Country::pluck('name', 'id');
+                $states = State::pluck('name', 'id');
+                return view('clinic.index',compact('clinics','countries','states'));
+
             }
             else
             {
-                //
-            }
-            $total_row = $data->count();
-            dd($data);
-      echo json_encode($data);
-     }
-    
+                return redirect()->back();
+            }    
     }
 
 
     public function searchByState(Request $request){
-        // dd($request->option);
         $clinics = User::where(['state_id'=>$request->option, 'is_verified'=>'1'])->get();
-        // dd($clinics);
-        // return $request->option;
         return view('clinic.search_data',compact('clinics'));
     }
 }

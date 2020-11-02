@@ -24,9 +24,9 @@
         </select>
          <h3></h3> 
         @endforeach -->
-        <!-- <form  class="checkout-form " enctype="multipart/form-data" method="POST" action="{{route('blog.update',$blog->id)}}">
+        {{-- <!-- <form  class="checkout-form " enctype="multipart/form-data" method="POST" action="{{route('blog.update',$blog->id)}}">
               {{ method_field('PATCH') }} 
-              {{ csrf_field() }} -->
+              {{ csrf_field() }} --> --}}
             <div class="form-row align-items-center">
             <label for="tags">Choose blog's tags</label>
               <select style="height:100px;" id="tags" name="tags[]" class="form-control mb-2 js-example-basic-single {{ $errors->first('tag') ? 'is-invalid':''}}" autofocus multiple>
@@ -51,9 +51,6 @@
           <button id="accept" data-id="{{$blog->id}}" class="btn btn-block btn-success" style="justify-content: center;" onclick="accept(this)">
             <span class="fa fa-pencil-square-o submit-order-btn ">Accept</span>
           </button>
-          {{-- <button id="accept" data-id="{{$blog->id}}" class="btn btn-block btn-Danger" onclick="deny(this)">
-            <span class="fa fa-pencil-square-o">Deny</span>
-          </button> --}}
           <a href="{{route('blog-deny',$blog->id)}}" class="btn btn-block btn-Danger">
             <span class="fa fa-pencil-square-o">Deny</span>
           </a>

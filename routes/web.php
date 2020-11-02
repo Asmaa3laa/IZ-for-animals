@@ -17,24 +17,26 @@ use App\BlogTag;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $latest_blogs = Blog::orderBy('created_at', 'desc')->take(2)->get();
+    return view('welcome',compact('latest_blogs'));
 })->name('index');
-Route::group(['middleware' => ['auth','superadmin']], function () {
-    Route::get('admin/create', 'AdminController@create')->name('admin.create');
-    Route::post('admin/store', 'AdminController@store')->name('admin.store');
-});
+
 Route::group(['middleware' => ['auth','admin']], function () {
     Route::get('admin/home', 'HomeController@adminHome')->name('admin.home');
     Route::get('admin/blog/create',function(){
         $tags=Tag::all();
         return view('admin.blogs.create',compact('tags'));
     });
+    Route::group(['middleware' => ['auth','superadmin']], function () {
+    Route::resource('admin', 'AdminController');
+    Route::resource('tag','TagController');
+    });
     Route::resource('user', 'UserController');
     Route::get('users/doctor','UserController@doctorUsers');
     Route::get('users/clinic','UserController@clinicUsers');
     Route::get('users/pending','UserController@pendingUsers');
     Route::get('users/verify/{id}','UserController@verifyUser');
-    Route::get('blog-deny/{id}','BlogController@denyBlog');
+    Route::get('blog-deny/{id}','BlogController@denyBlog')->name('blog-deny');
     Route::get('send-mail', function () {
     return view('admin.sendMail'); 
         });
@@ -60,11 +62,11 @@ Route::resource('blog','BlogController');
 // Route::get('clinic-login', function () {
 //     return view('auth.clinicRegister');
 // });
+Route::get ('/clinic/search','ClinicController@search')->name('search');
 Route::resource('clinic', 'ClinicController');
 Route::get('/get-state-list/{country_id}','CountryStateController@getStateList');
-Route::resource('tag','TagController');
+// Route::resource('tag','TagController');
 Route::resource('blogtag','BlogTagController')->only('show');
-Route::get ('/search','ClinicController@search')->name('search');
 Route::get('item/{item}', function($itemId){
     $blog = Blog::findOrFail($itemId);
     $blog_tags = BlogTag::where('blog_id','=',$itemId)->get();
@@ -72,3 +74,4 @@ Route::get('item/{item}', function($itemId){
     return view('admin.blogs.single-blog', compact('blog','blog_tags','all_tags'));
 });
 Route::post('/search-state','ClinicController@searchByState');
+Route::view('/about','about')->name('about');

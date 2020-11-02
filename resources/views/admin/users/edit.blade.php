@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 <section class="container">
-@if(Auth::id() == $user->id)
+@if(Auth::id() == $user->id or Auth::user()->role == 'admin')
     <div class="card card-info">
         <div class="card-header">
           <h3 class="card-title">Update Your Data</h3>

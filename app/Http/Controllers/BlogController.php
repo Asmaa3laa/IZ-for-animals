@@ -8,7 +8,9 @@ use App\User;
 use App\Tag;
 use App\BlogTag;
 use App\Http\Requests\BlogRequest;
+// use Mail;
 use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\Redirect;
 use Auth;
 
 

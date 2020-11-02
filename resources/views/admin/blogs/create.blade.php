@@ -65,5 +65,6 @@
 		$(document).ready(function() {
 			$('.content').summernote();
 		});
-	</script>
+  </script>
+  
 @endsection

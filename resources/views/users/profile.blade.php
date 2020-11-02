@@ -29,18 +29,18 @@
       <p class="text-muted text-center">{{$user->role}}</p>
       <!-- TAAAAAAAAAAAABS -->
       <ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active h6" style="color: black" id="main-tab" data-toggle="tab" href="#main" role="tab" aria-controls="main" aria-selected="true">Profile</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link h6" style="color: black" id="update-tab" data-toggle="tab" href="#update" role="tab" aria-controls="update" aria-selected="false">Update Profile</a>
-  </li>
-  @if ($user->role == 'clinic')
-  <li class="nav-item">
-    <a class="nav-link h6" style="color: black" id="blog-tab" data-toggle="tab" href="#blog" role="tab" aria-controls="blog" aria-selected="false">Clinic's Blogs</a>
-  </li>
-  @endif
-</ul>
+        <li class="nav-item">
+          <a class="nav-link active h6" style="color: black" id="main-tab" data-toggle="tab" href="#main" role="tab" aria-controls="main" aria-selected="true">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link h6" style="color: black" id="update-tab" data-toggle="tab" href="#update" role="tab" aria-controls="update" aria-selected="false">Update Profile</a>
+        </li>
+        @if ($user->role == 'clinic')
+        <li class="nav-item">
+          <a class="nav-link h6" style="color: black" id="blog-tab" data-toggle="tab" href="#blog" role="tab" aria-controls="blog" aria-selected="false">Clinic's Blogs</a>
+        </li>
+        @endif
+      </ul>
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade {{$errors->all() ? '' : 'show active'}}" id="main" role="tabpanel" aria-labelledby="main-tab">
   <div class="row">
@@ -102,25 +102,35 @@
             <div class="row d-flex">
                 @forelse($blogs as $blog)  
               <div class="col-md-6 col-lg-4 ftco-animate">
-                <div class="blog-entry ">
+                <div class="blog-entry">
                   <a href="{{ route('blog.show',$blog->id) }}" class="block-20 rounded" ><img src="{{asset ('storage/'.$blog->image)}}"/>
                   </a>
                   <div class="text p-4">
                       <div class="meta mb-2">
-                      <div>{{$blog->created_at}}</div>
-                      <div><a href="#">{{$blog->user->user_name}}</a></div>
-                      <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
-                    </div>
-                    <h3 class="heading"><a href="{{ route('blog.show',$blog->id) }}">{{$blog->title}}</a></h3>
-                    <p class="content">{{\Illuminate\Support\Str::limit(strip_tags(html_entity_decode($blog->content)),100, $end='...') }}</p>       
+                        <div>{{$blog->created_at}}</div>
+                        <div>{{$blog->user->user_name}}</div>
+                        {{-- <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div> --}}
+                      </div>
+                      <h3 class="heading"><a href="{{ route('blog.show',$blog->id) }}">{{$blog->title}}</a></h3>
+                      <p class="content">{{\Illuminate\Support\Str::limit(strip_tags(html_entity_decode($blog->content)),100, $end='...') }}</p>       
                   </div>
-                  <a href="{{ route('blog.show',$blog->id) }}" class="btn btn-info" style="background-color: #052958;" role="button">Read More</a>  
+                  <div class="btn btn-block">
+                    <a href="{{ route('blog.show',$blog->id) }}" class="btn btn-info" style="background-color: #052958;" role="button">Read More</a> 
+                    @can('create.blogs')
+                    <a href="{{route('blog.edit',$blog->id)}}" class="btn btn-warning" role="button">
+                      <span class="fa fa-pencil-square-o" style="color: white;">EDIT</span>
+                    </a>
+                    @endcan  
+                 </div>
                   {{-- <a href="{{ route('blog.destroy',$blog->id) }}" class="btn btn-danger" role="button">Delete</a>   --}}
                 </div>
               </div>
               @empty
             <h3 class=" mt-5"style="text-align:center;color: #052958;font-weight:bold;">No Blogs Yet</h3>
               @endforelse
+              @can('create.blogs')
+                <button onclick="location.href = '{{route('blog.create')}}';" id="myButton" class="btn-block submit-button"style="border-radius: 12px;cursor:pointer ;background-color:#092a58;height:50px;border:none;color: #eaee0a;">Create New Blog</button>               
+              @endcan 
       </div>
   </div>
 </div>

@@ -1,17 +1,41 @@
 @extends('layouts.index')
 @section('content')
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width:100%;height:400px;">
+    <div class="carousel-inner" style="height:100%;width:100%;">
+      <div class="carousel-item active"style="height:100%;width:100%;">
+        <img class="d-block w-100" style="max-width: 100%;height: 100%;display: block;" src="{{url('images/main.jpg')}}" alt="First slide">
+        <div class="carousel-caption d-none d-md-block">
+          <h2 class="centered" style="color:navy;font-weight:bold;background: rgba(255, 255, 255, 0.75);">All About Animal helping veterinarians to create thier online clinic</h2>
+        </div>
+      </div>
+      <div class="carousel-item" style="height:100%;width:100%;">
+        <img class="d-block w-100" style="max-width: 100%;height: 100%;display: block;" src="{{url('images/bg_1.jpg')}}" alt="Second slide">
+        <div class="carousel-caption d-none d-md-block">
+          <h2 class="centered"style="background: rgba(255, 255, 255, 0.75);color:navy;font-weight:bold;">All About Animal is your way to take better care of animal health</h2>
+        </div>
+      </div>
+    </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+  </div>
   <section class="ftco-section bg-light">
           <div class="container">
               <div class="row justify-content-center">
                   <div class="col-md-6 text-center mb-5">
-                      <h2 class="heading-section"style="color:#092a58;font-weight:bold;">{{$clinic->name}}</h2>
+                      <h2 class="heading-section"style="color:#092a58;font-weight:bold;">{{$clinic->user_name}}</h2>
                   </div>
               </div>
               <div class="row justify-content-center">
                   <div class="col-md-12">
                       <div class="wrapper">
                           <div class="row mb-5">
-                              <div class="col-md-5">
+                              <div class="col-md-4">
                                   <div class="dbox w-100 text-center">
                               <div class="icon d-flex align-items-center justify-content-center">
                                   <span class="fa fa-map-marker"></span>
@@ -22,7 +46,7 @@
                             </div>
                         </div>
                               </div>
-                              <div class="col-md-3">
+                              <div class="col-md-4">
                                   <div class="dbox w-100 text-center">
                               <div class="icon d-flex align-items-center justify-content-center">
                                   <span class="fa fa-phone"></span>
@@ -33,7 +57,7 @@
                             </div>
                         </div>
                               </div>
-                              <div class="col-md-3">
+                              <div class="col-md-4">
                                   <div class="dbox w-100 text-center">
                               <div class="icon d-flex align-items-center justify-content-center">
                                   <span class="fa fa-paper-plane"></span>
@@ -61,7 +85,7 @@
                         @endcan         
                         <section class="ftco-section bg-light"> 
                             <div class="container">
-                                <h5  style="margin-bottom:40px;text-align:center;font-weight: bold;color: #eaee0a;">Clinic Blogs <span style="color:rgb(11, 11, 59);font-weight: bold;">{{count($blogs)}}</span></h5>
+                                <h5  style="margin-bottom:40px;text-align:center;font-weight: bold;color: #eaee0a;">Clinic's Blogs <span style="color:rgb(11, 11, 59);font-weight: bold;">{{count($blogs)}}</span></h5>
 
                               <div class="row d-flex">
                           @forelse($blogs as $blog)  
@@ -72,8 +96,8 @@
                                     <div class="text p-4">
                                         <div class="meta mb-2">
                                         <div>{{$blog->created_at}}</div>
-                                        <div><a href="#">{{$blog->user->user_name}}</a></div>
-                                        <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
+                                        <div>{{$blog->user->user_name}}</div>
+                                        {{-- <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div> --}}
                                       </div>
                                       <h3 class="heading"><a href="{{ route('blog.show',$blog->id) }}">{{$blog->title}}</a></h3>
                                       <p class="content">{{\Illuminate\Support\Str::limit(strip_tags(html_entity_decode($blog->content)),100, $end='...') }}</p>       
@@ -87,7 +111,7 @@
                                 </div>
                                 </div>
                               @empty
-                              <h3 class=" mt-5"style="text-align:center;margin:auto;color: #052958;font-weight:bold;">No Blogs Yet</h3>
+                              <h3 class="mt-5"style="text-align:center;margin:auto;color: #052958;font-weight:bold;">No Blogs Yet</h3>
                           @endforelse
                                 </div>
                               </div>
@@ -96,8 +120,5 @@
                   </div>
               </div>
           </div>
-      </section>
-
-      <div id="map" class="map"></div>
-          
+      </section>          
 @endsection

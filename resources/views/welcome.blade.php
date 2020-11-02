@@ -68,22 +68,7 @@
 <div class="flash-message">
    <p class="alert alert-success">{{ Session::get('status') }} <a class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
 </div>
-@endif
-        {{-- <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ url('login-role') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-        </div> --}}         
+@endif       
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width:100%;height:400px;">
             <div class="carousel-inner" style="height:100%;width:100%;">
               <div class="carousel-item active"style="height:100%;width:100%;">
@@ -199,13 +184,22 @@
           <section class="ftco-section bg-light ftco-faqs">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 order-md-last">
+                  <section class="col-lg-6 order-md-last">
+                  <form action="{{route('search')}}" method="Get"  class="search-form">
+                    {{ csrf_field() }}
+                    <div class="form-group" >
+                      <span class="fa fa-search btn submit" id="search"></span>
+                      <input type="text" name="searcharea" id ="searcharea" class="form-control" placeholder="Type a clinic name and hit enter"/>
+                    </div>
+                  </form>
+                    <div>
                         <div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0" style="background-image:url(images/about.jpg);">
                             <a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
                                 <span class="fa fa-play"></span>
                             </a>
                         </div>
                     </div>
+                  </section>
     
                     <div class="col-lg-6">
                         <div class="heading-section mb-5 mt-5 mt-lg-0">
@@ -240,17 +234,6 @@
                                 </button>
                                 </a>
                                 </div>
-                                {{-- <div class="collapse show" id="collapseOne" role="tabpanel" aria-labelledby="headingOne">
-                                  <div class="card-body py-3 px-0">
-                                      <ol>
-                                          <li>Far far away, behind the word mountains</li>
-                                          <li>Consonantia, there live the blind texts</li>
-                                          <li>When she reached the first hills of the Italic Mountains</li>
-                                          <li>Bookmarksgrove, the headline of Alphabet Village</li>
-                                          <li>Separated they live in Bookmarksgrove right</li>
-                                      </ol>
-                                  </div>
-                                </div> --}}
                             </div>
                         </div>
                 </div>
