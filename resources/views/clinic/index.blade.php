@@ -33,13 +33,16 @@
           <div class="form-group" >
             <span class="fa fa-search btn submit" id="search"></span>
             <input type="text" name="searcharea" id ="searcharea" class="form-control" placeholder="Type a clinic name and hit enter"/>
+          <div id="clinicList" style="display: flex;">
+          </div> 
           </div>
         </form>  
+      <br/>
   <span class="menuitem"><a href="/" class="btn btn-default"><i class="fa fa-home"></i> Home</a></span>
   <span class="menuitem"><a href="/clinic" class="btn btn-default"><i class="fa fa-globe"></i> Clinics</a></span>
-  {{-- <span class="menuitem"><a href="/countries" class="btn btn-default"><i class="fa fa-globe"></i> Countries</a></span> --}}
-
-       
+  {{-- <span class="menuitem"><a href="/countries" class="btn btn-default"><i class="fa fa-globe"></i> Countries</a></span> --}} 
+  
+  
 
         <div class="row">
           <div class="col-6">
@@ -132,4 +135,32 @@
     });
 });
 </script>
+<script>
+  $(document).ready(function(){
+  
+   $('#searcharea').keyup(function(){ 
+      
+          var query = $(this).val();
+          if(query != '')
+          {
+           var _token = $('input[name="_token"]').val();
+           $.ajax({
+            url:"/clinic/fetch",
+            method:"POST",
+            data:{query:query, _token:_token},
+            success:function(data){
+             $('#clinicList').fadeIn();  
+             $('#clinicList').html(data);
+            }
+           });
+          }
+      });
+  
+      $(document).on('click', 'li', function(){  
+          $('#searcharea').val($(this).text());  
+          $('#clinicList').fadeOut();  
+      });  
+  
+  });
+  </script>
 @endsection

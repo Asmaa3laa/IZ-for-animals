@@ -63,6 +63,7 @@ Route::resource('blog','BlogController');
 //     return view('auth.clinicRegister');
 // });
 Route::get ('/clinic/search','ClinicController@search')->name('search');
+Route::post('/clinic/fetch', 'ClinicController@fetch')->name('autocomplete.fetch');
 Route::resource('clinic', 'ClinicController');
 Route::get('/get-state-list/{country_id}','CountryStateController@getStateList');
 // Route::resource('tag','TagController');

@@ -115,6 +115,25 @@ class ClinicController extends Controller
                 return redirect()->back();
             }    
     }
+    function fetch(Request $request)
+    {
+     if($request->get('query'))
+     {
+        $query = $request->get('query');
+        $data = DB::table('users')
+            ->where('user_name', 'LIKE', "%{$query}%")->where(["role"=>'clinic',"is_verified"=>1])
+            ->get();
+        $output = '<ul class="dropdown-menu" style="display:block;position:relative;width:100%;">';
+      foreach($data as $row)
+      {
+        $output .= '
+        <li style="cursor: pointer"><p>'.$row->user_name.'</p></li>
+        ';
+      }
+      $output .= '</ul>';
+      echo $output;
+     }
+    }
 
 
     public function searchByState(Request $request){
