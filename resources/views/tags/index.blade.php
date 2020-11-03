@@ -33,6 +33,7 @@
           <tr>
             <th>#</th>
             <th>Name</th>
+            <th>Blogs count</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
@@ -45,6 +46,11 @@
                 <tr>
                 <th scope="row">{{$counter+=1}}</th>
                     <td>{{$tag->name}}</td>
+                <td>@php
+
+                  echo App\BlogTag::where('tag_id','=',$tag->id)->count();
+              
+              @endphp</td>
                     <td>
                         <a href="{{route('tag.edit',['tag'=>$tag])}}" class="btn btn-warning">Edit</a>
                     </td>

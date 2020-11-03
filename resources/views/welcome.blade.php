@@ -185,13 +185,15 @@
             <div class="container">
                 <div class="row">
                   <section class="col-lg-6 order-md-last">
-                  <form action="{{route('search')}}" method="Get"  class="search-form">
-                    {{ csrf_field() }}
-                    <div class="form-group" >
-                      <span class="fa fa-search btn submit" id="search"></span>
-                      <input type="text" name="searcharea" id ="searcharea" class="form-control" placeholder="Type a clinic name and hit enter"/>
-                    </div>
-                  </form>
+                    <form action="{{route('search')}}" method="Get"  class="search-form" style="width:100%; margin-top:80px;">
+                      {{ csrf_field() }}
+                      <div class="form-group" >
+                        <span class="fa fa-search btn submit" id="search"></span>
+                        <input type="text" name="searcharea" id ="searcharea" class="form-control" placeholder="Type a clinic name and hit enter"/>
+                      <div id="clinicList" style="display: flex;">
+                      </div> 
+                      </div>
+                    </form> 
                     <div>
                         <div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0" style="background-image:url(images/about.jpg);">
                             <a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
@@ -224,12 +226,12 @@
                                 </button>
                                   </a>
                                   <a href="{{route('blogtag.show',4)}}">
-                                  <button href="{{route('blogtag.show',4)}}"  class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link " data-parent="#accordion" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne"style="background-image: linear-gradient(to right, #DD5E89 0%, #F7BB97 51%, #DD5E89 100%)">
+                                  <button class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link " data-parent="#accordion" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne"style="background-image: linear-gradient(to right, #DD5E89 0%, #F7BB97 51%, #DD5E89 100%)">
                                   <p class="mb-0"style="font-weight: bold">Equines</p>
                                   </button>
                                 </a>
                                 <a href="{{route('blogtag.show',5)}}">
-                                  <button href="{{route('blogtag.show',5)}}"class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" style="background-image: linear-gradient(to right, #7474BF 0%, #348AC7 51%, #7474BF 100%)">
+                                  <button class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" style="background-image: linear-gradient(to right, #7474BF 0%, #348AC7 51%, #7474BF 100%)">
                                     <p class="mb-0"style="font-weight: bold">Wild Animals</p>
                                 </button>
                                 </a>
@@ -240,4 +242,32 @@
             </div>
             </div>
         </section>
+        <script src="{{asset('js/jquery.min.js')}}"></script>
+        <script>
+          $(document).ready(function(){
+           $('#searcharea').keyup(function(){ 
+              
+                  var query = $(this).val();
+                  if(query != '')
+                  {
+                   var _token = $('input[name="_token"]').val();
+                   $.ajax({
+                    url:"/clinic/fetch",
+                    method:"POST",
+                    data:{query:query, _token:_token},
+                    success:function(data){
+                     $('#clinicList').fadeIn();  
+                     $('#clinicList').html(data);
+                    }
+                   });
+                  }
+              });
+          
+              $(document).on('click', 'li', function(){  
+                  $('#searcharea').val($(this).text());  
+                  $('#clinicList').fadeOut();  
+              });  
+          
+          });
+          </script>
 @endsection

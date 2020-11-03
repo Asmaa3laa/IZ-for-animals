@@ -181,14 +181,8 @@
 	  'autoclose': true
 	});
 
-	$('.appointment_time').timepicker();
-	// console.log($('#content'));
-	// $(document).ready(function() {
-	// 	$('#content').summernote();
-	//   });	
-	$(document).ready(function() {
-		$('#content').summernote();
-	  });
+	$('.appointment_time').timepicker();	
+	$('#content').summernote();
 
 })(jQuery);
 

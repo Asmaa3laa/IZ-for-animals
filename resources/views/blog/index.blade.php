@@ -1,23 +1,7 @@
 {{-- @extends('layouts.nav-footer') --}}
 @extends('layouts.index')
 @section('content')    
-<!-- <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row no-gutters slider-text align-items-end">
-        <div class="col-md-9 ftco-animate pb-5">
-            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="#">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog <i class="ion-ios-arrow-forward"></i></span></p>
-          <h1 class="mb-0 bread">Blog</h1>
-        </div>
-      </div>
-    </div>
-  </section>   -->
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width:100%;height:400px;">
-            {{-- <ol class="carousel-indicators">
-              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol> --}}
             <div class="carousel-inner" style="height:100%;width:100%;">
               <div class="carousel-item active"style="height:100%;width:100%;">
                 <img class="d-block w-100" style="max-width: 100%;height: 100%;display: block;" src="{{url('images/main.jpg')}}" alt="First slide">
@@ -65,30 +49,15 @@
       <h3 class=" mt-5"style="text-align:center;color: #052958;font-weight:bold;">No Blogs Yet</h3>
   @endforelse
         </div>
-      {{-- <div class="row mt-5">
-        <div class="col text-center">
-          <div class="block-27">
-            <ul>
-              <li><a href="#">&lt;</a></li>
-              <li class="active"><span>1</span></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#">&gt;</a></li>
-            </ul>
-          </div>
-        </div>
-      </div> --}}
     </div>
     {{ $blogs->links() }}
      </section>
     <hr style="text-align:center; border:2px #052958 dashed;">   
     <section>
       <h3 style="color:#031a38; text-align:center;margin-top:7px;font-weight:500;">Choose From The Main Titles</h3>
-      <div class="mt-5 mb-5 ml-5" style="display:flex; flex-wrap:wrap;justify-content: center; align-content:center;">
+      <div class="mt-5 mb-5 ml-5" style="display:flex;justify-content: center; align-content:center;">
         @foreach($tags as $tag)
-      <a href="{{route('blogtag.show',$tag->id)}}"style="flex-grow:1;color:#031a38;font-size: 20px;font-family:Helvetica;">{{$tag->name}}</a>
+      <a href="{{route('blogtag.show',$tag->id)}}"><button class="btn" style="flex-grow:1;color:#031a38;font-size: 20px;font-family:Helvetica;">{{$tag->name}}</button></a>
         @endforeach
       </div>
     </section>

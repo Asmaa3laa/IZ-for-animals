@@ -1,8 +1,8 @@
 @extends('layouts.admin')
-@section('head')
+{{-- @section('head')
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-@endsection
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+@endsection --}}
 @section('content')
 @if($errors->any())
   <div class="alert alert-danger">
@@ -60,11 +60,10 @@
         });
     });
 </script>
-
 <script>
 		$(document).ready(function() {
-			$('.content').summernote();
+			$("#content").summernote();
 		});
-  </script>
+</script> 
   
 @endsection

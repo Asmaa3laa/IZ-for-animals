@@ -24,6 +24,7 @@
         <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}">
         <link rel="stylesheet" href="{{ asset('fonts/flaticon2/font/flaticon.css') }}">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        {{-- <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet"> --}}
         <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
         {{-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="

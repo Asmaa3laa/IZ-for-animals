@@ -23,7 +23,9 @@
   <!-- Daterange picker -->
   <link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css') }}">
   <!-- summernote -->
-  <!-- <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.css') }}"> -->
+  {{-- <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.css') }}">  --}}
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   @yield("head")
@@ -397,9 +399,9 @@
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="{{asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 <!-- Summernote -->
-<!-- <script src="{{asset('plugins/summernote/summernote-bs4.min.js') }}"></script> -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-<script src="resources/js/app.js"></script> -->
+{{-- <script src="{{asset('plugins/summernote/summernote-bs4.min.js') }}"></script>  --}}
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script src="{{asset('js/main.js')}}"></script>
 <!-- overlayScrollbars -->
 <script src="{{asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 <!-- AdminLTE App -->
