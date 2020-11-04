@@ -101,12 +101,19 @@
                                       </div>
                                       <h3 class="heading"><a href="{{ route('blog.show',$blog->id) }}">{{$blog->title}}</a></h3>
                                       <p class="content">{{\Illuminate\Support\Str::limit(strip_tags(html_entity_decode($blog->content)),100, $end='...') }}</p>       
-                                    </div>
+                                    </div>         
+                                    <div style="text-align: justify">
                                     <a href="{{ route('blog.show',$blog->id) }}" class="btn btn-info" style="background-color: #052958;" role="button">Read More</a>   
                                     @can('create.blogs')
-                                    <a href="{{route('blog.edit',$blog)}}" class="btn btn-info" style="background-color: #052958;" role="button">
-                                        <span class="fa fa-pencil-square-o">EDIT</span>
+                                    <a href="{{route('blog.edit',$blog->id)}}" class="btn btn-warning" role="button">
+                                      <span class="fa fa-pencil-square-o" style="color: white;">EDIT</span>
                                     </a>
+                                    <form action="{{route('blog.destroy',['blog'=>$blog])}}" method="POST">
+                                      @method('DELETE')
+                                      @csrf
+                                      <button class="btn btn-danger" type="submit">Delete</button>
+                                  </form>
+                                    </div>
                                     @endcan  
                                 </div>
                                 </div>

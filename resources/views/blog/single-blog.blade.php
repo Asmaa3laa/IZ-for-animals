@@ -75,7 +75,6 @@
               @forelse($tags as $tag)  
             <a href="{{route('blogtag.show',$tag->id)}}" class="tag-cloud-link">{{$tag->name}}</a>
              @empty 
-              <div></div>
             @endforelse
             </div>
           </div>

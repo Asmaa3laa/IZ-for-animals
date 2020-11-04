@@ -1,4 +1,3 @@
-{{-- @extends('layouts.nav-footer') --}}
 @extends('layouts.index')
 @section('content')    
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width:100%;height:400px;">
@@ -54,11 +53,16 @@
      </section>
     <hr style="text-align:center; border:2px #052958 dashed;">   
     <section>
-      <h3 style="color:#031a38; text-align:center;margin-top:7px;font-weight:500;">Choose From The Main Titles</h3>
-      <div class="mt-5 mb-5 ml-5" style="display:flex;justify-content: center; align-content:center;">
+      <h4 style="color:#031a38; text-align:center;margin-top:7px;font-weight:400;">Choose From The Main Titles</h4>
+      {{-- <div class="mt-5 mb-5 ml-5" style="display:flex;justify-content: center; align-content:center;">
         @foreach($tags as $tag)
       <a href="{{route('blogtag.show',$tag->id)}}"><button class="btn" style="flex-grow:1;color:#031a38;font-size: 20px;font-family:Helvetica;">{{$tag->name}}</button></a>
+        @endforeach --}}
+        <div class="tagcloud"style="margin-bottom:20px;text-align: center;">
+          @foreach($tags as $tag)  
+        <a href="{{route('blogtag.show',$tag->id)}}" class="tag-cloud-link">{{$tag->name}}</a>
         @endforeach
+        </div>
       </div>
     </section>
   @endsection

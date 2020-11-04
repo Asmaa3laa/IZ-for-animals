@@ -68,6 +68,9 @@
             <th>State</th>
             <th>Address</th>
             <th>Location</th>
+            @if(($users->first()->is_verified) == 1)
+            <th>Delete</th>
+            @endif
             @endif
         @if(($users->first()->is_verified) == 0)
             <th>Type</th>
@@ -108,6 +111,13 @@
             <td>{{$user->address}}</td>
             <td>{{$user->location}}</td>
         @endif
+            <td>
+            {!! Form::open(['route' => ['deleteuser', $user->id] ,'method' => 'delete' ]) !!}
+            {!! Form::submit('Delete',['class'=>'btn btn-danger btn-xs']) !!}
+            {!! Form::close() !!}
+            </div>
+            </td>
+        
         @if(($users->first()->is_verified) == 0)
             <td>{{$user->role}}</td>
             <td><a href="{{route('user.show',$user->id)}}" >

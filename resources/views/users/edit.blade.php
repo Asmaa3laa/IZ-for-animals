@@ -130,17 +130,6 @@
                     @enderror
                 </div>
             </div> 
-            <div class="form-group row">
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input form-control-user @error('card') is-invalid @enderror" placeholder="Your ID or Occupation card.." name="card" value="{{($user->card)}}" autofocus>
-                    <label class="custom-file-label" for="card">Update Your card?</label>
-                    @error('card')
-                      <span class="invalid-feedback" role="alert">
-                          <strong>{{ $message }}</strong>
-                      </span>
-                    @enderror
-                  </div>
-            </div> 
             @if ($user->role == 'clinic')
             <div class="form-check">
             <input class="col-9" type="text" id="location" name="location" hidden value="{{$user->location}}">

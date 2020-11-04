@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 use App\User;
 use App\Country;
@@ -104,9 +105,9 @@ class ProfileController extends Controller
             } else{
                 $request->validate([
                     'name' => ['required', 'string', 'max:100'],
-                    'user_name' => ['required', 'string', 'max:50', 'unique:users'],
-                    'email' => ['required','string', 'email:rfc,dns', 'unique:users'],
-                    'phone' => ['required','numeric','regex:/[0-9]{11}/', 'unique:users'],
+                    'user_name' => ['required', 'string', 'max:50', Rule::unique('users')->ignore($id)],
+                    'email' => ['required','string', 'email:rfc,dns', Rule::unique('users')->ignore($id)],
+                    'phone' => ['required','numeric','regex:/[0-9]{11}/', Rule::unique('users')->ignore($id)],
                     'address' =>['required', 'string','max:250'],
                     'location' =>['required', 'string', 'max:500'],
                     'location_lat' =>['required', 'numeric'],

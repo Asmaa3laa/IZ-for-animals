@@ -141,14 +141,13 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
-
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
             'user_name' => $request->user_name,            
         ]);
         if($request->hasFile('image')){
-            $image = $request['image'];
+            // $image = $request['image'];
             $image_path = $request['image']->store('uploads', 'public');
             $user->image = $image_path;
             $user->save();
@@ -182,5 +181,11 @@ class UserController extends Controller
 
         }
         
+    }
+    public function delete($id){
+        $user = User::find($id); 
+        $this->authorize('manage.users');
+        $user->delete();
+        return redirect('users/clinic')->with('success','User deleted successfully ');
     }
 }

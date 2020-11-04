@@ -170,8 +170,6 @@ class BlogController extends Controller
          $blog->image = $image_path;
          $blog->save();
         }
-        //     $blog->user_id = 2;
-        //     // "user_id" =>Auth::id(),
             $tags = $request->tags;
             foreach($tags as $tag )
             {

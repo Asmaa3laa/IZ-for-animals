@@ -35,7 +35,8 @@ Route::group(['middleware' => ['auth','admin']], function () {
     Route::get('users/doctor','UserController@doctorUsers');
     Route::get('users/clinic','UserController@clinicUsers');
     Route::get('users/pending','UserController@pendingUsers');
-    Route::get('users/verify/{id}','UserController@verifyUser');
+    Route::get('users/verify/{id}','UserController@verifyUser'); 
+    Route::delete('user/delete/{id}','UserController@delete')->name('deleteuser');
     Route::get('blog-deny/{id}','BlogController@denyBlog')->name('blog-deny');
     Route::get('send-mail', function () {
     return view('admin.sendMail'); 
@@ -59,14 +60,10 @@ Route::get('blog/pending','blogController@pendingBlogs');
 Route::get('blog/accept','blogController@accept');
 Route::get('blog/deny/{id}','blogController@deny')->name('deny');
 Route::resource('blog','BlogController');               
-// Route::get('clinic-login', function () {
-//     return view('auth.clinicRegister');
-// });
 Route::get ('/clinic/search','ClinicController@search')->name('search');
 Route::post('/clinic/fetch', 'ClinicController@fetch')->name('autocomplete.fetch');
 Route::resource('clinic', 'ClinicController');
 Route::get('/get-state-list/{country_id}','CountryStateController@getStateList');
-// Route::resource('tag','TagController');
 Route::resource('blogtag','BlogTagController')->only('show');
 Route::get('item/{item}', function($itemId){
     $blog = Blog::findOrFail($itemId);
