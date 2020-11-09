@@ -142,8 +142,8 @@ class ProfileController extends Controller
                 $user->save();
             }
              
-            return redirect('profile/'.$id)->with('update','Your profile has been updated successfully..');        
-        // } 
+            return redirect()->route('profile.show',['user'=> Auth::id()])->with('update','Your profile has been updated successfully..'); 
+            // } 
         // catch (\Throwable $th) {
         //     // dd($th);
         //     return redirect('profile/'.$id)->with('failed',"Your profile hasn't been updated..");        

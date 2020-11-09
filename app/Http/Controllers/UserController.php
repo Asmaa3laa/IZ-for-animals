@@ -152,7 +152,8 @@ class UserController extends Controller
             $user->image = $image_path;
             $user->save();
         }
-        return redirect('user/'.$id)->with('update','Your profile has been updated successfully..');        
+        return redirect()->route('user.show',['user'=> Auth::user()])->with('update','Your profile has been updated successfully..'); 
+        // return redirect('user/'.$id)->with('update','Your profile has been updated successfully..');        
 
     }
 

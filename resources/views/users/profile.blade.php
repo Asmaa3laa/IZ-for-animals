@@ -11,6 +11,11 @@
       <p>{{Session::get('failed')}} <a class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
     </div>     
   @endif
+  @if(session('password'))
+    <div class="alert alert-success disapled" role="alert">
+      <p>{{Session::get('password')}} <a class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+    </div>     
+  @endif
 <div class="card card-primary card-outline">
   
     <div class="card-body box-profile">

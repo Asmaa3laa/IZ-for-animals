@@ -9,7 +9,7 @@
         <div class="card-header">
           <h3 class="card-title">Update Your Data</h3>
           <span>
-          <a class="btn btn-link" style="float: right" href="{{route('password.request')}}"><i class="fa fa-gear"></i>Reset Password</a>
+          <a class="btn btn-link" style="float: right" href="{{url('change-password')}}"><i class="fa fa-gear"></i>Change Password</a>
           </span>
         </div>
     <!-- form start -->

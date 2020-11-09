@@ -49,6 +49,8 @@ Route::group(['middleware' => ['auth','admin']], function () {
 Auth::routes();
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('profile', 'ProfileController');
+    Route::get('change-password', 'ChangePasswordController@index');
+    Route::post('change-password', 'ChangePasswordController@change')->name('change.password');
     
 });
 Route::get('/home', 'HomeController@index')->name('home');
