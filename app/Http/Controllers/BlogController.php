@@ -8,9 +8,10 @@ use App\User;
 use App\Tag;
 use App\BlogTag;
 use App\Http\Requests\BlogRequest;
-// use Mail;
+use Mail;
+use App\Mail\blog_denyMail;
 use Illuminate\Support\Facades\DB;
-// use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Redirect;
 use Auth;
 
 
@@ -228,20 +229,17 @@ class BlogController extends Controller
     public function denyBlog($id)
     {
         try {
-            DB::beginTransaction();
             $blog = Blog::find($id);
             $name = $blog->user->name;  
-            $title = $blog->title;      
+            $title = $blog->title;  
+            // dd($blog->user->email);
             Mail::to($blog->user->email)->send(new blog_denyMail($name, $title));
-            // $blog->is_verified = '0'
-            Db::commit();
-            return Redirect::to('blog/pending')->with('reject',"Reject email has been send and blog isn't confirmed");
+            
+            return redirect('blog/pending')->with('reject',"Reject email has been send and blog isn't confirmed");
             } 
         catch (\Throwable $th) {
-            //throw $th;
             // dd($th);
-            DB::rollBack();
-            return Redirect::to('blog/pending')->with('failed',"Email address may be not accurate, it can't send email!");
+            return redirect('blog/pending')->with('failed',"Email address may be not accurate, it can't send email!");
 
         }
     }

@@ -11,7 +11,16 @@
       </style> 
 @section('content')
 <div class="container">
-  
+  @if(session('reject'))
+    <div class="alert alert-success disapled" role="alert">
+      <p>{{Session::get('reject')}} <a class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+    </div>     
+  @endif
+  @if(session('failed'))
+    <div class="alert alert-warning disapled" role="alert">
+      <p>{{Session::get('failed')}} <a class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+    </div>     
+  @endif
 <!-- TABLE: LATEST ORDERS -->
 <div class="card ">
     <div class="card-header border-transparent">
