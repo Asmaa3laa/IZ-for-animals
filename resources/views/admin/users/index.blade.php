@@ -109,15 +109,16 @@
             <td>{{$user->country->name}}</td>
             <td>{{$user->state->name}}</td>
             <td>{{$user->address}}</td>
-            <td>{{$user->location}}</td>
+            <td><a class="btn btn-link" href="{{$user->location}}">show map</a></td>
         @endif
+        @if($user->is_verified == 1)
             <td>
             {!! Form::open(['route' => ['deleteuser', $user->id] ,'method' => 'delete' ]) !!}
             {!! Form::submit('Delete',['class'=>'btn btn-danger btn-xs']) !!}
             {!! Form::close() !!}
             </div>
             </td>
-        
+        @endif
         @if(($users->first()->is_verified) == 0)
             <td>{{$user->role}}</td>
             <td><a href="{{route('user.show',$user->id)}}" >

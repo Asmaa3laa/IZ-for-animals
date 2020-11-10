@@ -29,7 +29,7 @@ class verifyMail extends Mailable
      */
     public function build()
     {
-        return $this->from('test@el-masa.com','All About Animals')
+        return $this->from('no-reply@allaboutanimals-eg.com','All About Animals')
                     ->subject('Your account has been Confirmed')
                     ->view('admin.mail.accept');
     }

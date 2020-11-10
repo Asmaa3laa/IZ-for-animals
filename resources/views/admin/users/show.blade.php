@@ -16,6 +16,11 @@
       <p>{{Session::get('failed')}} <a class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
     </div>     
   @endif
+  @if(session('password'))
+    <div class="alert alert-success disapled" role="alert">
+      <p>{{Session::get('password')}} <a class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+    </div>     
+  @endif
   <div class="card-body box-profile">
 
     @if(Auth::id() == $user->id)
@@ -25,7 +30,7 @@
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
       <a class="dropdown-item" href="{{route('user.edit',$user->id)}}">Update Profile</a>
-      <a class="dropdown-item" href="{{route('password.request')}}">Reset Password</a>
+      <a class="dropdown-item" href="{{url('change-password')}}">Change Password</a>
         {{-- <a class="dropdown-item" href="#">Something else here</a> --}}
       </div>
     </div>
