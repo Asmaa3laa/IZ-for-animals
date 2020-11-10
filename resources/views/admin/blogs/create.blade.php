@@ -1,13 +1,8 @@
 @extends('layouts.admin')
-{{-- @section('head')
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-@endsection --}}
 @section('content')
 @if($errors->any())
   <div class="alert alert-danger">
     <h3>please correct your errors</h3> 
-  {{-- <h4>{{$errors}}</h4> --}}
   </div>
 @endif
 <div class="container mt-5" >

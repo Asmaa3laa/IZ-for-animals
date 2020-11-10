@@ -7,7 +7,7 @@
                     <p>All About Animal is your way to take better care of animal health</p>
                     <ul class="ftco-footer-social p-0">
           <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><span class="fa fa-twitter"></span></a></li>
-          <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><span class="fa fa-facebook"></span></a></li>
+          <li class="ftco-animate"><a href="https://www.facebook.com/groups/2875962215993069/" data-toggle="tooltip" data-placement="top" title="Facebook"><span class="fa fa-facebook"></span></a></li>
           <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><span class="fa fa-instagram"></span></a></li>
         </ul>
                 </div>
@@ -43,9 +43,9 @@
                     <h2 class="footer-heading">Have a Questions?</h2>
                     <div class="block-23 mb-3">
           <ul>
-            <li><span class="icon fa fa-map"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-            <li><a href="#"><span class="icon fa fa-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-            <li><a href="#"><span class="icon fa fa-paper-plane"></span><span class="text">info@yourdomain.com</span></a></li>
+            {{-- <li><span class="icon fa fa-map"></span><span class="text"></span></li> --}}
+            <li><a href="#"><span class="icon fa fa-phone"></span><span class="text">+96 656 6731 357</span></a></li>
+            <li><a href="#"><span class="icon fa fa-paper-plane"></span><span class="text">Support@allaboutanimals-eg.com</span></a></li>
           </ul>
         </div>
                 </div>

@@ -13,17 +13,8 @@
           <h3 class="heading">{{$blog->title}}</h3>
         </div> 
         <div class= "form-group"syle="width:100%;" >      
-        <textarea style="border:none;background-color:rgb(252, 246, 246)" rows="18" class="form-control content">{{strip_tags($blog->content)}}</textarea>
+        <div style="border:none;background-color:rgb(252, 246, 246);">{!! html_entity_decode($blog->content) !!}</div>
         </div>
-        <!-- @foreach($blog_tags as $blog_tag)
-        <select name="cars" id="cars" multiple>
-          <option value="volvo">{{$blog_tag->tag->name}}</option>
-          <option value="saab">Saab</option>
-          <option value="opel">Opel</option>
-          <option value="audi">Audi</option>
-        </select>
-         <h3></h3> 
-        @endforeach -->
         {{-- <!-- <form  class="checkout-form " enctype="multipart/form-data" method="POST" action="{{route('blog.update',$blog->id)}}">
               {{ method_field('PATCH') }} 
               {{ csrf_field() }} --> --}}
@@ -40,6 +31,17 @@
             </div>
         @if($errors->first('tags'))
         <h6 style="color: red;">{{$errors->first('tags') }}</h6>
+        @endif
+        @if(Auth::id() == $blog->user_id)
+        @can('create.blogs')
+          <button onclick="location.href ='{{route('blog.edit',$blog->id)}}'" class="btn btn-warning">Edit</button>
+          <br/>
+        <form action="{{route('blog.destroy',['blog'=>$blog])}}" method="POST">
+          @method('DELETE')
+          @csrf
+          <button class="btn btn-danger" type="submit">Delete</button>
+      </form>
+        @endcan  
         @endif
         </div> <!-- .col-md-8 -->
         </div>     

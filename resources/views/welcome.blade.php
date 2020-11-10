@@ -10,8 +10,8 @@
             html, body {
                 background-color: #fff;
                 color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
+                /* font-family: 'Nunito', sans-serif; */
+                /* font-weight: 200; */
                 height: 100vh;
                 margin: 0;
             }
@@ -139,9 +139,8 @@
           <section class="ftco-section ftco-no-pt ftco-no-pb">
               <div class="container">
                   <div class="row d-flex no-gutters">
-                      <div class="col-md-5 d-flex">
-                          <div class="img img-video align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0" style="background-image:url(images/image_why.jpg);">
-                          </div>
+                      <div class="col-md-5 heading-section pt-md-5 img img-video align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mt-5 mb-sm-0">
+                        <img style="max-width:100%;height:100%;"src="{{url('images/image_why.jpg')}}"/>
                       </div>
                       <div class="col-md-7 pl-md-5 py-md-5">
                           <div class="heading-section pt-md-5">
@@ -222,7 +221,7 @@
                                 </h2>
                                   <a href="{{route('blogtag.show',3)}}">
                                   <button class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" style="background-image:linear-gradient(to right, #00d2ff 0%, #3a7bd5 51%, #00d2ff 100%)">
-                                    <p class="mb-0" style="font-weight: bold">Larg Animals (donkey/ruminant)</p>
+                                    <p class="mb-0" style="font-weight: bold">Large Animals</p>
                                 </button>
                                   </a>
                                   <a href="{{route('blogtag.show',4)}}">

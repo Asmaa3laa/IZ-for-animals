@@ -14,7 +14,7 @@ class TagSeeder extends Seeder
         $tags= array(
             array('name' => 'Pet Animals'),
             array('name' => 'Poultry'),
-            array('name' => 'Larg Animals'),
+            array('name' => 'Large Animals'),
             array('name' => 'Equiense'),
             array('name' => 'wild Animals')
 

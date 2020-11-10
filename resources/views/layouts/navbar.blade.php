@@ -3,10 +3,9 @@
 				<div class="col-md-6 d-flex justify-content-md-end">
 						<div class="social-media">
 			    		<p class="mb-0 d-flex">
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
+			    			<a href="https://www.facebook.com/groups/2875962215993069/" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
 			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
 			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
 			    		</p>
 					  </div>
 				  </div>
@@ -27,11 +26,8 @@
             
           <li class="nav-item {{(request()->is('/')) ? 'active' : '' }}"><a href="{{route('index')}}" class="nav-link">HOME</a></li>
           <li class="nav-item {{(request()->is('about')) ? 'active' : '' }}"><a href="{{route('about')}}" class="nav-link">ABOUT</a></li>
-	        	{{-- <li class="nav-item"><a href="#" class="nav-link">SERVICES</a></li>
-	        	<li class="nav-item"><a href="#" class="nav-link">DIAGNOSES OF ILLnESSES</a></li> --}}
             <li class="nav-item {{(request()->is('clinic')) ? 'active' : '' }}"><a href="{{route('clinic.index')}}" class="nav-link">CLINICS</a></li>
           <li class="nav-item {{(request()->is('blog')) ? 'active' : '' }}"><a href="{{route('blog.index')}}" class="nav-link">BLOGS</a></li>            
-	          {{-- <li class="nav-item"><a href="#" class="nav-link">CONTACT</a></li> --}}
 	        </ul>
         </div>
         <div>

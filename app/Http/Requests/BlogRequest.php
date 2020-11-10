@@ -25,7 +25,6 @@ class BlogRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'title' => 'min:5|required|unique:blogs,id' . $id,
             'title'=>[
                 'required',
                 Rule::unique('blogs')->ignore($this->route('blog')),
