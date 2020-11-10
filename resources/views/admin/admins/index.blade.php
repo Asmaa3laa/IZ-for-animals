@@ -1,16 +1,14 @@
 @extends('layouts.admin')
 @section('content')
-    
 <table class="table">
     <thead>
         <tr style="color: navy;">
           <th scope="col">Name</th>
           <th scope="col">username</th>
           <th scope="col">Email</th>
-          {{-- <th scope="col">password</th> --}}
           <th scope="col">role</th>
           <th scope="col">Edit</th>
-          <th scope="col">Delete</th>
+          <th scope="col">Delete</th>        
         </tr>
       </thead>
       <tbody>
@@ -32,15 +30,12 @@
                     </div>
                 </form>
                 @else
-                 <p style="color:red;">That is a super admin</p>
+                 That is a super admin
                 @endif
-
-
-                {{-- <button onclick="location.href = '{{route('admin.destroy',$admin->id)}}';" class="btn btn-danger">DELETE</button></td> --}}
+            </td>
         </tr>
         @empty
         <tr>There is Now Sub Admins Yet</tr>            
         @endforelse
 </table>
-
 @endsection

@@ -55,10 +55,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('login-role', function () {
     return view('auth.role');
 });
-Route::get('blog/accepted','blogController@acceptedBlogs');
-Route::get('blog/pending','blogController@pendingBlogs');
-Route::get('blog/accept','blogController@accept');
-Route::get('blog/deny/{id}','blogController@deny')->name('deny');
+Route::get('blog/accepted','BlogController@acceptedBlogs');
+Route::get('blog/pending','BlogController@pendingBlogs');
+Route::get('blog/accept','BlogController@accept');
 Route::resource('blog','BlogController');               
 Route::get ('/clinic/search','ClinicController@search')->name('search');
 Route::post('/clinic/fetch', 'ClinicController@fetch')->name('autocomplete.fetch');

@@ -8,9 +8,9 @@ use App\User;
 use App\Tag;
 use App\BlogTag;
 use App\Http\Requests\BlogRequest;
-// use Mail;
+use Mail;
 use Illuminate\Support\Facades\DB;
-// use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Redirect;
 use Auth;
 
 
@@ -82,14 +82,11 @@ class BlogController extends Controller
         //validate
         //store;     
         try {
-            // dd($request);
             DB::beginTransaction();
                 $image_path = $request->image->store('uploads', 'public');
-                // var_dump($image_path);
             $blog = Blog::create([
             "title" => $request->title,
             'content' => $request->content,
-            // "user_id"=>1,
             "user_id" =>Auth::id(),
             'image' => $image_path,
             ]);
@@ -105,7 +102,7 @@ class BlogController extends Controller
         } 
         catch (\Throwable $th)
         {
-            dd($th);
+            // dd($th);
             // delete blog if an error arises and return server error
             DB::rollBack();
             return abort(500);
@@ -137,7 +134,14 @@ class BlogController extends Controller
         $tags = Tag::all();
         $latest_blogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
         // $tag_blogs = BlogTag::where('tag_id','=',$id)->get();
-        return view('blog.single-blog',compact('blog','tags','latest_blogs'));
+        if($blog->is_verified == 1)
+        {
+            return view('blog.single-blog',compact('blog','tags','latest_blogs'));
+        }
+        else
+        {
+            return Redirect::to('blog/');
+        }
         
 
     }
@@ -150,8 +154,17 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        return view('blog.edit',['blog'=>Blog::find($id),'tags'=>Tag::all(),'blogtags'=>BlogTag::where('blog_id',"=",$id)->get()]);
+        $blog = Blog::findOrFail($id);
+        if(Auth::id() == $blog->user_id)
+        {
+            return view('blog.edit',['blog'=>Blog::find($id),'tags'=>Tag::all(),'blogtags'=>BlogTag::where('blog_id',"=",$id)->get()]);
+        }
+        else
+        {
+            return Redirect::to('blog/');
+        }
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -175,7 +188,16 @@ class BlogController extends Controller
             {
                 DB::table('blog_tag')->where('blog_id', $id)->update(['tag_id' => $tag,'blog_id'=>$blog->id]);
             }   
-        return  redirect("blog/".$blog->id)->with('success','Blog has added successfuly');        
+        if(Auth::user()->role == 'clinic')
+        {
+            return  redirect("blog/".$blog->id)->with('success','Blog has added successfuly');  
+        }
+        elseif(Auth::user()->role == 'admin' or Auth::user()->role == 'blogs_admin')   
+        {
+            return  redirect("blog/pending")->with('success','Blog has added successfuly');  
+
+        }
+
     }
 
     public function acceptedBlogs()
@@ -222,6 +244,10 @@ class BlogController extends Controller
         // dd($blog);
         // $this->authorize('delete', $blog);
         $blog->delete();
+        if(Auth::user()->role == 'admin')
+        {
+            return redirect('admin/home/'.Auth::id())->with('success','Blog deleted successfully ');
+        }
         return redirect('profile/'.Auth::id())->with('success','Blog deleted successfully ');
     }
 

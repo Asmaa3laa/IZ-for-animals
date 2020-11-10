@@ -1,6 +1,12 @@
 @extends('layouts.index')
-
 @section('content')
+<style>
+  @media (max-width:768px) {
+  div#doctorimg {
+    display: none;
+  }
+}
+</style>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width:100%;height:400px;">
   <div class="carousel-inner" style="height:100%;width:100%;">
     <div class="carousel-item active"style="height:100%;width:100%;">
@@ -29,7 +35,11 @@
       <div class="container">
           <div class="row d-flex no-gutters">
               <div class="col-md-5 d-flex">
-                  <div class="img img-video align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0" style="background-image:url(images/image_why.jpg);">
+                  <div id="doctorimg" class="img img-video align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0" style=" width: 100%;
+                  vertical-align: middle;
+                  background-size: 100%;
+                  background-position: 50% 50%;
+                  background-repeat: no-repeat;background-image:url(images/image_why.jpg);">
                   </div>
               </div>
               <div class="col-md-7 pl-md-5 py-md-5">

@@ -39,9 +39,7 @@
         </form>  
       <br/>
   <span class="menuitem"><a href="/" class="btn btn-default"><i class="fa fa-home"></i> Home</a></span>
-  <span class="menuitem"><a href="/clinic" class="btn btn-default"><i class="fa fa-globe"></i> Clinics</a></span>
-  {{-- <span class="menuitem"><a href="/countries" class="btn btn-default"><i class="fa fa-globe"></i> Countries</a></span> --}} 
-  
+  <span class="menuitem"><a href="/clinic" class="btn btn-default"><i class="fa fa-globe"></i> Clinics</a></span>  
   
 
         <div class="row">
@@ -57,24 +55,12 @@
             </select>
           </div>
         </div>
-        {{-- <div class="table-responsive"> --}}
-      {{-- <table class="table table-striped table-bordered">
-       <thead>
-        <tr>
-         choose...
-        </tr>
-       </thead>
-       <tbody>
-
-       </tbody>
-      </table> --}}
-     {{-- </div> --}}
       <div class="row mt-5" id="search_data">
         @foreach($clinics as $clinic)
         <div class="col-md-6 col-lg-4  ftco-animate">
           <div class="blog-entry">
               {{-- align-self-stretch --}}
-            <a href="{{ route('clinic.show',$clinic->id) }}" class="block-20  rounded" ><img class="mx-auto d-block mt-3" style="height:100%" 
+            <a href="{{ route('clinic.show',$clinic->id) }}" class="block-20  rounded" ><img class="mx-auto d-block mt-3" style="height:100%;max-width:100%;" 
               src="{{asset ('storage/'.$clinic->image)}}"/>
             </a>
             <div class="text p-4">
@@ -91,21 +77,6 @@
         </div>
         @endforeach
       </div>
-      {{-- <div class="row mt-5">
-        <div class="col text-center">
-          <div class="block-27">
-            <ul>
-              <li><a href="#">&lt;</a></li>
-              <li class="active"><span>1</span></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#">&gt;</a></li>
-            </ul>
-          </div>
-        </div>
-      </div> --}}
     </div>
   </section>
 <script src="{{asset('js/jquery.min.js')}}"></script>

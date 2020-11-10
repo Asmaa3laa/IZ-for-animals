@@ -23,7 +23,7 @@
     </div>
 
     <div class="row">
-        <div class="col-3">
+        <div class="col-7">
             <form action="{{route('admin.store')}}" method="POST">
                 
                 <div class="form-group">

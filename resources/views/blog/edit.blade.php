@@ -1,10 +1,9 @@
-{{-- @extends('layouts.nav-footer') --}}
-@extends('layouts.index')
+{{-- @extends('layouts.index') --}}
+@extends(($blog->user->role == 'clinic')? 'layouts.index': ((Auth::user()->role == 'admin') ? 'layouts.admin' : (Auth::user()->role == 'blogs_admin' ? 'layouts.admin' : 'layouts.index')));
 @section('content')
 @if($errors->any())
   <div class="alert alert-danger">
     <h3>please correct your errors</h3> 
-  {{-- <h4>{{$errors}}</h4> --}}
   </div>
 @endif
 <div class="container mt-5" >
@@ -35,20 +34,42 @@
     <!-- tags -->
     <div class="form-row align-items-center">
       <label for="cars">Choose blog's tags</label>
-      <select style="height:100px;" id="tags" name="tags[]" class="form-control mb-2 js-example-basic-single {{ $errors->first('tag') ? 'is-invalid':''}}" autofocus multiple>
+      {{-- <select style="height:100px;" id="tags" name="tags[]" class="form-control mb-2 js-example-basic-single {{ $errors->first('tag') ? 'is-invalid':''}}" autofocus multiple>
         <option value="" disabled selected>Tags</option>
         @foreach ($tags as $tag) 
           @foreach ($blogtags as $blogtag)
             <option value="{{$tag->id}}" {{ old('tag_id', $blogtag['tag_id']) == $tag->id ? 'selected' : '' }}>{{ $tag->name}}</option>
           @endforeach         
         @endforeach
-      </select>
+      </select> --}}
+      {{-- /*********************/ --}}
+      <select style="height:100px;" id="tags" name="tags[]" class="form-control mb-2 js-example-basic-single {{ $errors->first('tag') ? 'is-invalid':''}}" autofocus multiple>
+        @foreach ($tags as $tag)
+        @foreach ($blogtags as $blogtag)
+            @if ($tag->id == $blogtag->tag_id)
+                <option selected value="{{$tag->id}}">{{$tag->name}}</option>
+                @break
+            @else
+                <option value="{{$tag->id}}">{{$tag->name}}</option>
+            @endif
+        @endforeach
+        @endforeach
+    </select>
     </div>
     @if($errors->first('tags'))
     <h6 style="color: red;">{{$errors->first('tags') }}</h6>
     @endif
-    <button class="site-btn submit-order-btn">UPDATE</button>
-
+    <div class="mb-5" style="text-align:center;">
+    <button class="site-btn btn-success submit-order-btn mb-5">UPDATE</button>
+    </div>
 </form>
 </div>
+@if(Auth::user()->role == 'admin' or Auth::user()->role == 'blogs_admin')
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $("#content").summernote();
+  });
+</script> 
+@endif
 @endsection
