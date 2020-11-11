@@ -91,7 +91,7 @@
                           @forelse($blogs as $blog)  
                                 <div class="col-md-4 ftco-animate">
                                   <div class="blog-entry">
-                                    <a href="{{ route('blog.show',$blog->id) }}" class="block-20 rounded" ><img src="{{asset ('storage/'.$blog->image)}}"/>
+                                    <a href="{{ route('blog.show',$blog->id) }}" class="block-20 rounded" ><img style="max-width:100%;"src="{{asset ('storage/'.$blog->image)}}"/>
                                     </a>
                                     <div class="text p-4">
                                         <div class="meta mb-2">

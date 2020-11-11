@@ -42,10 +42,6 @@ Route::group(['middleware' => ['auth','admin']], function () {
     return view('admin.sendMail'); 
         });
 });
-
-// Route::get('map', function () {
-//     return view('map');
-// });
 Auth::routes();
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('profile', 'ProfileController');

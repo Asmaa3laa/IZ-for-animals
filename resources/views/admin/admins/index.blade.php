@@ -1,5 +1,8 @@
 @extends('layouts.admin')
 @section('content')
+<div class="container">
+  <div class="card-body p-0">
+<div class="table-responsive">
 <table class="table">
     <thead>
         <tr style="color: navy;">
@@ -38,4 +41,7 @@
         <tr>There is Now Sub Admins Yet</tr>            
         @endforelse
 </table>
+</div>
+</div>
+</div>
 @endsection

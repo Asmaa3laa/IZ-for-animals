@@ -1,4 +1,3 @@
-{{-- @extends('layouts.index') --}}
 @extends(($blog->user->role == 'clinic')? 'layouts.index': ((Auth::user()->role == 'admin') ? 'layouts.admin' : (Auth::user()->role == 'blogs_admin' ? 'layouts.admin' : 'layouts.index')));
 @section('content')
 @if($errors->any())
@@ -33,28 +32,7 @@
     @endif
     <!-- tags -->
     <div class="form-row align-items-center">
-      <label for="cars">Choose blog's tags</label>
-      {{-- <select style="height:100px;" id="tags" name="tags[]" class="form-control mb-2 js-example-basic-single {{ $errors->first('tag') ? 'is-invalid':''}}" autofocus multiple>
-        <option value="" disabled selected>Tags</option>
-        @foreach ($tags as $tag) 
-          @foreach ($blogtags as $blogtag)
-            <option value="{{$tag->id}}" {{ old('tag_id', $blogtag['tag_id']) == $tag->id ? 'selected' : '' }}>{{ $tag->name}}</option>
-          @endforeach         
-        @endforeach
-      </select> --}}
-      {{-- /*********************/ --}}
-      <select style="height:100px;" id="tags" name="tags[]" class="form-control mb-2 js-example-basic-single {{ $errors->first('tag') ? 'is-invalid':''}}" autofocus multiple>
-        @foreach ($tags as $tag)
-        @foreach ($blogtags as $blogtag)
-            @if ($tag->id == $blogtag->tag_id)
-                <option selected value="{{$tag->id}}">{{$tag->name}}</option>
-                @break
-            @else
-                <option value="{{$tag->id}}">{{$tag->name}}</option>
-            @endif
-        @endforeach
-        @endforeach
-    </select>
+      <label for="cars">Choose blog's tags</label>    
     </div>
     @if($errors->first('tags'))
     <h6 style="color: red;">{{$errors->first('tags') }}</h6>
