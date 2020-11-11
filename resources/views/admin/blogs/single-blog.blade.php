@@ -21,10 +21,13 @@
             <div class="form-row align-items-center">
             <label for="tags">Choose blog's tags</label>
               <select style="height:100px;" id="tags" name="tags[]" class="form-control mb-2 js-example-basic-single {{ $errors->first('tag') ? 'is-invalid':''}}" autofocus multiple>
+                
                 @foreach ($all_tags as $tag) 
-                  @foreach ($blog_tags as $blogtag)
-                    <option value="{{$tag->id}}" {{ old('tag_id', $blogtag['tag_id']) == $tag->id ? 'selected' : '' }}>{{ $tag->name}}</option>
-                  @endforeach         
+                @if(in_array($tag->id, $blog_tags))
+                <option selected value="{{$tag->id}}">{{$tag->name}}</option>
+              @else
+                <option value="{{$tag->id}}">{{$tag->name}}</option>
+              @endif         
                 @endforeach
               </select>
             </div>
@@ -59,5 +62,6 @@
         </div>
         @endif
       </form>
+      
     </div>
   </section> <!-- .section -->

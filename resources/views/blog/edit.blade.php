@@ -32,7 +32,17 @@
     @endif
     <!-- tags -->
     <div class="form-row align-items-center">
-      <label for="cars">Choose blog's tags</label>    
+      <label for="cars">Choose blog's tags</label>
+      <select style="height:100px;" id="tags" name="tags[]" class="form-control mb-2 js-example-basic-single {{ $errors->first('tag') ? 'is-invalid':''}}" autofocus multiple>
+        {{-- {{$Btags = $blogtags->toArray()}} --}}
+        @foreach ($tags as $tag)
+          @if(in_array($tag->id, $blogtags))
+            <option selected value="{{$tag->id}}">{{$tag->name}}</option>
+          @else
+            <option value="{{$tag->id}}">{{$tag->name}}</option>
+          @endif
+        @endforeach
+    </select>
     </div>
     @if($errors->first('tags'))
     <h6 style="color: red;">{{$errors->first('tags') }}</h6>
@@ -41,6 +51,7 @@
     <button class="site-btn btn-success submit-order-btn mb-5">UPDATE</button>
     </div>
 </form>
+      {{-- {{ $blogtags[0] }} --}}
 </div>
 @if(Auth::user()->role == 'admin' or Auth::user()->role == 'blogs_admin')
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>

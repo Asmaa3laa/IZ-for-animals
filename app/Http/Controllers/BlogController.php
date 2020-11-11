@@ -158,7 +158,7 @@ class BlogController extends Controller
         $blog = Blog::findOrFail($id);
         if(Auth::id() == $blog->user_id)
         {
-            return view('blog.edit',['blog'=>Blog::find($id),'tags'=>Tag::all(),'blogtags'=>BlogTag::where('blog_id',"=",$id)->get()]);
+            return view('blog.edit',['blog'=>Blog::find($id),'tags'=>Tag::all(),'blogtags'=>BlogTag::where('blog_id',$id)->pluck('tag_id')->toArray()]);
         }
         else
         {
@@ -184,11 +184,16 @@ class BlogController extends Controller
          $blog->image = $image_path;
          $blog->save();
         }
-            $tags = $request->tags;
-            foreach($tags as $tag )
-            {
-                DB::table('blog_tag')->where('blog_id', $id)->update(['tag_id' => $tag,'blog_id'=>$blog->id]);
-            }   
+        BlogTag::where('blog_id','=',$blog->id)->forceDelete(); 
+        $tags = $request->tags;
+        foreach($tags as $tag )
+        {
+            $tags = BlogTag::create([
+                "tag_id"=>$tag,
+                "blog_id"=>$blog->id,   
+            ]); 
+        }  
+             
         if(Auth::user()->role == 'clinic')
         {
             return  redirect("blog/".$blog->id)->with('success','Blog has added successfuly');  
@@ -223,7 +228,7 @@ class BlogController extends Controller
         $blog->is_verified = 1;
         $blog->update();
         $tags = $request->get('selected_tags');
-        BlogTag::where('blog_id','=',$blog->id)->delete();
+        BlogTag::where('blog_id','=',$blog->id)->forceDelete();
         foreach($tags as $tag )
         {
             $tags = BlogTag::create([
