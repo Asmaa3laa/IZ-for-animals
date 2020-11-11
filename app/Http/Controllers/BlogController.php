@@ -133,8 +133,20 @@ class BlogController extends Controller
     {
         $blog = Blog::findOrFail($id);
         $tags = Tag::all();
-        $latest_blogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
-        // $tag_blogs = BlogTag::where('tag_id','=',$id)->get();
+        if (Auth::check()) {
+            if(Auth::user()->role == 'doctor' or Auth::user()->role == 'admin' or Auth::user()->role == 'clinic' )
+            {
+                $latest_blogs = Blog::where(['is_verified'=>1,'for_doctors'=>1])->orderBy('created_at', 'desc')->take(3)->get();
+            }
+            else
+            {
+                $latest_blogs = Blog::where(['is_verified'=>1,'for_doctors'=>0])->orderBy('created_at', 'desc')->take(3)->get();
+            }
+        }
+        else
+        {
+            $latest_blogs = Blog::where(['is_verified'=>1,'for_doctors'=>0])->orderBy('created_at', 'desc')->take(3)->get();
+        }
         if($blog->is_verified == 1)
         {
             return view('blog.single-blog',compact('blog','tags','latest_blogs'));
