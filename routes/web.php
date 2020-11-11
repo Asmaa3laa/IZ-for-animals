@@ -68,7 +68,7 @@ Route::get('/get-state-list/{country_id}','CountryStateController@getStateList')
 Route::resource('blogtag','BlogTagController')->only('show');
 Route::get('item/{item}', function($itemId){
     $blog = Blog::findOrFail($itemId);
-    $blog_tags = BlogTag::where('blog_id','=',$itemId)->get();
+    $blog_tags = BlogTag::where('blog_id','=',$itemId)->pluck('tag_id')->toArray();
     $all_tags = Tag::all();
     return view('admin.blogs.single-blog', compact('blog','blog_tags','all_tags'));
 });

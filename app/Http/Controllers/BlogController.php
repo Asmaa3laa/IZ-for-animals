@@ -158,7 +158,7 @@ class BlogController extends Controller
         $blog = Blog::findOrFail($id);
         if(Auth::id() == $blog->user_id)
         {
-            return view('blog.edit',['blog'=>Blog::find($id),'tags'=>Tag::all(),'blogtags'=>BlogTag::where('blog_id',"=",$id)->get()]);
+            return view('blog.edit',['blog'=>Blog::find($id),'tags'=>Tag::all(),'blogtags'=>BlogTag::where('blog_id',$id)->pluck('tag_id')->toArray()]);
         }
         else
         {
