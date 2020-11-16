@@ -1,5 +1,7 @@
 
 @if($errors->any())
+{{-- {{dd($errors)
+}} --}}
   <div class="alert alert-danger">
     <h3>please correct your errors</h3> 
   </div>
@@ -32,11 +34,11 @@
                 <label for="inputEmail3"  class="col-sm-2 col-form-label">Email</label>
                 <div class="col-sm-10">
                 <input type="email" name='email' class="form-control" placeholder="Email" value="{{$user->email}}" required>
-                @error('email')
+                @if ($errors->first('email'))   
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
+                        <strong>{{$errors->first('content')}}</strong>
                     </span>
-                @enderror    
+                @endif                  
                 </div>  
               </div>
             @if ($user->role == 'doctor')

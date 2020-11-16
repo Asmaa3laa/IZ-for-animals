@@ -1,4 +1,7 @@
 @extends('layouts.index')
+@section('title')
+| {{$blog->title}}
+@endsection
 @section('content')
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width:100%;height:400px;">
     <div class="carousel-inner" style="height:100%;width:100%;">

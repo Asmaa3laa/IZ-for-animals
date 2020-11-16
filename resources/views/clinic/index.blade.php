@@ -1,6 +1,8 @@
 @extends('layouts.index')
 <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
-
+@section('title')
+{{$title}}
+@endsection
 @section('content')
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width:100%;height:400px;">
     <div class="carousel-inner" style="height:100%;width:100%;">

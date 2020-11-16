@@ -1,4 +1,7 @@
 @extends('layouts.index')
+@section('title')
+| {{$clinic->user_name}}
+@endsection
 @section('content')
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width:100%;height:400px;">
     <div class="carousel-inner" style="height:100%;width:100%;">
@@ -41,7 +44,7 @@
                                   <span class="fa fa-map-marker"></span>
                               </div>
                               <div class="text">
-                                <p style="color: #eaee0a;">Address:</p> 
+                                <h6 style="color: #eaee0a;">Address</h6> 
                               <p style="color:navy;">{{$clinic->address}},{{$clinic->state->name}},{{$clinic->country->name}}</p>
                             </div>
                         </div>
@@ -52,8 +55,8 @@
                                   <span class="fa fa-phone"></span>
                               </div>
                               <div class="text">
-                              <p style="color: #eaee0a;">Phone:</p>
-                              <p> <a style="color:navy;"href="tel://1234567920">{{$clinic->phone}}</a></p>
+                              <h6 style="color: #eaee0a;">Phone</h6>
+                              <p> <a style="color:navy;"href="tel:{{$clinic->phone}}">{{$clinic->phone}}</a></p>
                             </div>
                         </div>
                               </div>
@@ -63,8 +66,8 @@
                                   <span class="fa fa-paper-plane"></span>
                               </div>
                               <div class="text">
-                              <p  style="color: #eaee0a;">Email:</p> 
-                              <p><a style="color:navy;" href="mailto:info@yoursite.com">{{$clinic->email}}</a></p>
+                              <h6 style="color: #eaee0a;">Email</h6> 
+                              <p><a style="color:navy;" href="mailto:{{$clinic->email}}">{{$clinic->email}}</a></p>
                             </div>
                         </div>
                             </div>

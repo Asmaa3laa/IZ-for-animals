@@ -142,7 +142,7 @@ class ProfileController extends Controller
                 $user->save();
             }
              
-            return redirect()->route('profile.show',['user'=> Auth::id()])->with('update','Your profile has been updated successfully..'); 
+            return redirect()->route('profile.show',['profile'=> Auth::id()])->with('update','Your profile has been updated successfully..'); 
             // } 
         // catch (\Throwable $th) {
         //     // dd($th);

@@ -1,14 +1,7 @@
 @extends('layouts.admin')
-{{-- <style>
-    img {
-        display: block;
-        max-width:230px;
-        max-height:95px;
-        width: auto;
-        height: auto;
-        
-      }
-      </style>  --}}
+@section('admintitle')
+| Add Admins  
+@endsection
 @section('content')
 <div class="container">
     @if (session('success'))

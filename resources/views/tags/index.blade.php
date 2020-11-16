@@ -1,7 +1,9 @@
 @extends('layouts.admin')
 
 @section('title', 'Tags')
-    
+@section('admintitle')
+| Tags
+@endsection    
 @section('content')
 @if (session()->has("message"))
 <div class="alert alert-success" role="alert">

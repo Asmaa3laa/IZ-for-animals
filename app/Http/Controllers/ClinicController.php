@@ -23,7 +23,8 @@ class ClinicController extends Controller
         $clinics = User::where(['role'=>'clinic','is_verified'=>'1'])->paginate(12);
         $countries = Country::pluck('name', 'id');
         $states = State::pluck('name', 'id');
-        return view('clinic.index',compact('clinics','countries','states'));
+        $title = "| Clinics";
+        return view('clinic.index',compact('clinics','countries','states','title'));
     }
 
     /**

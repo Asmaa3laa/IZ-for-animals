@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Blog;
 use App\BlogTag; 
+use App\Tag;
 
 class BlogTagController extends Controller
 {
@@ -48,7 +49,8 @@ class BlogTagController extends Controller
     public function show($id)
     {
         $tag_blogs = BlogTag::where('tag_id','=',$id)->get(); 
-        return view('blog.tagblogs',compact('tag_blogs'));
+        $tag = Tag::findOrFail($id);
+        return view('blog.tagblogs',compact('tag_blogs','tag'));
     }
 
     /**

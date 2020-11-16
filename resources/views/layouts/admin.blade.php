@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Admin Dashboard</title>
+  <title>Admin Dashboard @yield('admintitle')</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -42,7 +42,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Home</a>
+        <a href="{{url('/')}}" class="nav-link">Home</a>
       </li>
     </ul>
 
@@ -109,8 +109,8 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-          <li class="nav-item has-treeview {{(request()->is('admin/create')) ? 'menu-open' : '' }}{{(request()->is('admin/')) ? 'menu-open' : '' }}">
-              <a href="" class="nav-link {{(request()->is('admin/create')) ? 'active' : '' }}{{(request()->is('admin/')) ? 'active' : '' }}">
+          <li class="nav-item has-treeview {{(request()->is('admin/create')) ? 'menu-open' : '' }}{{(request()->is('admin')) ? 'menu-open' : '' }}">
+              <a href="" class="nav-link {{(request()->is('admin/create')) ? 'active' : '' }}{{(request()->is('admin')) ? 'active' : '' }}">
                   <i class="nav-icon fas fa-user"></i>
                   <p>
                     Admins
@@ -125,7 +125,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{url('admin')}}" class="nav-link {{(request()->is('blog/pending')) ? 'active' : '' }}">
+                    <a href="{{url('admin')}}" class="nav-link {{(request()->is('admin')) ? 'active' : '' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Admins List</p>
                     </a>

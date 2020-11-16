@@ -1,4 +1,7 @@
 @extends('layouts.index')
+@section('title')
+| {{Auth::user()->user_name}} | Blog
+@endsection
 @section('content')
 @if($errors->any())
   <div class="alert alert-danger">

@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('admintitle')
+| Add Tags
+@endsection
 @section('content')
     <div class="container">
         <div class="row">

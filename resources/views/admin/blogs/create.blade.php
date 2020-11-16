@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('admintitle')
+| Create Blog   
+@endsection
 @section('content')
 @if($errors->any())
   <div class="alert alert-danger">

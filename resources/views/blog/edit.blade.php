@@ -1,4 +1,7 @@
 @extends(($blog->user->role == 'clinic')? 'layouts.index': ((Auth::user()->role == 'admin') ? 'layouts.admin' : (Auth::user()->role == 'blogs_admin' ? 'layouts.admin' : 'layouts.index')));
+@section('title')
+| {{Auth::user()->user_name}} | Blog
+@endsection
 @section('content')
 @if($errors->any())
   <div class="alert alert-danger">

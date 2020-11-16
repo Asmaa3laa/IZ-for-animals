@@ -1,4 +1,7 @@
 @extends('layouts.index')
+@section('title')
+| {{Auth::user()->user_name}}
+@endsection
 @section('content')
 <section class="container">
   @if(session('update'))

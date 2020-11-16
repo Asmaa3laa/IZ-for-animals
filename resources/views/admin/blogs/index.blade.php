@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('admintitle')
+| Blogs
+@endsection
 <style>
     img {
         display: block;

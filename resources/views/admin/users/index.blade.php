@@ -1,17 +1,9 @@
 @extends('layouts.admin')
 <head>
   <link rel="stylesheet" href="{{ asset('css/img_popup.css') }}">
-  <style>
-    /* img {
-        display: block;
-        max-width:230px;
-        max-height:95px;
-        width: auto;
-        height: auto;
-        
-      } */
-     
-  </style> 
+  @section('admintitle')
+  | {{$title}}  
+  @endsection 
 </head>
 @section('content')
 <div class="container">
@@ -37,9 +29,9 @@
     <div class="card-header border-transparent">
         @if($users->count() >= '1')
         @if(($users->first()->is_verified) == '1')
-        <h3 class="card-title">{{$users->first()->role}} Users</h3>
+          <h3 class="card-title">{{$users->first()->role}} Users</h3>
         @else 
-        <h3 class="card-title">Pending Users</h3>
+          <h3 class="card-title">Pending Users</h3>
         @endif
       <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -76,7 +68,7 @@
             <th>Type</th>
             <th>Details</th>
             <th>Verify</th>
-            <th>Delete</th>
+            <th>Delete</th> 
             
         @endif
           </tr>
@@ -148,8 +140,6 @@
       <div class="pagination pagination-sm m-0 float-right">
     {{ $users->links() }}
     </div>
-      {{-- <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Order</a> --}}
-      {{-- <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a> --}}
     </div> 
     <!-- /.card-footer -->
   </div>

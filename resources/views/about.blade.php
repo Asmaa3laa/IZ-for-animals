@@ -1,5 +1,8 @@
 @extends('layouts.index')
 @section('content')
+@section('title')
+| About
+@endsection
 <style>
   @media (max-width:768px) {
   div#doctorimg {

@@ -1,5 +1,7 @@
 @extends('layouts.admin')
-@section('title', 'Edit Tag'.$tag->name)
+@section('admintitle')
+| Edit Tag
+@endsection
 @section('content')
     <div class="container">
         <div class="row">

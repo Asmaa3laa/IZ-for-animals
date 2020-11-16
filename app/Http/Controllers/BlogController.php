@@ -221,12 +221,14 @@ class BlogController extends Controller
     public function acceptedBlogs()
     {
         $blogs = Blog::where('is_verified','=','1')->paginate(10);
-        return view('admin.blogs.index',compact('blogs'));        
+        $title = "Accepted Blogs";
+        return view('admin.blogs.index',compact('blogs','title'));        
     }
     public function pendingBlogs()
     {
         $blogs = Blog::where('is_verified','=','0')->paginate(10);
-        return view('admin.blogs.index',compact('blogs'));
+        $title = "Pending Blogs";
+        return view('admin.blogs.index',compact('blogs','title'));
     }
     public function accept(Request $request)
     {

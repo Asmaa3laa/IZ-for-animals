@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
 use App\User;
 use Mail;
+use Auth;
 use App\Mail\verifyMail;
 use App\Mail\rejectMail;
 class UserController extends Controller
@@ -22,7 +23,8 @@ class UserController extends Controller
             ['role','!=','admin'],
             ['is_verified',1]
             ])->paginate(10);
-        return view('admin.users.index', compact('users'));
+        $title = "Users";
+        return view('admin.users.index', compact('users','title'));
     }
 
     public function doctorUsers()
@@ -31,7 +33,8 @@ class UserController extends Controller
             ['role','=','doctor'],
             ['is_verified','=',1]
             ])->paginate(10);
-        return view('admin.users.index', compact('users'));
+            $title = "Doctors";
+        return view('admin.users.index', compact('users','title'));
     }
 
     public function clinicUsers()
@@ -40,7 +43,8 @@ class UserController extends Controller
             ['role','clinic'],
             ['is_verified',1]
             ])->paginate(10);
-        return view('admin.users.index', compact('users'));
+            $title = "Clinics";
+        return view('admin.users.index', compact('users','title'));
     }
 
     public function PendingUsers()
@@ -49,8 +53,8 @@ class UserController extends Controller
             ['role','!=','admin'],
             ['is_verified',0]
             ])->paginate(3);
-            // dd($users);
-        return view('admin.users.index', compact('users'));
+            $title = "Pending Users";
+        return view('admin.users.index', compact('users','title'));
     }
 
     public function UpdatingUsers()
@@ -60,8 +64,8 @@ class UserController extends Controller
             ['is_verified',1],
             ['updated_at','!=',null]
             ])->paginate(3);
-            // dd($users);
-        return view('admin.users.index', compact('users'));
+            $title = "Updating Users";
+        return view('admin.users.index', compact('users','title'));
     }
     
 
@@ -170,7 +174,7 @@ class UserController extends Controller
             $user = User::find($id);
             $name = $user->name;        
             Mail::to($user->email)->send(new rejectMail($name));
-            $user->delete();
+            $user->forceDelete();
             Db::commit();
             return Redirect::to('users/pending')->with('reject',"Reject email has been send and user is deleted successfully!");
             } 

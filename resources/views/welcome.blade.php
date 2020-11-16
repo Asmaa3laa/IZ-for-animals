@@ -184,7 +184,7 @@
             <div class="container">
                 <div class="row">
                   <section class="col-lg-6 order-md-last">
-                    <form action="{{route('search')}}" method="Get"  class="search-form" style="width:100%; margin-top:80px;">
+                    <form action="{{route('search')}}" method="Get"  class="search-form" style="width:100%; margin-top:0px;">
                       {{ csrf_field() }}
                       <div class="form-group" >
                         <span class="fa fa-search btn submit" id="search"></span>
@@ -194,17 +194,17 @@
                       </div>
                     </form> 
                     <div>
-                        <div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0" style="background-image:url(images/about.jpg);">
-                            <a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
+                        <div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0" style="background-image:url(images/videoimg.jpg);">
+                            {{-- <a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
                                 <span class="fa fa-play"></span>
-                            </a>
+                            </a> --}}
                         </div>
                     </div>
                   </section>
     
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 mx-md-0 mx-auto">
                         <div class="heading-section mb-5 mt-5 mt-lg-0">
-                        <h2 class="mb-3" style="font-weight:bold;color:navy;">Our Topics</h2>
+                        <h1 class="mb-3" style="font-weight:bold;color:navy;font-family:inherit;">OUR TOPICS</h1>
                         </div>
                         <div id="accordion" class="myaccordion w-100 row" aria-multiselectable="true">
                               <div class="card">
