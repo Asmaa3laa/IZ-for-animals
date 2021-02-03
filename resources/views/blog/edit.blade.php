@@ -1,6 +1,6 @@
 @extends(($blog->user->role == 'clinic')? 'layouts.index': ((Auth::user()->role == 'admin') ? 'layouts.admin' : (Auth::user()->role == 'blogs_admin' ? 'layouts.admin' : 'layouts.index')));
 @section('title')
-| {{Auth::user()->user_name}} | Blog
+| {{Auth::user()->user_name}} | @lang('trans.blog')
 @endsection
 @section('content')
 @if($errors->any())
@@ -13,29 +13,29 @@
      {{ method_field('PATCH') }} 
         {{ csrf_field() }}
   <div class="form-group">
-        <label for="title">Blog Title</label>
+        <label for="title">@lang('trans.blogs.blog_title')</label>
         <input type="text" id ='title' name="title" class="form-control"value="{{old('title', $blog->title)}}" placeholder="Title" aria-label="title" autofocus aria-describedby="basic-addon1">      </div>
         @if ($errors->first('title'))
            <h6 style="color: red;">{{$errors->first('title')}}</h6>
         @endif
          <div class="form-group">
-        <label for="content">Blog</label> 
-        <textarea class="form-control" name="content" id="content" cols="25" placeholder="Content..."autofocus >{{old('content', strip_tags($blog->content))}}</textarea>
+        <label for="content">@lang('trans.blog')</label> 
+        <textarea class="form-control" name="content" id="content" cols="25" placeholder=""autofocus >{{old('content', strip_tags($blog->content))}}</textarea>
         @if ($errors->first('content'))
           <h6 style="color: red;">{{$errors->first('content')}}</h6>
         @endif
     </div>
     <div class="custom-file">
         <input type="file" class="custom-file-input" id="validatedImage" name="image" value="{{($blog->image)}}">
-        <label class="custom-file-label"id="image" for="validatedCustomFile" autofocus>Update Blog Image</label>
+        <label class="custom-file-label"id="image" for="validatedCustomFile" autofocus>@lang('trans.blogs.update_blog_image')</label>
     </div>
     <img style="height: 300px;width:300px;margin:auto;" src="{{asset ('storage/'.$blog->image)}}"/>
     @if ($errors->first('image'))
-        <h6 style="color: red;"> invalid image, only jpg,png and jpeg are allowed </h6>
+        <h6 style="color: red;">@lang('trans.blogs.image_error') </h6>
     @endif
     <!-- tags -->
     <div class="form-row align-items-center">
-      <label for="cars">Choose blog's tags</label>
+      <label for="cars">@lang('trans.chooe_blog_tag')</label>
       <select style="height:100px;" id="tags" name="tags[]" class="form-control mb-2 js-example-basic-single {{ $errors->first('tag') ? 'is-invalid':''}}" autofocus multiple>
         {{-- {{$Btags = $blogtags->toArray()}} --}}
         @foreach ($tags as $tag)
@@ -51,7 +51,7 @@
     <h6 style="color: red;">{{$errors->first('tags') }}</h6>
     @endif
     <div class="mb-5" style="text-align:center;">
-    <button class="site-btn btn-success submit-order-btn mb-5">UPDATE</button>
+    <button class="site-btn btn-success submit-order-btn mb-5">@lang('trans.update')</button>
     </div>
 </form>
       {{-- {{ $blogtags[0] }} --}}
@@ -60,7 +60,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script>
   $(document).ready(function() {
-    $("#content").summernote();
+    $("#content").summernote({height: 200});
   });
 </script> 
 @endif

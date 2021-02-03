@@ -8,23 +8,23 @@
       <div class="carousel-item active"style="height:100%;width:100%;">
         <img class="d-block w-100" style="max-width: 100%;height: 100%;display: block;" src="{{url('images/main.jpg')}}" alt="First slide">
         <div class="carousel-caption d-none d-md-block">
-          <h2 class="centered" style="color:navy;font-weight:bold;background: rgba(255, 255, 255, 0.75);">All About Animal helping veterinarians to create thier online clinic</h2>
+          <h2 class="centered" style="color:navy;font-weight:bold;background: rgba(255, 255, 255, 0.75);">@lang('trans.home.first_slide_sentance')</h2>
         </div>
       </div>
       <div class="carousel-item" style="height:100%;width:100%;">
         <img class="d-block w-100" style="max-width: 100%;height: 100%;display: block;" src="{{url('images/bg_1.jpg')}}" alt="Second slide">
         <div class="carousel-caption d-none d-md-block">
-          <h2 class="centered"style="background: rgba(255, 255, 255, 0.75);color:navy;font-weight:bold;">All About Animal is your way to take better care of animal health</h2>
+          <h2 class="centered"style="background: rgba(255, 255, 255, 0.75);color:navy;font-weight:bold;">@lang('trans.home.second_slide_sentance')</h2>
         </div>
       </div>
     </div>
       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
+        <span class="sr-only">@lang('trans.previous')</span>
       </a>
       <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
+        <span class="sr-only">@lang('trans.next')</span>
       </a>
   </div>   
 
@@ -57,7 +57,7 @@
             </form>
           </div> --}}
           <div class="sidebar-box ftco-animate">
-            <h3>Recent Blogs</h3>
+            <h3>@lang('trans.blogs.recent_blogs')</h3>
             @foreach($latest_blogs as $latest_blog)
             <div class="block-21 mb-4 d-flex">
             <a href="{{route('blog.show',$latest_blog)}}"><img class="blog-img mr-4"src="{{asset ('storage/'.$latest_blog->image) }}"/></a>
@@ -73,7 +73,7 @@
           </div>
 
           <div class="sidebar-box ftco-animate">
-            <h3>Tag Cloud</h3>
+            <h3>@lang('trans.tag_cloud')</h3>
             <div class="tagcloud">
               @forelse($tags as $tag)  
             <a href="{{route('blogtag.show',$tag->id)}}" class="tag-cloud-link">{{$tag->name}}</a>

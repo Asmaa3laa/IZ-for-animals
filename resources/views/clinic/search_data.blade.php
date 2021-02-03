@@ -12,7 +12,7 @@
             <p>{{$clinic->country->name}}</p>
             <div><span class="fa fa-phone"></span>  {{$clinic->phone}}</div>
           </div>
-          <a class="btn-link" href="{{$clinic->location}}"><i class="fa fa-map-marker"></i> Location</a></h6>
+          <a class="btn-link" href="{{$clinic->location}}"><i class="fa fa-map-marker"></i>@lang('trans.users.location')</a></h6>
         </div>
       </div>
       </div>

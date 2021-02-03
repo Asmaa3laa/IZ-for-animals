@@ -182,7 +182,7 @@
 	});
 
 	$('.appointment_time').timepicker();	
-	$('#content').summernote();
+	$('#content').summernote({height: 200});
 
 })(jQuery);
 

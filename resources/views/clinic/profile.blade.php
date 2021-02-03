@@ -8,23 +8,23 @@
       <div class="carousel-item active"style="height:100%;width:100%;">
         <img class="d-block w-100" style="max-width: 100%;height: 100%;display: block;" src="{{url('images/main.jpg')}}" alt="First slide">
         <div class="carousel-caption d-none d-md-block">
-          <h2 class="centered" style="color:navy;font-weight:bold;background: rgba(255, 255, 255, 0.75);">All About Animal helping veterinarians to create thier online clinic</h2>
+          <h2 class="centered" style="color:navy;font-weight:bold;background: rgba(255, 255, 255, 0.75);">@lang('trans.home.first_slide_sentance')</h2>
         </div>
       </div>
       <div class="carousel-item" style="height:100%;width:100%;">
         <img class="d-block w-100" style="max-width: 100%;height: 100%;display: block;" src="{{url('images/bg_1.jpg')}}" alt="Second slide">
         <div class="carousel-caption d-none d-md-block">
-          <h2 class="centered"style="background: rgba(255, 255, 255, 0.75);color:navy;font-weight:bold;">All About Animal is your way to take better care of animal health</h2>
+          <h2 class="centered"style="background: rgba(255, 255, 255, 0.75);color:navy;font-weight:bold;">@lang('trans.home.second_slide_sentance')</h2>
         </div>
       </div>
     </div>
       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
+        <span class="sr-only">@lang('trans.previous')</span>
       </a>
       <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
+        <span class="sr-only">@lang('trans.next')</span>
       </a>
   </div>
   <section class="ftco-section bg-light">
@@ -44,7 +44,7 @@
                                   <span class="fa fa-map-marker"></span>
                               </div>
                               <div class="text">
-                                <h6 style="color: #eaee0a;">Address</h6> 
+                                <h6 style="color: #eaee0a;">@lang('trans.users.adress')</h6> 
                               <p style="color:navy;">{{$clinic->address}},{{$clinic->state->name}},{{$clinic->country->name}}</p>
                             </div>
                         </div>
@@ -55,7 +55,7 @@
                                   <span class="fa fa-phone"></span>
                               </div>
                               <div class="text">
-                              <h6 style="color: #eaee0a;">Phone</h6>
+                              <h6 style="color: #eaee0a;">@lang('trans.users.phone')</h6>
                               <p> <a style="color:navy;"href="tel:{{$clinic->phone}}">{{$clinic->phone}}</a></p>
                             </div>
                         </div>
@@ -66,7 +66,7 @@
                                   <span class="fa fa-paper-plane"></span>
                               </div>
                               <div class="text">
-                              <h6 style="color: #eaee0a;">Email</h6> 
+                              <h6 style="color: #eaee0a;">@lang('trans.users.email')</h6> 
                               <p><a style="color:navy;" href="mailto:{{$clinic->email}}">{{$clinic->email}}</a></p>
                             </div>
                         </div>
@@ -84,11 +84,11 @@
                               </div>
                           </div>
                         @can('create.blogs')
-                        <button onclick="location.href = '{{route('blog.create')}}';" id="myButton" class="btn-block submit-button"style="border-radius: 12px;cursor:pointer ;background-color:#092a58;height:50px;border:none;color: #eaee0a;">Create New Blog</button>               
+                        <button onclick="location.href = '{{route('blog.create')}}';" id="myButton" class="btn-block submit-button"style="border-radius: 12px;cursor:pointer ;background-color:#092a58;height:50px;border:none;color: #eaee0a;">@lang('trans.blogs.create_new_blog')</button>               
                         @endcan         
                         <section class="ftco-section bg-light"> 
                             <div class="container">
-                                <h5  style="margin-bottom:40px;text-align:center;font-weight: bold;color: #eaee0a;">Clinic's Blogs <span style="color:rgb(11, 11, 59);font-weight: bold;">{{count($blogs)}}</span></h5>
+                                <h5  style="margin-bottom:40px;text-align:center;font-weight: bold;color: #eaee0a;">@lang('trans.blogs.clinic_blogs') <span style="color:rgb(11, 11, 59);font-weight: bold;">{{count($blogs)}}</span></h5>
 
                               <div class="row d-flex">
                           @forelse($blogs as $blog)  
@@ -106,22 +106,22 @@
                                       <p class="content">{{\Illuminate\Support\Str::limit(strip_tags(html_entity_decode($blog->content)),100, $end='...') }}</p>       
                                     </div>         
                                     <div style="text-align: justify">
-                                    <a href="{{ route('blog.show',$blog->id) }}" class="btn btn-info" style="background-color: #052958;" role="button">Read More</a>   
+                                    <a href="{{ route('blog.show',$blog->id) }}" class="btn btn-info" style="background-color: #052958;" role="button">@lang('trans.read_more')</a>   
                                     @can('create.blogs')
                                     <a href="{{route('blog.edit',$blog->id)}}" class="btn btn-warning" role="button">
-                                      <span class="fa fa-pencil-square-o" style="color: white;">EDIT</span>
+                                      <span class="fa fa-pencil-square-o" style="color: white;">@lang('trans.edit')</span>
                                     </a>
                                     <form action="{{route('blog.destroy',['blog'=>$blog])}}" method="POST">
                                       @method('DELETE')
                                       @csrf
-                                      <button class="btn btn-danger" type="submit">Delete</button>
+                                      <button class="btn btn-danger" type="submit">@lang('trans.delete')</button>
                                   </form>
                                     </div>
                                     @endcan  
                                 </div>
                                 </div>
                               @empty
-                              <h3 class="mt-5"style="text-align:center;margin:auto;color: #052958;font-weight:bold;">No Blogs Yet</h3>
+                              <h3 class="mt-5"style="text-align:center;margin:auto;color: #052958;font-weight:bold;">@lang('trans.blogs.no_blogs_yet')</h3>
                           @endforelse
                                 </div>
                               </div>

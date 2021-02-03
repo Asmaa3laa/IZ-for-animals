@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use App\Tag;
+use App\TagTranslation;
 
 class TagController extends Controller
 {
@@ -61,9 +62,13 @@ class TagController extends Controller
     public function update(Request $request, Tag $tag)
     {
         $tag->update($request->validate([
-            'name'=>['required', 'min:3',
+            /* 'name:en'=>['required', 'min:3',
             Rule::unique('tags', 'name')->ignore($tag->id)->where(function ($query) { return $query->where('deleted_at', null); })]
-        ]));
+        ,
+        'name:ar'=>['required', 'min:3',
+        Rule::unique('tags', 'name')->ignore($tag->id)->where(function ($query) { return $query->where('deleted_at', null); })]
+        */ ],
+    ));
         return redirect('tag')->with('message','tag has been updated successfully ^_^');
     }
     /**

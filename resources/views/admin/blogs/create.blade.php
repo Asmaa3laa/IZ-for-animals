@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('admintitle')
-| Create Blog   
+| @lang('trans.create_blog')  
 @endsection
 @section('content')
 @if($errors->any())
@@ -8,17 +8,17 @@
     <h3>please correct your errors</h3> 
   </div>
 @endif
-<div class="container mt-5" >
+<div class="container mt-5">
 <form  class="checkout-form " enctype="multipart/form-data" method="POST" action="{{route('blog.store')}}">
     <div class="form-group">
         {{ csrf_field() }}
-        <label for="title">Blog Title</label>
+        <label for="title">@lang('trans.blogs.blog_title')</label>
         <input type="text" id ='title' name="title" class="form-control" placeholder="Title" aria-label="title" autofocus aria-describedby="basic-addon1">      </div>
         @if ($errors->first('title'))
            <h6 style="color: red;">{{$errors->first('title')}}</h6>
         @endif
         <div class="form-group">
-        <label for="content">Blog</label> 
+        <label for="content">@lang('trans.blogs.blog')</label> 
         <textarea class="form-control" name="content" id="content" rows="30" placeholder="Content..."autofocus ></textarea>
         @if ($errors->first('content'))
           <h6 style="color: red;">{{$errors->first('content')}}</h6>
@@ -26,16 +26,16 @@
       </div>
     <div class="custom-file">
         <input type="file" class="custom-file-input" id="validatedImage" name="image" required>
-        <label class="custom-file-label" id="image"for="validatedCustomFile" autofocus>Choose blog image...</label>
+        <label class="custom-file-label" id="image"for="validatedCustomFile" autofocus>@lang('trans.blogs.choose_blog_image')</label>
     </div>
     @if ($errors->first('image'))
-        <h6 style="color: red;"> invalid image, only jpg,png and jpeg are allowed </h6>
+        <h6 style="color: red;"> @lang('trans.image_error')</h6>
     @endif
     <!-- tags -->
     <div class="form-row align-items-center">
-      <label for="cars">Choose blog's tags</label>
+      <label for="cars">@lang('trans.blogs.chooe_blog_tag')</label>
       <select id="tags" name="tags[]" class="form-control mb-2 js-example-basic-single {{ $errors->first('tag') ? 'is-invalid':''}}" autofocus multiple>
-        <option value="" disabled selected>Tags</option>
+        <option value="" disabled selected>@lang('trans.tags.tag')</option>
         @foreach ($tags as $tag) 
           <option value="{{ $tag ->id}}" {{ old('tag') && $tag->id == old('tag') ? 'selected':'' }} >{{ $tag ->name}}</option>
         @endforeach
@@ -44,7 +44,7 @@
     @if($errors->first('tags'))
     <h6 style="color: red;">{{$errors->first('tags') }}</h6>
     @endif
-    <button class="site-btn btn-success submit-order-btn btn-block mb-5">ADD</button>
+    <button class="site-btn btn-success submit-order-btn btn-block mb-5">@lang('trans.add')</button>
 
 </form>
 </div>
@@ -60,8 +60,7 @@
 </script>
 <script>
 		$(document).ready(function() {
-			$("#content").summernote();
+			$("#content").summernote({height: 200});
 		});
 </script> 
-  
 @endsection

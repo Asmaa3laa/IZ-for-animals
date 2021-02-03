@@ -64,33 +64,29 @@
    <p class="alert alert-success">{{ Session::get('alert-success') }} <a class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
 </div>
 @endif
-@if(Session::has('status'))
-<div class="flash-message">
-   <p class="alert alert-success">{{ Session::get('status') }} <a class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
-</div>
-@endif       
+      
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width:100%;height:400px;">
             <div class="carousel-inner" style="height:100%;width:100%;">
               <div class="carousel-item active"style="height:100%;width:100%;">
                 <img class="d-block w-100" style="max-width: 100%;height: 100%;display: block;" src="{{url('images/main.jpg')}}" alt="First slide">
                 <div class="carousel-caption d-none d-md-block">
-                  <p class="centered h2" style="background: rgba(255, 255, 255, 0.5);color:navy;font-weight:bold;">All About Animal helping veterinarians to create thier online clinic</p>
+                  <p class="centered h2" style="background: rgba(255, 255, 255, 0.5);color:navy;font-weight:bold;">@lang('trans.home.first_slide_sentance')</p>
                 </div>
               </div>
               <div class="carousel-item" style="height:100%;width:100%;">
                 <img class="d-block w-100" style="max-width: 100%;height: 100%;display: block;" src="{{url('images/bg_1.jpg')}}" alt="Second slide">
                 <div class="carousel-caption d-none d-md-block">
-                  <p class="centered h2"style="background: rgba(255, 255, 255, 0.5);color:navy;font-weight:bold;">All About Animal is your way to take better care of animal health</p>
+                  <p class="centered h2"style="background: rgba(255, 255, 255, 0.5);color:navy;font-weight:bold;">@lang('trans.home.second_slide_sentance')</p>
                 </div>
               </div>
             </div>
               <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
+                <span class="sr-only">@lang('trans.previous')</span>
               </a>
               <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
+                <span class="sr-only">@lang('trans.next')</span>
               </a>
           </div>      
           <section class="ftco-section bg-light ftco-no-pt ftco-intro">
@@ -102,8 +98,8 @@
                           <span class="flaticon-stethoscope"></span>
                     </div>
                     <div class="media-body mx-auto">
-                      <h3 class="heading">Create your clinics</h3>
-                      <p>We Provide assistance to the veterinarian and help him establish and market his clinic</p>
+                      <h3 class="heading">@lang('trans.users.create_clinic')</h3>
+                      <p>@lang('trans.home.card1')</p>
                     <a href="{{url('/register?role=clinic')}}" class="btn-custom d-flex align-items-center justify-content-center"><span class="fa fa-chevron-right"></span><i class="sr-only">Read more</i></a>
                     </div>
                   </div>      
@@ -114,8 +110,8 @@
                           <span class="flaticon-navigation"></span>
                     </div>
                     <div class="media-body">
-                      <h3 class="heading">Nearest Clinics</h3>
-                      <p>Find the nearest clinics from you, Save your time and effort</p>
+                      <h3 class="heading">@lang('trans.nearest_clinics')</h3>
+                      <p>@lang('trans.home.card2')</p>
                       <a href="{{route('clinic.index')}}" class="btn-custom d-flex align-items-center justify-content-center"><span class="fa fa-chevron-right"></span><i class="sr-only">Read more</i></a>
                     </div>
                   </div>    
@@ -126,8 +122,8 @@
                           <span class="flaticon-grooming"></span>
                     </div>
                     <div class="media-body">
-                      <h3 class="heading">Diagnoses Of Illnesses</h3>
-                      <p>Stay Tuned.....</p>
+                      <h3 class="heading">@lang('trans.diagnose_of_illness')</h3>
+                      <p>@lang('trans.home.card3')</p>
                       <a href="#" class="btn-custom d-flex align-items-center justify-content-center"><span class="fa fa-chevron-right"></span><i class="sr-only">Read more</i></a>
                     </div>
                   </div>      
@@ -144,35 +140,35 @@
                       </div>
                       <div class="col-md-7 pl-md-5 py-md-5">
                           <div class="heading-section pt-md-5">
-                      <h2 class="mb-4">Why Choose Us?</h2>
+                      <h2 class="mb-4">@lang('trans.home.why_choose_us')</h2>
                           </div>
-                          <div class="row">
+                          <div class="row ml-0" >
                               <div class="col-md-6 services-2 w-100 d-flex">
                                   <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-lightbulb-o"></span></div>
                                   <div class="text pl-3">
-                                      <h4>OUR VISION</h4>
-                                      <p>Discuss topics related to animal health and facilitate access to the nearest veterinary clinic to speed up your animal rescue.</p>
+                                      <h4>@lang('trans.home.vision')</h4>
+                                      <p>@lang('trans.home.vission_statment')</p>
                                   </div>
                               </div>
                               <div class="col-md-6 services-2 w-100 d-flex">
                                   <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-mission-1"></span></div>
                                   <div class="text pl-3">
-                                      <h4>OUR MISSION</h4>
-                                      <p>Providing assistance to the veterinarian and helping him establish and market his clinic.Helping to maintain the health of your animal from diseases and easy access to the nearest veterinarian.</p>
+                                      <h4>@lang('trans.home.mission')</h4>
+                                      <p>@lang('trans.home.mission_statment')</p>
                                   </div>
                               </div>
                               <div class="col-md-6 services-2 w-100 d-flex">
                                   <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-value"></span></div>
                                   <div class="text pl-3">
-                                      <h4>OUR VALUES</h4>
-                                      <p>As we care about animal health in the first place, we are guided by compassion, determination and effectiveness. Based on these values and principles, we will work to provide the necessary care for your animal.</p>
+                                      <h4>@lang('trans.home.values')</h4>
+                                      <p>@lang('trans.home.values_statment')</p>
                                   </div>
                               </div>
                               <div class="col-md-6 services-2 w-100 d-flex">
                                   <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-handshake"></span></div>
                                   <div class="text pl-3">
-                                      <h4>OUR COMMITMENTS</h4>
-                                      <p>We are committed to saving the largest number of animals possible by raising issues related to the general health of the animal and also by facilitating communication with the appropriate veterinarian.</p>
+                                      <h4>@lang('trans.home.commitments')</h4>
+                                      <p>@lang('trans.home.commitments_statment')</p>
                                   </div>
                               </div>
                           </div>
@@ -188,7 +184,7 @@
                       {{ csrf_field() }}
                       <div class="form-group" >
                         <span class="fa fa-search btn submit" id="search"></span>
-                        <input type="text" name="searcharea" id ="searcharea" class="form-control" placeholder="Type a clinic name and hit enter"/>
+                        <input type="text" name="searcharea" id ="searcharea" class="form-control" placeholder="@lang('trans.home.search-placeholder')"/>
                       <div id="clinicList" style="display: flex;">
                       </div> 
                       </div>
@@ -204,34 +200,34 @@
     
                     <div class="col-lg-6 mx-md-0 mx-auto">
                         <div class="heading-section mb-5 mt-5 mt-lg-0">
-                        <h1 class="mb-3" style="font-weight:bold;color:navy;font-family:inherit;">OUR TOPICS</h1>
+                        <h1 class="mb-3" style="font-weight:bold;color:navy;font-family:inherit;">@lang('trans.home.topics')</h1>
                         </div>
                         <div id="accordion" class="myaccordion w-100 row" aria-multiselectable="true">
                               <div class="card">
                                 <div class="card-header p-0" id="headingOne">
                                   <h2 class="mb-0">
                                   <a href="{{route('blogtag.show',1)}}"><button class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" style="background-image: linear-gradient(to right, #2BC0E4 0%, #ecf17a 51%, #2BC0E4 100%)">
-                                        <p class="mb-0"style="font-weight: bold">Pet Animals</p>
+                                        <p class="mb-0"style="font-weight: bold">@lang('trans.home.pet_animals')</p>
                                     </button></a>
                                     <a href="{{route('blogtag.show',2)}}">
                                       <button  class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" style="background-image: linear-gradient(to right, #F7BB97 0%, #DD5E89 51%, #F7BB97 100%)">
-                                      <p class="mb-0"style="font-weight: bold">Poultry</p>
+                                      <p class="mb-0"style="font-weight: bold">@lang('trans.home.poultry')</p>
                                   </button>
                                     </a>
                                 </h2>
                                   <a href="{{route('blogtag.show',3)}}">
                                   <button class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" style="background-image:linear-gradient(to right, #00d2ff 0%, #3a7bd5 51%, #00d2ff 100%)">
-                                    <p class="mb-0" style="font-weight: bold">Large Animals</p>
+                                    <p class="mb-0" style="font-weight: bold">@lang('trans.home.large_animals')</p>
                                 </button>
                                   </a>
                                   <a href="{{route('blogtag.show',4)}}">
                                   <button class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link " data-parent="#accordion" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne"style="background-image: linear-gradient(to right, #DD5E89 0%, #F7BB97 51%, #DD5E89 100%)">
-                                  <p class="mb-0"style="font-weight: bold">Equines</p>
+                                  <p class="mb-0"style="font-weight: bold">@lang('trans.home.equines')</p>
                                   </button>
                                 </a>
                                 <a href="{{route('blogtag.show',5)}}">
                                   <button class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" style="background-image: linear-gradient(to right, #7474BF 0%, #348AC7 51%, #7474BF 100%)">
-                                    <p class="mb-0"style="font-weight: bold">Wild Animals</p>
+                                    <p class="mb-0"style="font-weight: bold">@lang('trans.home.wild_animals')</p>
                                 </button>
                                 </a>
                                 </div>

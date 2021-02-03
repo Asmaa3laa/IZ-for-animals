@@ -8,23 +8,23 @@
     <div class="carousel-item active"style="height:100%;width:100%;">
       <img class="d-block w-100" style="max-width: 100%;height: 100%;display: block;" src="{{url('images/main.jpg')}}" alt="First slide">
       <div class="carousel-caption d-none d-md-block">
-        <h2 class="centered" style="color:navy;font-weight:bold;background: rgba(255, 255, 255, 0.75);">All About Animal helping veterinarians to create thier online clinic</h2>
+        <h2 class="centered" style="color:navy;font-weight:bold;background: rgba(255, 255, 255, 0.75);">@lang('trans.home.first_slide_sentance')</h2>
       </div>
     </div>
     <div class="carousel-item" style="height:100%;width:100%;">
       <img class="d-block w-100" style="max-width: 100%;height: 100%;display: block;" src="{{url('images/bg_1.jpg')}}" alt="Second slide">
       <div class="carousel-caption d-none d-md-block">
-        <h2 class="centered"style="background: rgba(255, 255, 255, 0.75);color:navy;font-weight:bold;">All About Animal is your way to take better care of animal health</h2>
+        <h2 class="centered"style="background: rgba(255, 255, 255, 0.75);color:navy;font-weight:bold;">@lang('trans.home.second_slide_sentance')</h2>
       </div>
     </div>
   </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
+      <span class="sr-only">@lang('trans.previous')</span>
     </a>
     <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
+      <span class="sr-only">@lang('trans.next')</span>
     </a>
 </div>   
          <h1 class=" mt-5"style="text-align:center;color: #052958;font-weight:bold;">{{$tag->name}}</h1>
@@ -45,11 +45,11 @@
               <h3 class="heading"><a href="{{ route('blog.show',$tag_blog->blog->id) }}">{{$tag_blog->blog->title}}</a></h3>
               <p class="content">{{\Illuminate\Support\Str::limit(strip_tags(html_entity_decode($tag_blog->blog->content)),100, $end='...') }}</p>       
             </div>
-            <a href="{{ route('blog.show',$tag_blog->blog->id) }}" class="btn btn-info" style="background-color: #052958;" role="button">Read More</a>   
+            <a href="{{ route('blog.show',$tag_blog->blog->id) }}" class="btn btn-info" style="background-color: #052958;" role="button">@lang('trans.read_more')</a>   
           </div>
         </div>
       @empty
-      <h3 class="mt-5"style="text-align:center;color: #052958;font-weight:bold;">No Blogs Yet</h3>
+      <h3 class="mt-5"style="text-align:center;color: #052958;font-weight:bold;">@lang('trans.blogs.no_blogs_yet')</h3>
   @endforelse
         </div>
     </div>

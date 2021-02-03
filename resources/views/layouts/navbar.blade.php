@@ -1,6 +1,6 @@
 <div class="wrap">
 			<div class="container">
-				<div class="col-md-6 d-flex justify-content-md-end">
+				<div class="col-md-6 d-flex justify-content-md-end" style="display: inline;">
 						<div class="social-media">
 			    		<p class="mb-0 d-flex">
 			    			<a href="https://www.facebook.com/groups/2875962215993069/" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
@@ -8,10 +8,10 @@
 			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
 			    		</p>
 					  </div>
-				  </div>
+        </div> 
 			  </div>
 		  </div>
-		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar"style="width:100%">
 	    <div class="container">
         <div class="panel-body">
           <img src="{{ asset("/images/All About Animals_ logo photoshop.png") }}" style="width:80px;height:80px;"/>
@@ -23,11 +23,27 @@
 	      </button>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-            
-          <li class="nav-item {{(request()->is('/')) ? 'active' : '' }}"><a href="{{route('index')}}" class="nav-link">HOME</a></li>
-          <li class="nav-item {{(request()->is('about')) ? 'active' : '' }}"><a href="{{route('about')}}" class="nav-link">ABOUT</a></li>
-            <li class="nav-item {{(request()->is('clinic')) ? 'active' : '' }}"><a href="{{route('clinic.index')}}" class="nav-link">CLINICS</a></li>
-          <li class="nav-item {{(request()->is('blog')) ? 'active' : '' }}"><a href="{{route('blog.index')}}" class="nav-link">BLOGS</a></li>            
+            <li class="dropdown dropdown-user">
+{{--             <div class="dropdown dropdown-user" style="height: 100%;">
+ --}}          <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+              <span class="mr-1">
+                  <span class="user-name text-bold-700"> {{App::getLocale()}}</span>
+              </span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right">
+              @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                  <a class="dropdown-item" style="height: 100%;"rel="alternate" hreflang="{{ $localeCode }}"
+                      href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                      {{ $properties['native'] }}
+                  </a>
+              @endforeach
+{{--           </div>
+ --}}      </div> 
+            </li>
+          <li class="nav-item {{(request()->is('/')) ? 'active' : '' }}"><a href="{{route('index')}}" class="nav-link">@lang('trans.home.home')</a></li>
+          <li class="nav-item {{(request()->is('about')) ? 'active' : '' }}"><a href="{{route('about')}}" class="nav-link">@lang('trans.about.about')</a></li>
+            <li class="nav-item {{(request()->is('clinic')) ? 'active' : '' }}"><a href="{{route('clinic.index')}}" class="nav-link">@lang('trans.clinics')</a></li>
+          <li class="nav-item {{(request()->is('blog')) ? 'active' : '' }}"><a href="{{route('blog.index')}}" class="nav-link">@lang('trans.blogs.blogs')</a></li>            
 	        </ul>
         </div>
         <div>
@@ -36,11 +52,11 @@
             <!-- Authentication Links -->
             @guest
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">{{ __('login') }}</a>
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('trans.login') }}</a>
                 </li>
                 @if (Route::has('register'))
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('login-role') }}">{{ __('create acount') }}</a>
+                        <a class="nav-link" href="{{ url('login-role') }}">{{ __('trans.create_acount') }}</a>
                     </li>
                 @endif
             @else

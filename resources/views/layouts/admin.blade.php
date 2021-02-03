@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Admin Dashboard @yield('admintitle')</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css') }}">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bbootstrap 4 -->
@@ -16,8 +15,7 @@
   <link rel="stylesheet" href="{{asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
   <!-- JQVMap -->
   <link rel="stylesheet" href="{{asset('plugins/jqvmap/jqvmap.min.css') }}">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css') }}">
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
   <!-- Daterange picker -->
@@ -25,10 +23,21 @@
   <!-- summernote -->
   {{-- <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.css') }}">  --}}
   <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+ <!-- Font Awesome -->
+ <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css') }}">  
+ <!-- Theme style -->
+ <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css') }}">  
+ <!-- Google Font: Source Sans Pro -->
+ <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+  @if(app()->getLocale() === 'ar');
+     <link rel="stylesheet" href="{{asset('dist/css/AdminLTE-rtl.min.css') }}">
+    <link rel="stylesheet" href="{{asset('dist/css/AdminLTE-rtl.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css') }}">  
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.3/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://cdn.rtlcss.com/bootstrap/v4.5.3/js/bootstrap.bundle.min.js" integrity="sha384-40ix5a3dj6/qaC7tfz0Yr+p9fqWLzzAXiwxVLt9dw7UjQzGYw6rWRhFAnRapuQyK" crossorigin="anonymous"></script>
+    @endif
   @yield("head")
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -49,6 +58,21 @@
    
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+      <li class="dropdown dropdown-user">
+        <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+            <span class="mr-1">
+                <span class="user-name text-bold-700"> {{App::getLocale()}}</span>
+            </span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                <a class="dropdown-item" style="height: 100%;"rel="alternate" hreflang="{{ $localeCode }}"
+                    href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                    {{ $properties['native'] }}
+                </a>
+            @endforeach
+        </div> 
+      </li>
       <li class="nav-item dropdown">
          <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
             {{ Auth::user()->name }} <span class="caret"></span>

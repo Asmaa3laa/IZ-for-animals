@@ -1,12 +1,12 @@
 @extends('layouts.admin')
 @section('admintitle')
-| Add Tags
+| @lang('trans.tags.add_tag')
 @endsection
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h3>Add Tag</h3>
+                <h3>@lang('trans.tags.add_tag')</h3>
             </div>
         </div>
     
@@ -16,7 +16,7 @@
                     
                     @include('tags.form')
     
-                    <button type="submit" class="btn btn-primary">Add Tag</button>
+                    <button type="submit" class="btn btn-primary">@lang('trans.tags.add_tag')</button>
                 </form>
             </div>
         </div>

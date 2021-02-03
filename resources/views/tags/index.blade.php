@@ -47,20 +47,22 @@
             @foreach ($tags as $tag)
                 <tr>
                 <th scope="row">{{$counter+=1}}</th>
-                    <td>{{$tag->name}}</td>
-                <td>@php
+                <th scope="col">@lang('trans.tags.name_in_english')</th>
+                <th scope="col">@lang('trans.tags.name_in_arabic')</th>
+                <td>
+                  @php
 
                   echo App\BlogTag::where('tag_id','=',$tag->id)->count();
               
               @endphp</td>
                     <td>
-                        <a href="{{route('tag.edit',['tag'=>$tag])}}" class="btn btn-warning">Edit</a>
+                        <a href="{{route('tag.edit',['tag'=>$tag])}}" class="btn btn-warning">@lang('trans.edit')</a>
                     </td>
                     <td>
                         <form action="{{route('tag.destroy',['tag'=>$tag])}}" method="POST">
                             @method('DELETE')
                             @csrf
-                            <button class="btn btn-danger" type="submit">Delete</button>
+                            <button class="btn btn-danger" type="submit">@lang('trans.delete')</button>
                         </form>
                     </td>
                 </tr>

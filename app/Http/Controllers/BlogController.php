@@ -82,6 +82,7 @@ class BlogController extends Controller
     {
         //validate
         //store;     
+        dd($request->content);
         try {
             DB::beginTransaction();
                 $image_path = $request->image->store('uploads', 'public');
@@ -114,7 +115,7 @@ class BlogController extends Controller
         //redircet
          if(Auth::user()->role == 'clinic')
          {
-        return  redirect("blog/".$blog->id)->with('success','Blog has added successfuly');
+        return  redirect("blog/".$blog->id)->with('success','Blog has been added successfuly');
          }
         else
         {

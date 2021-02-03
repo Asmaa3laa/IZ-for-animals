@@ -38,14 +38,14 @@
       <!-- TAAAAAAAAAAAABS -->
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active h6" style="color: black" id="main-tab" data-toggle="tab" href="#main" role="tab" aria-controls="main" aria-selected="true">Profile</a>
+          <a class="nav-link active h6" style="color: black" id="main-tab" data-toggle="tab" href="#main" role="tab" aria-controls="main" aria-selected="true">@lang('trans.profile')</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link h6" style="color: black" id="update-tab" data-toggle="tab" href="#update" role="tab" aria-controls="update" aria-selected="false">Update Profile</a>
+          <a class="nav-link h6" style="color: black" id="update-tab" data-toggle="tab" href="#update" role="tab" aria-controls="update" aria-selected="false">@lang('trans.update_profile')</a>
         </li>
         @if ($user->role == 'clinic')
         <li class="nav-item">
-          <a class="nav-link h6" style="color: black" id="blog-tab" data-toggle="tab" href="#blog" role="tab" aria-controls="blog" aria-selected="false">Clinic's Blogs</a>
+          <a class="nav-link h6" style="color: black" id="blog-tab" data-toggle="tab" href="#blog" role="tab" aria-controls="blog" aria-selected="false">@lang('trans.clinic_blogs')</a>
         </li>
         @endif
       </ul>
@@ -57,11 +57,11 @@
           <b> <i class="fa fa-user mr-1"></i>DR. Name</b>
             <h6>{{$user->name}}</h6>
             <hr>
-          <b><i class="fa fa-envelope mr-1"></i>Email</b>
+          <b><i class="fa fa-envelope mr-1"></i>@lang('trans.users.email')</b>
           <h6>{{$user->email}}</h6>
           <hr>
           @if(Auth::user()->card)
-          <b><i class="fa fa-credit-card mr-1"></i> Card</b> 
+          <b><i class="fa fa-credit-card mr-1"></i>@lang('trans.users.email')@lang('trans.users.card')</b> 
           <div class="ftco-animate">
             <div class="work mb-4 img align-items-end" style="background-image: url({{asset('storage/'.$user->card)}});">
               <a href="{{asset('storage/'.$user->card)}}" class="icon image-popup d-flex justify-content-center align-items-center">
@@ -69,8 +69,8 @@
               </a>
               <div class="desc w-100 px-4">
                 <div class="text w-100 mb-3">
-                  <span>Doctor</span>
-                  <h2>ID Card</h2>
+                  <span>@lang('trans.doctor')</span>
+                  <h2>@lang('trans.card_id')</h2>
                 </div>
               </div>
             </div>
@@ -83,17 +83,17 @@
 
   <div class="col-6 card card-info">
     <div class="card-body">
-      <b><i class="fa fa-address-card mr-1"></i> Address</b>
+      <b><i class="fa fa-address-card mr-1"></i> @lang('trans.users.address')</b>
       <h6>
           {{$user->country->name}}- {{$user->state->name}}- {{$user->address}}
       </h6>
       <hr>
-      <b><i class="fa fa-map-marker mr-1"></i> Location</b>
+      <b><i class="fa fa-map-marker mr-1"></i> @lang('trans.users.location')</b>
       <h6>
-        <a class="btn btn-link" href="{{$user->location}}">show map</a>
+        <a class="btn btn-link" href="{{$user->location}}"> @lang('trans.users.show_map')</a>
       </h6>
       <hr>
-      <b><i class="fa fa-phone mr-1"></i> Phone</b>
+      <b><i class="fa fa-phone mr-1"></i> @lang('trans.users.phone')</b>
       <h6>{{$user->phone}}</h6>
     </div>
   </div>     
@@ -127,12 +127,12 @@
                     <a href="{{ route('blog.show',$blog->id) }}" class="btn btn-info" style="background-color: #052958;" role="button">Read More</a> 
                     @can('create.blogs')
                     <a href="{{route('blog.edit',$blog->id)}}" class="btn btn-warning" role="button">
-                      <span class="fa fa-pencil-square-o" style="color: white;">EDIT</span>
+                      <span class="fa fa-pencil-square-o" style="color: white;">@lang('trans.edit')</span>
                     </a>
                     <form action="{{route('blog.destroy',['blog'=>$blog])}}" method="POST">
                       @method('DELETE')
                       @csrf
-                      <button class="btn btn-danger" type="submit">Delete</button>
+                      <button class="btn btn-danger" type="submit">@lang('trans.delete')</button>
                   </form>
                     @endcan 
                   </div> 
@@ -141,10 +141,10 @@
                 </div>
               </div>
               @empty
-            <h3 class=" mt-5"style="text-align:center;color: #052958;font-weight:bold;">No Blogs Yet</h3>
+            <h3 class=" mt-5"style="text-align:center;color: #052958;font-weight:bold;">@lang('trans.blogs.no_blogs_yet')</h3>
               @endforelse
               @can('create.blogs')
-                <button onclick="location.href = '{{route('blog.create')}}';" id="myButton" class="btn-block submit-button"style="border-radius: 12px;cursor:pointer ;background-color:#092a58;height:50px;border:none;color: #eaee0a;">Create New Blog</button>               
+                <button onclick="location.href = '{{route('blog.create')}}';" id="myButton" class="btn-block submit-button"style="border-radius: 12px;cursor:pointer ;background-color:#092a58;height:50px;border:none;color: #eaee0a;">@lang('trans.blogs.create_new_blog')</button>               
               @endcan 
       </div>
   </div>
