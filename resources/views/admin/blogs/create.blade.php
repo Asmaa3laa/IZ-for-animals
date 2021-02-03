@@ -13,13 +13,13 @@
     <div class="form-group">
         {{ csrf_field() }}
         <label for="title">@lang('trans.blogs.blog_title')</label>
-        <input type="text" id ='title' name="title" class="form-control" placeholder="Title" aria-label="title" autofocus aria-describedby="basic-addon1">      </div>
+        <input type="text" id ='title' name="title" class="form-control" placeholder="@lang('trans.title')" aria-label="title" autofocus aria-describedby="basic-addon1">      </div>
         @if ($errors->first('title'))
            <h6 style="color: red;">{{$errors->first('title')}}</h6>
         @endif
         <div class="form-group">
         <label for="content">@lang('trans.blogs.blog')</label> 
-        <textarea class="form-control" name="content" id="content" rows="30" placeholder="Content..."autofocus ></textarea>
+        <textarea class="form-control" name="content" id="content" rows="30" placeholder="@lang('trans.content')..."autofocus ></textarea>
         @if ($errors->first('content'))
           <h6 style="color: red;">{{$errors->first('content')}}</h6>
         @endif
@@ -33,11 +33,11 @@
     @endif
     <!-- tags -->
     <div class="form-row align-items-center">
-      <label for="cars">@lang('trans.blogs.chooe_blog_tag')</label>
+      <label for="cars">@lang('trans.blogs.choose_blog_tag')</label>
       <select id="tags" name="tags[]" class="form-control mb-2 js-example-basic-single {{ $errors->first('tag') ? 'is-invalid':''}}" autofocus multiple>
         <option value="" disabled selected>@lang('trans.tags.tag')</option>
         @foreach ($tags as $tag) 
-          <option value="{{ $tag ->id}}" {{ old('tag') && $tag->id == old('tag') ? 'selected':'' }} >{{ $tag ->name}}</option>
+          <option value="{{ $tag ->id}}" {{ old('tag') && $tag->id == old('tag') ? 'selected':'' }} >{{ $tag->name}}</option>
         @endforeach
       </select>
     </div>
